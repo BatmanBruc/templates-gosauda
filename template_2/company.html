@@ -19,11 +19,11 @@
 
 <div class="settings-panel">
     <div class="setting-item once">
-        <a href="#" class="btn btn-setting-item"><i class="icon icon-bold"></i></a>
-        <a href="#" class="btn btn-setting-item"><i class="icon icon-italic"></i></a>
-        <a href="#" class="btn btn-setting-item"><i class="icon icon-underline"></i></a>
-        <a href="#" class="btn btn-setting-item"><i class="icon icon-strikethrough"></i></a>
-        <div class="dropdown">
+        <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Жирный текст"><i class="icon icon-bold"></i></a>
+        <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Курсив"><i class="icon icon-italic"></i></a>
+        <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Подчеркивание"><i class="icon icon-underline"></i></a>
+        <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Зачеркнутый"><i class="icon icon-strikethrough"></i></a>
+        <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Шрифт">
             <button class="btn btn-setting-item dropdown-toggle" type="button" id="font-family" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="icon icon-font"></i>
             </button>
@@ -33,7 +33,7 @@
                 <a class="dropdown-item" href="#">Lorem ipsum dolor</a>
             </div>
         </div>
-        <div class="dropdown">
+        <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Жирность текста">
             <button class="btn btn-setting-item dropdown-toggle" type="button" id="font-bold" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="icon icon-text-bold"></i>
             </button>
@@ -46,7 +46,7 @@
                 <a class="dropdown-item" href="#">700, Bold</a>
             </div>
         </div>
-        <div class="dropdown">
+        <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Размер текста">
             <button class="btn btn-setting-item dropdown-toggle" type="button" id="font-size" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="icon icon-font-size"></i>
             </button>
@@ -58,7 +58,7 @@
                 <a class="dropdown-item" href="#">16px</a>
             </div>
         </div>
-        <div class="dropdown">
+        <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Межстрочное расстояние">
             <button class="btn btn-setting-item dropdown-toggle" type="button" id="font-between" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="icon icon-between"></i>
             </button>
@@ -70,7 +70,7 @@
                 <a class="dropdown-item" href="#">16px</a>
             </div>
         </div>
-        <div class="dropdown">
+        <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Выравнивание текста">
             <button class="btn btn-setting-item dropdown-toggle" type="button" id="text-align" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="icon icon-text-align"></i>
             </button>
@@ -80,18 +80,58 @@
                 <a class="dropdown-item" href="#">По правому краю</a>
             </div>
         </div>
-        <a href="#" id="colorpicker" class="btn btn-setting-item"><i class="icon icon-color-picker"></i></a>
-        <a href="#" class="btn btn-setting-item"><i class="icon icon-eraser"></i></a>
+        <a href="#" id="colorpicker" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Цвет текста"><i class="icon icon-color-picker"></i></a>
+        <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Очистить стили"><i class="icon icon-eraser"></i></a>
     </div>
     <div class="setting-item">
-        <p class="btn btn-setting-item global-btn"><i class="icon icon-globe"></i></p>
-        <p class="btn btn-setting-item"><i class="icon icon-settings-2"></i></p>
-        <p class="btn btn-setting-item"><i class="icon icon-eye"></i></p>
-        <p class="btn btn-setting-item"><i class="icon icon-check"></i></p>
+        <p class="btn btn-setting-item global-btn" data-toggle="tooltip" data-placement="bottom" title="Глобальные стили"><i class="icon icon-globe"></i></p>
+        <p class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Настройки"><i class="icon icon-settings-2"></i></p>
+        <p class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Сохранить"><i class="icon icon-check"></i></p>
     </div>
 
     <div class="global-settings">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci autem, consequatur cum ea facilis fugit labore molestias natus numquam pariatur totam, ullam. Architecto corporis, cumque delectus fuga nulla placeat similique.
+        <div class="global-settings-buttons">
+            <a href="#" class="btn btn-save">Сохранить</a>
+            <a href="#" class="btn btn-close">Назад</a>
+        </div>
+        <p class="text-center title">Глобальные настройки</p>
+        <hr>
+        <div class="px-4">
+            <div class="form-group">
+                <label for="font-select">Шрифт</label>
+                <select class="form-control" id="font-select">
+                    <option>Arial</option>
+                    <option>Roboto</option>
+                    <option>Montserrat</option>
+                    <option>Times New Romans</option>
+                    <option>Lorem</option>
+                </select>
+                <small id="emailHelp" class="form-text text-muted">Шрифт применится ко всему тексту на сайте</small>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="font-select">Цвет кнопок</label>
+                <div id="colorpicker-btn" class="color-pick-global"></div>
+                <small class="form-text text-muted">Нажмите, чтобы выбрать цвет</small>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="font-select">Цвет текста на кнопках</label>
+                <div id="colorpicker-btn-text" class="color-pick-global"></div>
+                <small class="form-text text-muted">Нажмите, чтобы выбрать цвет</small>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="font-select">Логотип</label>
+                <div class="file-drop-area">
+                    <span class="fake-btn">Выберите файл</span>
+                    <span class="file-msg">Или перетащите его сюда</span>
+                    <input class="file-input" type="file">
+                </div>
+                <small class="form-text text-muted">По умолчанию вместо логотипа будет отображаться ваше название компании</small>
+            </div>
+
+        </div>
     </div>
 </div>
 <main class="shop comp-color-{val=color}">

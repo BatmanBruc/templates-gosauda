@@ -1,0 +1,116 @@
+.settings-open{
+    margin-top: 70px;
+}
+
+.settings-panel{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 999;
+    box-shadow: 0 0 10px 0 #888;
+}
+
+.global-settings{
+    position: fixed;
+    right: -350px;
+    top: 0;
+    height: 100vh;
+    max-width: 300px;
+    z-index: 9999;
+    background-color: #fff;
+    color: #151515;
+    padding: 20px;
+    box-shadow: 0 0 10px 0 #888;
+    transition: 0.2s ease;
+}
+
+.show-global-settings .global-settings{
+    right: 0;
+}
+
+.setting-item{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.settings-panel.disabled .setting-item.once .btn-setting-item{
+    z-index: -1;
+}
+
+.settings-panel.disabled .setting-item.once .btn-setting-item:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f2f2f2;
+    opacity: 0.7;
+    z-index: 99999;
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
+.settings-panel .icon{
+    font-size: 14pt;
+}
+
+.dropdown-menu{
+    min-width: 250px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.dropdown-menu .dropdown-item{
+    color: #151515;
+    padding: 10px;
+    display: block;
+    font-size: 12pt;
+}
+
+.dropdown-menu .dropdown-item:hover{
+    background-color: #26cae5;
+    color: #fff;
+}
+
+.btn-setting-item:focus{
+    outline: none!important;
+    background-color: #26cae5;
+    color: #fff;
+}
+
+.btn-setting-item{
+    position: relative;
+    z-index: 1;
+    margin-right: 1px;
+    height: 60px;
+    padding: 0 25px;
+    border-radius: 0;
+    background-color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+}
+
+.btn-setting-item:hover{
+    background-color: #26cae5;
+    color: #fff;
+}
+
+.sp-container{
+    position: fixed!important;
+    top: 63px!important;
+}
+
+.sp-container button.sp-choose{
+    background-color: #26cae5;
+}

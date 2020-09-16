@@ -13,11 +13,14 @@
     <link rel="stylesheet" href="../css/spectrum.css">
     <link rel="stylesheet" href="../css/settings-panel.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/22.0.0/balloon/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-vue@1.0.2/dist/ckeditor.min.js"></script>
     <title>Document</title>
 </head>
 <body class="settings-open">
 
-<div class="settings-panel disabled">
+<div class="settings-panel">
     <div class="setting-item once">
         <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Жирный текст"><i class="icon icon-bold"></i></a>
         <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Курсив"><i class="icon icon-italic"></i></a>
@@ -146,10 +149,10 @@
                 <a class="navbar-logo" href="#"><img src="../img/logo.svg" alt=""></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">О компании</a></li>
-                    <li><a href="#">Каталог</a></li>
+                <ul id="group_1" class="nav-top">
+                    <li><div v-bind:style="style" pasteFromWordRemoveStyles="true" contenteditable="false" class="nav-top__link" id="element_1" name="element_1" href="#"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></div></li>
+                    <li><div v-bind:style="style" pasteFromWordRemoveStyles="true" contenteditable="false" class="nav-top__link" id="element_2" name="element_2" href="#"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></div></li>
+                    <li><div v-bind:style="style" pasteFromWordRemoveStyles="true" contenteditable="false" class="nav-top__link" id="element_3" name="element_3" href="#"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></div></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <form class="form-inline my-2 my-lg-0">
@@ -169,7 +172,10 @@
                     <i class="icon icon-phone"></i>
                     <div>
                         <p>Телефон</p>
-                        <p>+7 (999) 999 99 99</p>
+                        <p stye="{
+                            color: 'red',
+                            fontSize: '16px'
+                        }">+7 (999) 999 99 99</p>
                     </div>
                 </div>
                 <div class="block">

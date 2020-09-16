@@ -1,9 +1,7 @@
 $( document ).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 
-    $("#colorpicker").spectrum({
-        color: "#f00"
-    });
+    
 
     $("#colorpicker-btn").spectrum({
         color: "#333",
@@ -55,3 +53,124 @@ $( document ).ready(function() {
         }
     });
 });
+let groups = [
+    {
+        id: 1,
+        name: 'nav-top',
+        style: {
+            'color': 'red',
+            'font-size': '16px'
+        }
+    }
+];
+let objects = [
+    {
+        id: 1,
+        name: 'banner',
+    }
+];
+let elements = [
+    {
+        id: 1,
+        id_group: 1,
+        name: 'nav-top_link',
+        content: 'Главная'
+    },
+    {
+        id: 2,
+        id_group: 1,
+        name: 'nav-top_link',
+        content: 'О компании'
+    },
+    {
+        id: 3,
+        id_group: 1,
+        name: 'nav-top_link',
+        content: 'Каталог'
+    },
+    {
+        id: 4,
+        id_object: 1,
+        name: 'nav-top_link',
+        type: 1,
+        content: 'ЗАГОЛОВОК ВАШЕГО БАННЕРА'
+    },
+    {
+        id: 5,
+        id_object: 1,
+        name: 'nav-top_link',
+        type: 2,
+        content: '../../img/bg_main.jpg'
+    }
+];
+Vue.use( CKEditor );
+let activeElem;
+let timeOutForColorPicker;
+$("#colorpicker").spectrum({
+    color: "#f00",
+    move: function(color) {
+        if(activeElem)
+            activeElem.changeColor(color)
+    },
+});
+$('.dropdown-item').click(function(){
+    let property = $(this).parent().attr('aria-labelledby');
+    let value = $(this).text();
+    if(activeElem)
+        activeElem.changeStyle({
+            [property]: value
+        })
+})
+for (let i = 0; i < groups.length; i++) {
+    const group = groups[i];
+    window.group_1 = new Vue({
+        data: {
+            style: group.style
+        },
+        watch: {
+            style(){
+                this.$emit('changeStyle', this.style);
+                console.log(this.style)
+            }
+        },
+        methods: {
+            changeColor(color){
+                this.style = { ...this.style, color: color};
+            },
+            changeStyle(style){
+                this.style = { ...this.style,...style};
+            }
+        }
+    })    
+    for (let j = 0; j < elements.length; j++) {
+        const element = elements[j];
+        let elem = new Vue({
+            el: '#element_' + element.id,
+            data: {
+                style: group.style,
+                editor: BalloonEditor,
+                editorData: element.content
+            },
+            watch: {
+                
+            },
+            methods: {
+                onEditorInput(){
+                    console.log(this.editorData);
+                },
+                onChangeStyle(style){
+                    this.style = style;
+                }
+            }
+        })
+        window.group_1.$on('changeStyle', elem.onChangeStyle)
+        $('style[data-cke="true"]').remove();
+        $('#element_' + element.id).click(()=>{
+            activeElem = window.group_1;
+            console.log(activeElem);
+        })
+    }
+}
+for (let i = 0; i < groups.length; i++) {
+
+}

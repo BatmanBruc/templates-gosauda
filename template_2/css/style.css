@@ -523,3 +523,22 @@
     }
 }
 
+.nav-top ul{
+    margin: 0px;
+    padding: 0px
+}
+li{
+    list-style: none;
+}
+.nav-top {
+    display: inline-block;
+}
+.nav-top li {
+    display: inline-block;
+}
+.nav-top__link {
+    margin: 15px;
+}
+.nav-top__link div{
+    outline: 0px;
+}

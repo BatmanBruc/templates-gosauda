@@ -99,7 +99,7 @@
         </div>
         <p class="text-center title">Глобальные настройки</p>
         <hr>
-        <div class="px-4">
+        <div class="px-4 global-settings__fields">
             <div class="form-group">
                 <label for="font-select">Шрифт</label>
                 <select class="form-control" id="font-select">
@@ -124,7 +124,7 @@
                 <small class="form-text text-muted">Нажмите, чтобы выбрать цвет</small>
             </div>
             <hr>
-            <div class="form-group">
+            <div class="form-group"></div>
                 <label for="font-select">Логотип</label>
                 <div class="file-drop-area">
                     <span class="fake-btn">Выберите файл <br>Или перетащите его сюда </span>
@@ -149,10 +149,11 @@
                 <a class="navbar-logo" href="#"><img src="../img/logo.svg" alt=""></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul id="group_1" class="nav-top">
-                    <li><div v-bind:style="style" pasteFromWordRemoveStyles="true" contenteditable="false" class="nav-top__link" id="element_1" name="element_1" href="#"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></div></li>
-                    <li><div v-bind:style="style" pasteFromWordRemoveStyles="true" contenteditable="false" class="nav-top__link" id="element_2" name="element_2" href="#"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></div></li>
-                    <li><div v-bind:style="style" pasteFromWordRemoveStyles="true" contenteditable="false" class="nav-top__link" id="element_3" name="element_3" href="#"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></div></li>
+                <ul group:name="nav-top" group:style="{}" class="group nav-top">
+                    <div v-bind:style="style" class="nav-top__link" id="element_1" href="#"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></div>
+                    <li><a group="top-link" name="link-home" styleParams="{}" class="group-element element nav-top__link" href="#">Главная</a></li>
+                    <li><a group="top-link" name="link-about" styleParams="{}" class="group-element element nav-top__link" href="#">О компании</a></li>
+                    <li><a group="top-link" name="link-catalog" styleParams="{}" class="group-element element nav-top__link" href="#">Каталог</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <form class="form-inline my-2 my-lg-0">
@@ -172,17 +173,14 @@
                     <i class="icon icon-phone"></i>
                     <div>
                         <p>Телефон</p>
-                        <p stye="{
-                            color: 'red',
-                            fontSize: '16px'
-                        }">+7 (999) 999 99 99</p>
+                        <p v-bind:style="style" id="element_6"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></p>
                     </div>
                 </div>
                 <div class="block">
                     <i class="icon icon-mail-alt"></i>
                     <div>
                         <p>Почта</p>
-                        <p>you.mail@gmail.com</p>
+                        <p v-bind:style="style" id="element_7"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></p>
                     </div>
                 </div>
                 <div class="block">
@@ -216,7 +214,8 @@
                 </div>
                 <div class="col-md-9">
                     <div class="content">
-                        <h1 class="h1-content">ЗАГОЛОВОК ВАШЕГО БАННЕРА</h1>
+                        <img id="element_5"  :src="image" />
+                        <h1 class="h1-content" :style="style" id="element_4"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></h1>
                     </div>
                     <div class="goods">
                         <h2 class="bold mt-3">Топ 20 товаров</h2>

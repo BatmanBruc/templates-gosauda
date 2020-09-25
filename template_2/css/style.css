@@ -1,5 +1,4 @@
 .main .content{
-    background-image: url("../../img/bg_main.jpg");
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
@@ -523,3 +522,25 @@
     }
 }
 
+.nav-top ul{
+    margin: 0px;
+    padding: 0px
+}
+li{
+    list-style: none;
+}
+.nav-top {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+}
+.nav-top li {
+    display: inline-block;
+}
+.nav-top__link {
+    margin: 15px;
+    display: block;
+}
+.ck-content{
+    outline: 0px;
+}

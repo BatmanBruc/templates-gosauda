@@ -1,8 +1,6 @@
 $( document ).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 
-    
-
     $("#colorpicker-btn").spectrum({
         color: "#333",
         move: function(color) {
@@ -89,7 +87,7 @@ let textField = new Vue({
     data: {
     },
     watch: {
-        
+
     },
     methods: {
     }
@@ -141,7 +139,7 @@ let imageField = new Vue({
     data: {
     },
     watch: {
-        
+
     },
     methods: {
     }
@@ -150,13 +148,13 @@ let groups = [
     {
         id: 1,
         name: 'nav-top',
-        style: { 
+        style: {
         }
     },
     {
         id: 2,
         name: 'info',
-        style: { 
+        style: {
         }
     }
 ];
@@ -256,7 +254,7 @@ $('.dropdown-item').click(function(){
 //                 this.style = { ...this.style,...style};
 //             }
 //         }
-//     })    
+//     })
 //     for (let j = 0; j < elements.length; j++) {
 //         const element = elements[j];
 //         if(element.id_group != group.id)
@@ -269,7 +267,7 @@ $('.dropdown-item').click(function(){
 //                 editorData: element.content
 //             },
 //             watch: {
-                
+
 //             },
 //             methods: {
 //                 onEditorInput(){
@@ -297,7 +295,7 @@ $('.dropdown-item').click(function(){
 //         const element = elements[j];
 //         if(element.id_object != object.id)
 //             continue;
-        
+
 //         if(element.type == 1){
 //             fields.push({
 //                 id: element.id,
@@ -374,7 +372,7 @@ $('.dropdown-item').click(function(){
 //                 editorData: element.content
 //             },
 //             watch: {
-                
+
 //             },
 //             methods: {
 //                 onEditorInput(){
@@ -410,7 +408,7 @@ const creatGroup = (style) =>{
                 this.style = { ...this.style,...style};
             }
         }
-    }) 
+    })
 }
 const creatElement = (elem) =>{
     let content = $(elem).html();
@@ -426,7 +424,7 @@ const creatElement = (elem) =>{
             editorData: content
         },
         watch: {
-            
+
         },
         methods: {
             onEditorInput(){
@@ -440,7 +438,7 @@ const creatElement = (elem) =>{
                 this.style = { ...this.style,...style};
             }
         }
-    }) 
+    })
 }
 let predGroup;
 $('.group-element').each(function(){
@@ -461,5 +459,5 @@ $('.group-element').each(function(){
             })
         })
     }
-    
+
 });

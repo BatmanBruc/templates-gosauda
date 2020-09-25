@@ -230,7 +230,7 @@ $("#colorpicker").spectrum({
 });
 $('.dropdown-item').click(function(){
     let property = $(this).parent().attr('aria-labelledby');
-    let value = $(this).text();
+    let value = $(this).attr('value');
     if(activeElem)
         activeElem.changeStyle({
             [property]: value
@@ -414,7 +414,7 @@ const creatGroup = (style) =>{
 }
 const creatElement = (elem) =>{
     let content = $(elem).html();
-    let style = $(elem).attr('style');
+    let style = $(elem).attr('styleParams');
     let selector = $(elem).attr('name');
     $(elem).attr(':style', 'style');
     $(elem).html('<ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor>')
@@ -442,6 +442,62 @@ const creatElement = (elem) =>{
         }
     }) 
 }
+const creatFragment = (elem) =>{
+    let content = $(elem).html();
+    let style = $(elem).attr('styleParams');
+    let selector = $(elem).attr('name');
+    $(elem).attr(':style', 'style');
+    return new Vue({
+        el: elem,
+        data: {
+            style: style,
+        },
+        watch: {
+            
+        },
+        methods: {
+            onEditorInput(){
+                console.log(this.editorData);
+            },
+            changeColor(color){
+                this.style = { ...this.style, color: color};
+            },
+            changeStyle(style){
+                console.log(style);
+                this.style = { ...this.style,...style};
+            }
+        }
+    }) 
+}
+const creatFragmentImg = (elem) =>{
+    let content = $(elem).html();
+    let style = $(elem).attr('styleParams');
+    let selector = $(elem).attr('name');
+    let src = $(elem).attr('src');
+    $(elem).attr(':style', 'style');
+    return new Vue({
+        el: elem,
+        data: {
+            style: style,
+            img: src
+        },
+        watch: {
+            
+        },
+        methods: {
+            loadImg(img){
+                this.img = img;
+            },
+            changeColor(color){
+                this.style = { ...this.style, color: color};
+            },
+            changeStyle(style){
+                console.log(style);
+                this.style = { ...this.style,...style};
+            }
+        }
+    }) 
+}
 let predGroup;
 $('.group-element').each(function(){
     let groupName = $(this).attr('group');
@@ -455,11 +511,84 @@ $('.group-element').each(function(){
             let elem = creatElement(this);
             group.$on('changeStyle', elem.changeStyle)
             $('style[data-cke="true"]').remove();
-            console.log(elem)
             $(elem.$el).click(function(){
                 activeElem = group;
             })
         })
     }
-    
+});
+$('.group-fragment').each(function(){
+    let groupName = $(this).attr('group');
+    if(groupName == predGroup){
+        return;
+    }else{
+        predGroup = groupName;
+        let style = $(this).attr('style');
+        let group = creatGroup(style);
+        $('.group-fragment[group="' + groupName + '"]').each(function(){
+            let elem = creatFragment(this);
+            group.$on('changeStyle', elem.changeStyle)
+            $('style[data-cke="true"]').remove();
+            $(elem.$el).click(function(){
+                console.log(elem);
+                activeElem = group;
+            })
+        })
+    }
+});
+$('.element:not(.group-element)').each(function(){
+    let elem = creatElement(this);
+    elem.$on('changeStyle', elem.changeStyle)
+    $('style[data-cke="true"]').remove();
+    $(elem.$el).click(function(){
+        activeElem = elem;
+    })
+});
+let fieldImg = new Vue({
+    el: '#file-input',
+    data: {
+        file: '',
+        image: '',
+        open: false
+    },
+    methods: {
+        close(){
+            this.open = false;
+        },
+        onFileChange: function(e) {
+            let file = this.$refs.file.files;
+            if (!file.length)
+                return;
+            this.createImage(file[0]);
+        },
+        createImage: function(file) {
+            let reader = new FileReader();
+            let vm = this;
+            reader.onload = (e) => {
+                vm.image = e.target.result;
+                this.$emit('loadImg', e.target.result);
+                this.open = false;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+})
+$('.fragment:not(.group-fragment)').each(function(){
+    let elem
+    if(this.nodeName == 'IMG'){
+        elem = creatFragmentImg(this);
+        console.log(elem.$el);
+        elem.$on('loadimg', elem.changeStyle)
+        $(elem.$el).click(function(){
+            fieldImg.$on('loadImg', elem.loadImg)
+            fieldImg.$data.open = true;
+        })
+    }else{
+        elem = creatFragment(this);
+        $(elem.$el).click(function(){
+            console.log(elem)
+            activeElem = elem;
+        })
+    }
+    $('style[data-cke="true"]').remove();
 });

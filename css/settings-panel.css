@@ -220,3 +220,43 @@
 .settings-panel .form-text.text-muted{
     line-height: 1px!important;
 }
+
+.dropdown-menu{
+    z-index: 10000;
+    max-height: 350px;
+    overflow: auto;
+}
+
+
+.settings-panel input[type="radio"]{
+    display: none;
+    height: 0;
+    width: 0;
+}
+
+.settings-panel label{
+    display: block;
+    margin-bottom: 0;
+}
+.settings-panel label span {
+    display: block;
+    text-align: left;
+    cursor: pointer;
+    background-color: #fff;
+    color: #151515;
+    padding: 10px 5px;
+    border-top: 1px solid #ddd;
+    font-weight: 400;
+    font-size: 12pt;
+}
+
+.settings-panel label span:hover{
+    background-color: #26cae5;
+    color: #fff;
+}
+
+.settings-panel input[type="radio"]:checked + span {
+    background-color: #26cae5;
+    color: #fff;
+}
+

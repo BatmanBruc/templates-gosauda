@@ -4,7 +4,7 @@ let settingsPanel = new Vue({
         activeElem: null
     },
     watch: {
-        
+
     },
     computed:{
         active(){
@@ -54,7 +54,7 @@ const creatGroup = (style) =>{
                 this.style = { ...this.style,...style};
             }
         }
-    }) 
+    })
 }
 const creatElement = (elem) =>{
     let content = $(elem).html();
@@ -70,7 +70,7 @@ const creatElement = (elem) =>{
             editorData: content
         },
         watch: {
-            
+
         },
         methods: {
             onEditorInput(){
@@ -84,7 +84,7 @@ const creatElement = (elem) =>{
                 this.style = { ...this.style,...style};
             }
         }
-    }) 
+    })
 }
 const creatFragment = (elem) =>{
     let content = $(elem).html();

@@ -20,66 +20,67 @@
 </head>
 <body class="settings-open">
 
-<div class="settings-panel">
+<div class="settings-panel" :class="{ 'settings-panel-active' : active}" id="settings-panel">
+    <div class="disable-wrapper" ></div>
     <div class="setting-item once">
-        <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Жирный текст"><i class="icon icon-bold"></i></a>
+        <!-- <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Жирный текст"><i class="icon icon-bold"></i></a>
         <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Курсив"><i class="icon icon-italic"></i></a>
         <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Подчеркивание"><i class="icon icon-underline"></i></a>
-        <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Зачеркнутый"><i class="icon icon-strikethrough"></i></a>
+        <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Зачеркнутый"><i class="icon icon-strikethrough"></i></a> -->
         <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Шрифт">
             <button class="btn btn-setting-item dropdown-toggle" type="button" id="font-family" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="icon icon-font"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="font-family">
                 <label>
-                      <input type="radio" name="font-family">
+                      <input value="Arial" type="radio" name="font-family">
                     <span>Arial</span>
                 </label>
                 <label>
-                      <input type="radio" name="font-family">
+                      <input value="Times New Romans" type="radio" name="font-family">
                     <span>Times New Romans</span>
                 </label>
                 <label>
-                      <input type="radio" name="font-family">
+                      <input value="Roboto" type="radio" name="font-family">
                     <span>Roboto</span>
                 </label>
                 <label>
-                      <input type="radio" name="font-family">
+                      <input value="Motserrat" type="radio" name="font-family">
                     <span>Motserrat</span>
                 </label>
                 <label>
-                      <input type="radio" name="font-family">
+                      <input value="Halvetica" type="radio" name="font-family">
                     <span>Halvetica</span>
                 </label>
             </div>
         </div>
         <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Жирность текста">
-            <button class="btn btn-setting-item dropdown-toggle" type="button" id="font-bold" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-setting-item dropdown-toggle" type="button" id="font-weight" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="icon icon-text-bold"></i>
             </button>
-            <div class="dropdown-menu" aria-labelledby="font-bold">
+            <div class="dropdown-menu" aria-labelledby="font-weight">
                 <label>
-                    <input type="radio" name="font-bold">
+                    <input value="100" type="radio" name="font-weight">
                     <span>100, Thin</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-bold">
+                    <input value="300" type="radio" name="font-weight">
                     <span>300, Light</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-bold">
+                    <input value="400" type="radio" name="font-weight">
                     <span>400, Normal</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-bold">
+                    <input value="500" type="radio" name="font-weight">
                     <span>500, Medium</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-bold">
+                    <input value="600" type="radio" name="font-weight">
                     <span>600, Semi Bold</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-bold">
+                    <input value="700" type="radio" name="font-weight">
                     <span>700, Bold</span>
                 </label>
             </div>
@@ -90,121 +91,121 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="font-size">
                 <label>
-                    <input type="radio" name="font-size">
+                    <input value="10px" type="radio" name="font-size">
                     <span>10px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-size">
+                    <input value="12px" type="radio" name="font-size">
                     <span>12px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-size">
+                    <input value="14px" type="radio" name="font-size">
                     <span>14px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-size">
+                    <input value="16px" type="radio" name="font-size">
                     <span>16px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-size">
+                    <input value="20px" type="radio" name="font-size">
                     <span>20px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-size">
+                    <input value="24px" type="radio" name="font-size">
                     <span>24px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-size">
+                    <input value="28px" type="radio" name="font-size">
                     <span>28px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-size">
+                    <input value="32px" type="radio" name="font-size">
                     <span>32px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-size">
+                    <input value="36px" type="radio" name="font-size">
                     <span>36px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-size">
+                    <input value="40px" type="radio" name="font-size">
                     <span>40px</span>
                 </label>
             </div>
         </div>
-        <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Межстрочное расстояние">
+        <!-- <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Межстрочное расстояние">
             <button class="btn btn-setting-item dropdown-toggle" type="button" id="font-between" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="icon icon-between"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="font-between">
                 <label>
-                    <input type="radio" name="font-between">
+                    <input value="10px" type="radio" name="font-between">
                     <span>10px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-between">
+                    <input value="12px" type="radio" name="font-between">
                     <span>12px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-between">
+                    <input value="14px" type="radio" name="font-between">
                     <span>14px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-between">
+                    <input value="16px" type="radio" name="font-between">
                     <span>16px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-between">
+                    <input value="20px" type="radio" name="font-between">
                     <span>20px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-between">
+                    <input value="24px" type="radio" name="font-between">
                     <span>24px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-between">
+                    <input value="28px" type="radio" name="font-between">
                     <span>28px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-between">
+                    <input value="32px" type="radio" name="font-between">
                     <span>32px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-between">
+                    <input value="36px" type="radio" name="font-between">
                     <span>36px</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-between">
+                    <input value="40px" type="radio" name="font-between">
                     <span>40px</span>
                 </label>
             </div>
-        </div>
-        <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Выравнивание текста">
+        </div> -->
+        <!-- <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Выравнивание текста">
             <button class="btn btn-setting-item dropdown-toggle" type="button" id="text-align" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="icon icon-text-align"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="text-align">
                 <label>
-                    <input type="radio" name="font-between">
+                    <input value="Times New Romans" type="radio" name="font-between">
                     <span>По левому краю</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-between">
+                    <input value="Times New Romans" type="radio" name="font-between">
                     <span>По центру</span>
                 </label>
                 <label>
-                    <input type="radio" name="font-between">
+                    <input value="Times New Romans" type="radio" name="font-between">
                     <span>По правому краю</span>
                 </label>
             </div>
-        </div>
+        </div> -->
         <a href="#" id="colorpicker" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Цвет текста"><i class="icon icon-color-picker"></i></a>
         <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Очистить стили"><i class="icon icon-eraser"></i></a>
     </div>
-    <div class="setting-item">
+    <!-- <div class="setting-item">
         <p class="btn btn-setting-item global-btn" data-toggle="tooltip" data-placement="bottom" title="Глобальные стили"><i class="icon icon-globe"></i></p>
         <p class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Настройки"><i class="icon icon-settings-2"></i></p>
         <p class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Сохранить"><i class="icon icon-check"></i></p>
-    </div>
+    </div> -->
 
     <div class="global-settings">
         <div class="global-settings-buttons">
@@ -264,7 +265,6 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul group:name="nav-top" group:style="{}" class="group nav-top">
-                    <div v-bind:style="style" class="nav-top__link" id="element_1" href="#"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></div>
                     <li><a group="top-link" name="link-home" styleParams="{}" class="group-element element nav-top__link" href="#">Главная</a></li>
                     <li><a group="top-link" name="link-about" styleParams="{}" class="group-element element nav-top__link" href="#">О компании</a></li>
                     <li><a group="top-link" name="link-catalog" styleParams="{}" class="group-element element nav-top__link" href="#">Каталог</a></li>
@@ -284,17 +284,17 @@
         <div class="container">
             <div class="card-info">
                 <div class="block">
-                    <i class="icon icon-phone"></i>
+                    <i group="icon-info" name="icon-main" styleParams="{}" class="group-fragment fragment icon icon-phone"></i>
                     <div>
                         <p>Телефон</p>
-                        <p v-bind:style="style" id="element_6"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></p>
+                        <p group="text-info" name="phone" styleParams="{}" class="group-element element nav-top__link">+7 (999) 999 99 99</p>
                     </div>
                 </div>
                 <div class="block">
-                    <i class="icon icon-mail-alt"></i>
+                    <i group="icon-info" name="icon-main" styleParams="{}" class="group-fragment fragment icon icon-mail-alt"></i>
                     <div>
                         <p>Почта</p>
-                        <p v-bind:style="style" id="element_7"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></p>
+                        <p group="text-info" name="mail" styleParams="{}" class="group-element element nav-top__link">you.mail@gmail.com</p>
                     </div>
                 </div>
                 <div class="block">
@@ -327,9 +327,9 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <div class="content">
-                        <img id="element_5"  :src="image" />
-                        <h1 class="h1-content" :style="style" id="element_4"><ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor></h1>
+                    <div class="content banner">
+                        <img name="img-banner" styleParams="{}"  class="fragment" src="../img/bg_main.jpg" :src="img" />
+                        <h1 name="title-banner" styleParams="{}" class="fragment h1-content" :style="style">Заголовок баннера</h1>
                     </div>
                     <div class="goods">
                         <h2 class="bold mt-3">Топ 20 товаров</h2>
@@ -345,10 +345,10 @@
                                         </div>
                                     </div>
                                     <div class="card-shop-content">
-                                        <p class="name m-0">Заголовок вашего товара</p>
-                                        <p class="desc m-0">Описание вашего товара.</p>
+                                        <p group="product-name" name="product-name" styleParams="{}" class="group-fragment fragment name m-0">Заголовок вашего товара</p>
+                                        <p group="product-desc" name="product-desc" styleParams="{}" class="group-fragment fragment desc m-0">Описание вашего товара.</p>
                                         <hr class="my-1">
-                                        <p class="price m-0">99 999 ₸</p>
+                                        <p group="product-price" name="product-price" styleParams="{}" class="group-fragment fragment price m-0">99 999 ₸</p>
                                         <a href="#" class="btn btn-card"><span>подробнее</span><i
                                                 class="icon icon-arrow"></i></a>
                                     </div>
@@ -365,10 +365,10 @@
                                         </div>
                                     </div>
                                     <div class="card-shop-content">
-                                        <p class="name m-0">Заголовок вашего товара</p>
-                                        <p class="desc m-0">Описание вашего товара.</p>
+                                        <p group="product-name" name="product-name" styleParams="{}" class="group-fragment fragment name m-0">Заголовок вашего товара</p>
+                                        <p group="product-desc" name="product-desc" styleParams="{}" class="group-fragment fragment desc m-0">Описание вашего товара.</p>
                                         <hr class="my-1">
-                                        <p class="price m-0">99 999 ₸</p>
+                                        <p group="product-price" name="product-price" styleParams="{}" class="group-fragment fragment price m-0">99 999 ₸</p>
                                         <a href="#" class="btn btn-card"><span>подробнее</span><i
                                                 class="icon icon-arrow"></i></a>
                                     </div>
@@ -385,10 +385,10 @@
                                         </div>
                                     </div>
                                     <div class="card-shop-content">
-                                        <p class="name m-0">Заголовок вашего товара</p>
-                                        <p class="desc m-0">Описание вашего товара.</p>
+                                        <p group="product-name" name="product-name" styleParams="{}" class="group-fragment fragment name m-0">Заголовок вашего товара</p>
+                                        <p group="product-desc" name="product-desc" styleParams="{}" class="group-fragment fragment desc m-0">Описание вашего товара.</p>
                                         <hr class="my-1">
-                                        <p class="price m-0">99 999 ₸</p>
+                                        <p group="product-price" name="product-price" styleParams="{}" class="group-fragment fragment price m-0">99 999 ₸</p>
                                         <a href="#" class="btn btn-card"><span>подробнее</span><i
                                                 class="icon icon-arrow"></i></a>
                                     </div>
@@ -405,10 +405,10 @@
                                         </div>
                                     </div>
                                     <div class="card-shop-content">
-                                        <p class="name m-0">Заголовок вашего товара</p>
-                                        <p class="desc m-0">Описание вашего товара.</p>
+                                        <p group="product-name" name="product-name" styleParams="{}" class="group-fragment fragment name m-0">Заголовок вашего товара</p>
+                                        <p group="product-desc" name="product-desc" styleParams="{}" class="group-fragment fragment desc m-0">Описание вашего товара.</p>
                                         <hr class="my-1">
-                                        <p class="price m-0">99 999 ₸</p>
+                                        <p group="product-price" name="product-price" styleParams="{}" class="group-fragment fragment price m-0">99 999 ₸</p>
                                         <a href="#" class="btn btn-card"><span>подробнее</span><i
                                                 class="icon icon-arrow"></i></a>
                                     </div>
@@ -425,10 +425,10 @@
                                         </div>
                                     </div>
                                     <div class="card-shop-content">
-                                        <p class="name m-0">Заголовок вашего товара</p>
-                                        <p class="desc m-0">Описание вашего товара.</p>
+                                        <p group="product-name" name="product-name" styleParams="{}" class="group-fragment fragment name m-0">Заголовок вашего товара</p>
+                                        <p group="product-desc" name="product-desc" styleParams="{}" class="group-fragment fragment desc m-0">Описание вашего товара.</p>
                                         <hr class="my-1">
-                                        <p class="price m-0">99 999 ₸</p>
+                                        <p group="product-price" name="product-price" styleParams="{}" class="group-fragment fragment price m-0">99 999 ₸</p>
                                         <a href="#" class="btn btn-card"><span>подробнее</span><i
                                                 class="icon icon-arrow"></i></a>
                                     </div>
@@ -445,10 +445,10 @@
                                         </div>
                                     </div>
                                     <div class="card-shop-content">
-                                        <p class="name m-0">Заголовок вашего товара</p>
-                                        <p class="desc m-0">Описание вашего товара.</p>
+                                        <p group="product-name" name="product-name" styleParams="{}" class="group-fragment fragment name m-0">Заголовок вашего товара</p>
+                                        <p group="product-desc" name="product-desc" styleParams="{}" class="group-fragment fragment desc m-0">Описание вашего товара.</p>
                                         <hr class="my-1">
-                                        <p class="price m-0">99 999 ₸</p>
+                                        <p group="product-price" name="product-price" styleParams="{}" class="group-fragment fragment price m-0">99 999 ₸</p>
                                         <a href="#" class="btn btn-card"><span>подробнее</span><i
                                                 class="icon icon-arrow"></i></a>
                                     </div>
@@ -484,6 +484,14 @@
         </div>
     </div>
 </main>
+<div id="file-input" @click="close" class="wrapper-modal" :class="{ 'wrapper-modal-active' : open}">
+    <div class="file-wrapper">
+        <div class="file-button">
+            <span class="fake-btn">Выберите файл <br>Или перетащите его сюда </span>
+            <input v-on:change="onFileChange()" ref="file" class="file-input" type="file">
+        </div>
+    </div>
+</div>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/spectrum.js"></script>

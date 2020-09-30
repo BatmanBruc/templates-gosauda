@@ -8,254 +8,483 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/bootstrap4-classes.css">
     <link rel="stylesheet" href="../css/font-nucleo.css">
+    <link rel="stylesheet" href="../css/spectrum.css">
+    <link rel="stylesheet" href="../css/settings-panel.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/22.0.0/balloon/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-vue@1.0.2/dist/ckeditor.min.js"></script>
     <title>Document</title>
 </head>
 <body>
 
-<main class="shop comp-color-{val=color}">
-    <section class="item-shop">
-        <nav class="navbar navbar-default">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                            aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">LOGO</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="#">О компании</a></li>
-                        <li><a href="#">Каталог</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">Категории</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Категория 1</a></li>
-                                <li><a href="#">Категория 2</a></li>
-                                <li><a href="#">Категория 3</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Показать всё</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Поиск среди товаров..."
-                                   aria-label="Search">
-                            <button class="btn btn-outline-template-sm my-sm-0" type="submit">поиск</button>
-                        </form>
-                    </ul>
-                </div>
+<div style="display: none;" class="settings-panel">
+    <div class="setting-item once">
+        <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Жирный текст"><i
+                class="icon icon-bold"></i></a>
+        <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Курсив"><i
+                class="icon icon-italic"></i></a>
+        <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Подчеркивание"><i
+                class="icon icon-underline"></i></a>
+        <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Зачеркнутый"><i
+                class="icon icon-strikethrough"></i></a>
+        <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Шрифт">
+            <button class="btn btn-setting-item dropdown" type="button" id="font-family" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                <i class="icon icon-font"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="font-family">
+                <label>
+                    <input type="radio" name="font-family">
+                    <span>Arial</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-family">
+                    <span>Times New Romans</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-family">
+                    <span>Roboto</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-family">
+                    <span>Motserrat</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-family">
+                    <span>Halvetica</span>
+                </label>
             </div>
-        </nav>
-        <section class="info">
-            <div class="container">
-                <div class="card-info">
-                    <div class="block">
-                        <i class="icon icon-phone"></i>
-                        <div>
-                            <p>Телефон</p>
-                            <p>+7 (747) 506 72 52</p>
-                        </div>
-                    </div>
-                    <div class="block">
-                        <i class="icon icon-mail-alt"></i>
-                        <div>
-                            <p>Почта</p>
-                            <p>showman.ad@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="block">
-                        <a href="#"><i class="icon icon-instagram"></i></a>
-                        <a href="#"><i class="icon icon-facebook"></i></a>
-                    </div>
-                </div>
+        </div>
+        <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Жирность текста">
+            <button class="btn btn-setting-item dropdown" type="button" id="font-bold" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                <i class="icon icon-text-bold"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="font-bold">
+                <label>
+                    <input type="radio" name="font-bold">
+                    <span>100, Thin</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-bold">
+                    <span>300, Light</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-bold">
+                    <span>400, Normal</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-bold">
+                    <span>500, Medium</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-bold">
+                    <span>600, Semi Bold</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-bold">
+                    <span>700, Bold</span>
+                </label>
             </div>
-        </section>
-        <section class="good mt-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card-sidebar">
-                            <div class="card-sidebar-head">
-                                категории
-                            </div>
-                            <ul class="sidebar">
-                                <li><a href="">Категория 1</a></li>
-                                <li><a href="">Категория 2</a></li>
-                                <li><a href="">Категория 3</a></li>
-                                <li><a href="">Категория 4</a></li>
-                                <li><a href="">Посмотреть всё</a></li>
-                            </ul>
-                        </div>
-                        <div class="card-map mt-4">
-                            <p>Казахстан, Акмолинская область, Нур-Султан (Астана)</p>
-                            <a href="#"><img src="../img/map.png" alt="" width="100%"></a>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div id="carousel_ads" class="carousel carousel-ads slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <a class="item active"
-                                   href="#">
-                                    <img src="../img/cover/wall-1.jpg"
-                                         class="img-responsive">
-                                </a>
-
-                                <a class="item"
-                                   href="#">
-                                    <img src="../img/cover/wall-2.jpg"
-                                         class="img-responsive">
-                                </a>
-
-                                <a class="item"
-                                   href="#">
-                                    <img src="../img/cover/wall-3.jpg"
-                                         class="img-responsive">
-                                </a>
-
-                                <a class="item"
-                                   href="#">
-                                    <img src="../img/cover/wall-4.jpg"
-                                         class="img-responsive">
-                                </a>
-
-                                <a class="item"
-                                   href="#">
-                                    <img src="../img/cover/wall-5.jpg"
-                                         class="img-responsive">
-                                </a>
-
-                                <a class="item"
-                                   href="#">
-                                    <img src="../img/cover/wall-6.jpg"
-                                         class="img-responsive">
-                                </a>
-                                <a class="left carousel-control" href="#carousel_ads" data-slide="prev">
-                                    <i class="icon icon-arrow icon-rotate-90"></i>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="right carousel-control" href="#carousel_ads" data-slide="next">
-                                    <i class="icon icon-arrow icon-rotate-270"></i>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel_ads" data-slide-to="0" class="active">
-                                    <img src="../img/cover/wall-1.jpg"
-                                         class="img-responsive">
-                                </li>
-                                <li data-target="#carousel_ads" data-slide-to="1" class="">
-                                    <img src="../img/cover/wall-2.jpg"
-                                         class="img-responsive">
-                                </li>
-                                <li data-target="#carousel_ads" data-slide-to="2" class="">
-                                    <img src="../img/cover/wall-3.jpg"
-                                         class="img-responsive">
-                                </li>
-                                <li data-target="#carousel_ads" data-slide-to="3" class="">
-                                    <img src="../img/cover/wall-4.jpg"
-                                         class="img-responsive">
-                                </li>
-                                <li data-target="#carousel_ads" data-slide-to="4" class="">
-                                    <img src="../img/cover/wall-5.jpg"
-                                         class="img-responsive">
-                                </li>
-                                <li data-target="#carousel_ads" data-slide-to="5" class="">
-                                    <img src="../img/cover/wall-6.jpg"
-                                         class="img-responsive">
-                                </li>
-                            </ol>
-                        </div>
-                        <h4 class="bold text-uppercase">Заголовок вашего товара</h4>
-                        <p class="price m-0">99 999 ₸</p>
-                        <div class="icons mt-2">
-                            <span>99 <i class="icon icon-eye"></i></span>
-                            <span class="ml-3">99 <i class="icon icon-phone-alt"></i></span>
-                        </div>
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dignissimos ea, eius
-                            error, est exercitationem, facilis fuga libero nam nemo numquam officia optio quaerat qui
-                            quibusdam quo sed. Obcaecati, reiciendis.</p>
-                        <hr>
-                        <a href="#" class="btn btn-template">купить</a>
-                        <a href="#" class="btn btn-template">оставить заявку</a>
-                        <hr>
-                        <div class="row youtube-instagram">
-                            <div class="col-md-6">
-                                <a href="#" class="d-flex align-items-center">
-                                    <img src="../img/icons/youtube.svg" alt="" width="50px">
-                                    <p class="m-0 ml-2">Посмотреть Youtube</p>
-                                </a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="#" class="d-flex align-items-center">
-                                    <img src="../img/icons/instagram.svg" alt="" width="40px"
-                                         class="gray-scale opacity-05">
-                                    <p class="m-0 ml-2 text-muted">Посмотреть Instagram</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        </div>
+        <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Размер текста">
+            <button class="btn btn-setting-item dropdown" type="button" id="font-size" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                <i class="icon icon-font-size"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="font-size">
+                <label>
+                    <input type="radio" name="font-size">
+                    <span>10px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-size">
+                    <span>12px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-size">
+                    <span>14px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-size">
+                    <span>16px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-size">
+                    <span>20px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-size">
+                    <span>24px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-size">
+                    <span>28px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-size">
+                    <span>32px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-size">
+                    <span>36px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-size">
+                    <span>40px</span>
+                </label>
             </div>
-        </section>
+        </div>
+        <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Межстрочное расстояние">
+            <button class="btn btn-setting-item dropdown" type="button" id="font-between" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                <i class="icon icon-between"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="font-between">
+                <label>
+                    <input type="radio" name="font-between">
+                    <span>10px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-between">
+                    <span>12px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-between">
+                    <span>14px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-between">
+                    <span>16px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-between">
+                    <span>20px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-between">
+                    <span>24px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-between">
+                    <span>28px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-between">
+                    <span>32px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-between">
+                    <span>36px</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-between">
+                    <span>40px</span>
+                </label>
+            </div>
+        </div>
+        <div class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Выравнивание текста">
+            <button class="btn btn-setting-item dropdown" type="button" id="text-align" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                <i class="icon icon-text-align"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="text-align">
+                <label>
+                    <input type="radio" name="font-between">
+                    <span>По левому краю</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-between">
+                    <span>По центру</span>
+                </label>
+                <label>
+                    <input type="radio" name="font-between">
+                    <span>По правому краю</span>
+                </label>
+            </div>
+        </div>
+        <a href="#" id="colorpicker" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom"
+           title="Цвет текста"><i class="icon icon-color-picker"></i></a>
+        <a href="#" class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Очистить стили"><i
+                class="icon icon-eraser"></i></a>
+    </div>
+    <div class="setting-item">
+        <p class="btn btn-setting-item global-btn" data-toggle="tooltip" data-placement="bottom"
+           title="Глобальные стили"><i class="icon icon-globe"></i></p>
+        <p class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Настройки"><i
+                class="icon icon-settings-2"></i></p>
+        <p class="btn btn-setting-item" data-toggle="tooltip" data-placement="bottom" title="Сохранить"><i
+                class="icon icon-check"></i></p>
+    </div>
+
+    <div class="global-settings">
+        <div class="global-settings-buttons">
+            <a href="#" class="btn btn-save">Сохранить</a>
+            <a href="#" class="btn btn-close">Назад</a>
+        </div>
+        <p class="text-center title">Глобальные настройки</p>
         <hr>
-        <div class="footer-light">
-            <div class="container">
-                <div class="row text-center">
+        <div class="px-4 global-settings__fields">
+            <div class="form-group">
+                <label for="font-select">Шрифт</label>
+                <select class="form-control" id="font-select">
+                    <option>Arial</option>
+                    <option>Roboto</option>
+                    <option>Montserrat</option>
+                    <option>Times New Romans</option>
+                    <option>Lorem</option>
+                </select>
+                <small id="emailHelp" class="form-text text-muted">Шрифт применится ко всему тексту на сайте</small>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="font-select">Цвет кнопок</label>
+                <div id="colorpicker-btn" class="color-pick-global"></div>
+                <small class="form-text text-muted">Нажмите, чтобы выбрать цвет</small>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="font-select">Цвет текста на кнопках</label>
+                <div id="colorpicker-btn-text" class="color-pick-global"></div>
+                <small class="form-text text-muted">Нажмите, чтобы выбрать цвет</small>
+            </div>
+            <hr>
+            <div class="form-group"></div>
+            <label for="font-select">Логотип</label>
+            <div class="file-drop-area">
+                <span class="fake-btn">Выберите файл <br>Или перетащите его сюда </span>
+                <input class="file-input" type="file">
+            </div>
+            <small class="form-text text-muted">По умолчанию вместо логотипа будет отображаться ваше название
+                компании</small>
+        </div>
 
-                    <div class="col-md-12">
-                        <p class=" footer-title">
-                            Использование сайта, в том числе подача объявлений, означает согласие с
-                            <a href="https://gosauda.kz/page/agreement">Пользовательскимим соглашением</a>. Оплачивая
-                            услуги
-                            на сайте, вы принимаете
-                            <a href="https://gosauda.kz/page/offert">оферту</a>. Информация о
-                            <a href="https://gosauda.kz/page/privacy">cookies</a>.
+    </div>
+</div>
+
+<main class="shop">
+    <nav class="navbar navbar-expand-lg navbar-light pt-4">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="../img/logo.svg" alt="logo" class="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Каталог</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">О комапнии</a>
+                    </li>
+                </ul>
+                <form class="form-search">
+                    <input class="form-control" type="search" placeholder="Поиск" aria-label="Search">
+                    <button class="btn btn-tpl" type="submit"><i class="icon icon-search mr-2"></i> Поиск</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <section class="info mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mt-2 mt-md-0">
+
+                    <div class="card-global">
+                        <p>Номер телефон:</p>
+                        <p class="bold">
+                            <i class="icon icon-phone mr-2"></i> фыввфыа
                         </p>
                     </div>
-
-                    <div class="col-md-12 hidden-xs">
-                        <a href="https://gosauda.kz">Сайт работает на платформе GoSauda.kz</a>
-                        <p>Компания "HUBE" © 2020, Все права защищены ®</p>
+                </div>
+                <div class="col-md-4 mt-2 mt-md-0">
+                    <div class="card-global">
+                        <p>Почтовый адрес:</p>
+                        <p class="bold">
+                            <i class="icon icon-mail-alt mr-2"></i> фыввфыа
+                        </p>
                     </div>
-
+                </div>
+                <div class="col-md-4 mt-2 mt-sm-0">
+                    <div class="card-global icons">
+                        <p>Социальные сети:</p>
+                        <a href="#" class="icon-text-flex"><i class="icon icon-instagram mr-2"></i> instagram</a>
+                        <a href="#" class="icon-text-flex ml-lg-4"><i class="icon icon-facebook mr-2"></i> facebook</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-</main>
 
-<div class="templates-switch">
-    <div class="switch-hide">
-        Скрыть панель
+    <section class="main mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-global">
+                        <p class="icon-text-flex bold"><i class="icon icon-list mr-2"></i> Каталог категорий</p>
+                        <hr class="my-2">
+                        <ul class="sidebar">
+                            <li><a href="#">Категория 1 <i class="icon icon-arrow"></i></a></li>
+                            <li><a href="#">Категория 2 <i class="icon icon-arrow"></i></a></li>
+                            <li><a href="#">Категория 3 <i class="icon icon-arrow"></i></a></li>
+                            <li><a href="#">Категория 4 <i class="icon icon-arrow"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="card-global mt-4">
+                        <p class="icon-text-flex bold"><i class="icon icon-geo mr-2"></i> Адрес компании</p>
+                        <hr class="my-2">
+                        <a href="#"><img src="../img/map.png" alt="" width="100%"></a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="good mb-5">
+                        <div id="carousel_ads" class="carousel carousel-ads slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <a class="carousel-item active"
+                                   href="#">
+                                    <img src="../img/cover/wall-1.jpg"
+                                         class="img-responsive">
+                                </a>
+
+                                <a class="carousel-item"
+                                   href="#">
+                                    <img src="../img/cover/wall-2.jpg"
+                                         class="img-responsive">
+                                </a>
+
+                                <a class="carousel-item"
+                                   href="#">
+                                    <img src="../img/cover/wall-3.jpg"
+                                         class="img-responsive">
+                                </a>
+
+                                <a class="carousel-item"
+                                   href="#">
+                                    <img src="../img/cover/wall-4.jpg"
+                                         class="img-responsive">
+                                </a>
+
+                                <a class="carousel-item"
+                                   href="#">
+                                    <img src="../img/cover/wall-5.jpg"
+                                         class="img-responsive">
+                                </a>
+
+                                <a class="carousel-item"
+                                   href="#">
+                                    <img src="../img/cover/wall-6.jpg"
+                                         class="img-responsive">
+                                </a>
+                                <a class="carousel-control-prev" href="#carousel_ads" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carousel_ads" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel_ads" data-slide-to="0" class="active">
+                                    <img src="../img/cover/wall-1.jpg"
+                                         class="img-fluid">
+                                </li>
+                                <li data-target="#carousel_ads" data-slide-to="1" class="">
+                                    <img src="../img/cover/wall-2.jpg"
+                                         class="img-fluid">
+                                </li>
+                                <li data-target="#carousel_ads" data-slide-to="2" class="">
+                                    <img src="../img/cover/wall-3.jpg"
+                                         class="img-fluid">
+                                </li>
+                                <li data-target="#carousel_ads" data-slide-to="3" class="">
+                                    <img src="../img/cover/wall-4.jpg"
+                                         class="img-fluid">
+                                </li>
+                                <li data-target="#carousel_ads" data-slide-to="4" class="">
+                                    <img src="../img/cover/wall-5.jpg"
+                                         class="img-fluid">
+                                </li>
+                                <li data-target="#carousel_ads" data-slide-to="5" class="">
+                                    <img src="../img/cover/wall-6.jpg"
+                                         class="img-fluid">
+                                </li>
+                            </ol>
+                        </div>
+                        <br>
+                     <div class="card-global">
+                         <h4 class="bold text-uppercase">Заголовок вашего товара</h4>
+                       <div class="d-md-flex justify-content-md-between align-items-md-center">
+                           <p class="price m-0">99 999 ₸</p>
+                           <div class="icons mt-2">
+                               <span class="d-inline-flex align-items-center">99 <i class="icon icon-eye ml-2"></i></span>
+                               <span class="d-inline-flex align-items-center ml-3">99 <i class="icon icon-phone-alt ml-2"></i></span>
+                           </div>
+                       </div>
+                         <hr>
+                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dignissimos ea, eius
+                             error, est exercitationem, facilis fuga libero nam nemo numquam officia optio quaerat qui
+                             quibusdam quo sed. Obcaecati, reiciendis.</p>
+                         <hr>
+                         <a href="#" class="btn btn-template">купить</a>
+                         <a href="#" class="btn btn-template">оставить заявку</a>
+                         <hr>
+                         <div class="row youtube-instagram">
+                             <div class="col-md-6">
+                                 <a href="#" class="d-flex align-items-center">
+                                     <img src="../img/icons/youtube.svg" alt="" width="50px">
+                                     <p class="m-0 ml-2">Посмотреть Youtube</p>
+                                 </a>
+                             </div>
+                             <div class="col-md-6">
+                                 <a href="#" class="d-flex align-items-center">
+                                     <img src="../img/icons/instagram.svg" alt="" width="40px"
+                                          class="gray-scale opacity-05">
+                                     <p class="m-0 ml-2 text-muted">Посмотреть Instagram</p>
+                                 </a>
+                             </div>
+                         </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <p class=" footer-title">
+                        Использование сайта, в том числе подача объявлений, означает согласие с
+                        <a href="https://gosauda.kz/page/agreement">Пользовательскимим соглашением</a>. Оплачивая услуги
+                        на сайте, вы принимаете
+                        <a href="https://gosauda.kz/page/offert">оферту</a>. Информация о
+                        <a href="https://gosauda.kz/page/privacy">cookies</a>.
+                    </p>
+                </div>
+
+                <div class="col-md-12 hidden-xs mt-5 footer-muted">
+                    <a href="https://gosauda.kz">Сайт работает на платформе GoSauda.kz</a>
+                    <p>Компания "HUBE" © 2020, Все права защищены ®</p>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <div class="switch-head">
-        <p>Переключатель между страницами</p>
-    </div>
-    <div class="switch-body">
-        <a href="company.html">Главная</a>
-        <a href="item_shop.html" class="active">Просмотр товара</a>
-        <a href="catalog.html">Каталог</a>
-    </div>
-    <div class="switch-footer">
-        <a href="../../gosauda_html/templates_list.html" class="back">Вернуться к списку шаблонов</a>
-        <a href="#" class="choice mt-2">Изпользовать</a>
-    </div>
-</div>
+</main>
 <script src="../js/jquery.min.js"></script>
+<script src="../js/popper.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/spectrum.js"></script>
 <script src="../js/main.js"></script>
-<script src="../js/jquery.touchSwipe.min.js"></script>
 </body>
 </html>

@@ -13,12 +13,12 @@ p{
 
 .nav-link{
     font-size: 14pt;
-    color: #151515;
-    font-weight: 400;
+    color: #151515!important;
+    font-weight: 500;
 }
 
 .nav-link:hover{
-    color: #26cae5;
+    color: #26cae5!important;
 }
 
 a{
@@ -35,7 +35,7 @@ a:hover{
 
 .card-global{
     background-color: #fff;
-    padding: 10px 20px;
+    padding: 20px;
     border-radius: 5px;
     overflow: hidden;
 }
@@ -75,6 +75,10 @@ a:hover{
     overflow: hidden;
     max-height: 300px;
     border-radius: 10px;
+}
+
+.banner.about .banner-img{
+    max-height: 150px;
 }
 
 
@@ -199,4 +203,143 @@ a:hover{
     display: flex;
     border: 1px solid #26cae5;
     border-radius: 5px;
+}
+.carousel-control-prev,
+.carousel-control-next{
+   transition: 0.2s all ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover{
+    background-color: rgba(0,0,0,0.2);
+}
+
+.carousel-ads .carousel-indicators {
+    z-index: 1;
+    position: relative;
+    left: auto;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+    width: 100%;
+    outline: 0 !important;
+    display: flex;
+}
+
+.carousel-ads .carousel-indicators li {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.carousel-ads .carousel-indicators li:first-child {
+    margin-left: 0
+}
+
+.carousel-ads .carousel-indicators li:last-child {
+    margin-right: 0
+}
+
+.carousel-ads .carousel-indicators li.active {
+    opacity: 0.9;
+    box-shadow: 0 0 5px 0 #26cae5;
+}
+
+.carousel-ads .carousel-indicators li {
+    text-indent: 0;
+}
+
+.carousel-inner{
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.good .card-global .price{
+    font-size: 20pt;
+    font-weight: 600;
+}
+
+
+.btn-template{
+    background-color: #26cae5;
+    border: 2px solid #26cae5;
+    color: #fff;
+    font-size: 14pt;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px 20px;
+}
+
+.btn-template:hover{
+    background-color:transparent;
+    color: #26cae5;
+}
+
+.btn:focus{
+    outline: none!important;
+    box-shadow: none!important;
+}
+
+.btn-template-switch{
+    background-color: transparent;
+    border: 2px solid #26cae5;
+    color: #151515;
+    font-size: 12pt;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 8px 15px 5px 15px;
+}
+
+.btn-template-switch.active{
+    background-color: #26cae5;
+    color: #fff;
+}
+
+
+.goods.grid{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.goods.grid .card-global.good{
+    width: 30%;
+    max-height: 100% !important;
+}
+
+@media screen and (max-width: 992px){
+    .goods.grid .card-global.good{
+        width: 48%;
+        max-height: 100% !important;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .btn-toggle{
+        display: none;
+    }
+}
+
+section.main{
+ min-height: 53vh;
+}
+
+.goods.grid .card-global.good .row{
+    display: block;
+}
+
+.goods.grid .card-global.good .col-md-4{
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.goods.grid .card-global.good .col-md-8{
+    width: 100% !important;
+    max-width: 100% !important;
 }

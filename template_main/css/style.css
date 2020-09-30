@@ -1,3 +1,6 @@
+*{
+    font-family: Arial;
+}
 main{
     background-color: #f2f2f2;
     font-size: 110%;
@@ -13,12 +16,12 @@ p{
 
 .nav-link{
     font-size: 14pt;
-    color: #151515!important;
-    font-weight: 500;
+    color: #151515;
+    font-weight: 400;
 }
 
 .nav-link:hover{
-    color: #26cae5!important;
+    color: #26cae5;
 }
 
 a{
@@ -199,4 +202,62 @@ a:hover{
     display: flex;
     border: 1px solid #26cae5;
     border-radius: 5px;
+}
+.wrapper-modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    background: #000000cf;
+    top: 0px;
+    display: none;
+}
+.wrapper-modal-active {
+    display: block;
+}
+.file-wrapper {
+    height: 100%;
+    display: flex;
+}
+.file-button{
+    position: relative;
+    text-align: center;
+    width: 300px;
+    height: 200px;
+    padding: 25px;
+    border: 1px dashed #fff;
+    border-radius: 3px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    margin: auto;
+    color: white;
+    font-weight: 700;
+    line-height: 58px;
+    background: #000000b5;
+}
+.file-button .fake-btn {
+    flex-shrink: 0;
+    border-radius: 3px;
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+.file-button .file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+.banner img {
+    width: 100%;
+    height: 100%;
+}
+.text-info-block{
+    display: inline-block;
 }

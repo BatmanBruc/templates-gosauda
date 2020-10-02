@@ -12,96 +12,94 @@
     <link rel="stylesheet" href="../css/spectrum.css">
     <link rel="stylesheet" href="../css/settings-panel.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/22.0.0/balloon/ckeditor.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-vue@1.0.2/dist/ckeditor.min.js"></script>
     <title>Document</title>
 </head>
 <body>
 
-<main class="shop">
-    <nav class="navbar navbar-expand-lg navbar-light pt-4">
-        <div class="container">
-            <a class="navbar-brand" href="#"><img src="../img/logo.svg" alt="logo" class="logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a group="top-link" name="link-home" class="group-element element nav-link" href="#">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a group="top-link" name="link-about" class="group-element element nav-link" href="#">Каталог</a>
-                    </li>
-                    <li class="nav-item">
-                        <a group="top-link" name="link-catalog" class="group-element element nav-link" href="#">О комапнии</a>
-                    </li>
-                </ul>
-                <form class="form-search border-setting">
-                    <input class="form-control" type="search" placeholder="Поиск" aria-label="Search">
-                    <button class="btn btn-tpl background-setting" type="submit"><i class="icon icon-search mr-2"></i> Поиск</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-
-    <section class="info mt-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mt-2 mt-md-0">
-
-                    <div class="card-global">
-                        <p>Номер телефон:</p>
-                        <p class="d-inline-flex align-items-center">
-                            <i class="icon icon-setting icon-phone mr-2"></i> <span group="info-block" name="text-phone" class="group-element element text-info-block">+7914324324</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-2 mt-md-0">
-                    <div class="card-global">
-                        <p>Почтовый адрес:</p>
-                        <p class="d-inline-flex align-items-center">
-                            <i class="icon icon-setting icon-mail-alt mr-2"></i> <span group="info-block" name="text-mail" class="group-element element text-info-block">email@inbox.com</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-2 mt-sm-0">
-                    <div class="card-global icons">
-                        <p>Социальные сети:</p>
-                        <a href="#" id="instagram-link" class="icon-text-flex"><i class="icon icon-setting icon-instagram mr-2"></i> <span style="display: inline-block;" group="info-block" name="link-inst" class="group-element element">instagram</span></a>
-                        <a href="#" id="whatsapp-link" class="icon-text-flex ml-lg-4"><i class="icon icon-setting icon-whatsapp mr-2"></i> <span style="display: inline-block;" group="info-block" name="link-facebook" class="group-element element">whatsapp</span></a>
-                    </div>
+    <div id="settings-panel"></div>
+    <main class="shop">
+        <nav class="navbar navbar-expand-lg navbar-light pt-4">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="../img/logo.svg" alt="logo" class="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a group="top-link" name="link-home" class="group-element element nav-link" href="#">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a group="top-link" name="link-about" class="group-element element nav-link" href="#">Каталог</a>
+                        </li>
+                        <li class="nav-item">
+                            <a group="top-link" name="link-catalog" class="group-element element nav-link" href="#">О комапнии</a>
+                        </li>
+                    </ul>
+                    <form class="form-search border-setting">
+                        <input class="form-control" type="search" placeholder="Поиск" aria-label="Search">
+                        <button class="btn btn-tpl background-setting" type="submit"><i class="icon icon-search mr-2"></i> Поиск</button>
+                    </form>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="main mt-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card-global">
-                        <p class="icon-text-flex bold"><i class="icon icon-setting icon-list mr-2"></i> Каталог категорий</p>
-                        <hr class="my-2">
-                        <ul class="sidebar">
-                            <li><a href="#">Категория 1 <i class="icon icon-setting icon-arrow"></i></a></li>
-                            <li><a href="#">Категория 2 <i class="icon icon-setting icon-arrow"></i></a></li>
-                            <li><a href="#">Категория 3 <i class="icon icon-setting icon-arrow"></i></a></li>
-                            <li><a href="#">Категория 4 <i class="icon icon-setting icon-arrow"></i></a></li>
-                        </ul>
+        </nav>
+    
+        <section class="info mt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mt-2 mt-md-0">
+    
+                        <div class="card-global">
+                            <p><span group="top-title" name="title-phone" class="group-element element">Номер телефон:</span></p>
+                            <p class="d-inline-flex align-items-center">
+                                <i class="icon icon-setting icon-phone mr-2"></i> <span group="info-block" name="text-phone" class="group-element element text-info-block">+7914324324</span>
+                            </p>
+                        </div>
                     </div>
-                    <br>
-                    <div class="card-global">
-                        <p class="icon-text-flex bold"><i class="icon icon-setting icon-geo mr-2"></i> Адрес компании</p>
-                        <hr class="my-2">
-                        <ul class="sidebar">
-                            <li><span name="adress" class="element" href="#">Улица пушкина, дом Калатушкина</span></li>
-                        </ul>
+                    <div class="col-md-4 mt-2 mt-md-0">
+                        <div class="card-global">
+                            <p><span group="top-title" name="title-mail" class="group-element element">Почтовый адрес:</span></p>
+                            <p class="d-inline-flex align-items-center">
+                                <i class="icon icon-setting icon-mail-alt mr-2"></i> <span group="info-block" name="text-mail" class="group-element element text-info-block">email@inbox.com</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-2 mt-sm-0">
+                        <div class="card-global icons">
+                            <p><span group="top-title" name="title-soc-net" class="group-element element">Социальные сети:</span></p>
+                            <a href="#" id="instagram-link" class="icon-text-flex"><i class="icon icon-setting icon-instagram mr-2"></i> <span style="display: inline-block;" group="info-block" name="link-inst" class="group-fragment fragment">instagram</span></a>
+                            <a href="#" id="whatsapp-link" class="icon-text-flex ml-lg-4"><i class="icon icon-setting icon-whatsapp mr-2"></i> <span style="display: inline-block;" group="info-block" name="link-facebook" class="group-fragment fragment">whatsapp</span></a>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
+    
+        <section class="main mt-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card-global">
+                            <p class="icon-text-flex bold"><i class="icon icon-setting icon-list mr-2"></i> <span style="display: inline-block" group="left-title-block" name="title-category" class="group-element element">Каталог категорий</span></p>
+                            <hr class="my-2">
+                            <ul class="sidebar">
+                                <li><a href="#">Категория 1 <i class="icon icon-setting icon-arrow"></i></a></li>
+                                <li><a href="#">Категория 2 <i class="icon icon-setting icon-arrow"></i></a></li>
+                                <li><a href="#">Категория 3 <i class="icon icon-setting icon-arrow"></i></a></li>
+                                <li><a href="#">Категория 4 <i class="icon icon-setting icon-arrow"></i></a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <div class="card-global">
+                            <p class="icon-text-flex bold"><i class="icon icon-setting icon-geo mr-2"></i> <span style="display: inline-block" group="left-title-block" name="title-adress" class="group-element element">Адрес компании</span></p>
+                            <hr class="my-2">
+                            <ul class="sidebar">
+                                <li><span name="adress" class="fragment" href="#" id="adress">Ваш адресс</span></li>
+                            </ul>
+                        </div>
+                    </div>
                 <div class="col-md-8">
                     <div class="banner about mt-4 mt-md-0">
                         <div class="banner-img">
@@ -151,7 +149,7 @@
 <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU"
         type="text/javascript">
 </script>
-<script src="../js/main.js"></script>
+<script src="../js/build.js"></script>
 <script>
     $('.btn-toggle').click(function () {
         $(this).find('.btn').toggleClass('active');

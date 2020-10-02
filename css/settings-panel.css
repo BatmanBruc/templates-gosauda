@@ -123,34 +123,21 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    padding: 20px;
 }
 
-.global-settings-buttons .btn{
-    width: 50%;
-    border-radius: 0;
-    height: 60px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
+.global-settings-buttons .btn-close{
+    color: #999;
+    font-size: 10pt;
+    font-weight: 400;
     transition: 0.2s ease;
 }
 
-.global-settings-buttons .btn.btn-save{
-    background-color: #26cae5;
+.global-settings-buttons .title{
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
-.global-settings-buttons .btn.btn-save:hover{
-    background-color: #22b6ce;
-}
-.global-settings-buttons .btn.btn-close{
-    background-color: #151515;
-}
-
-.global-settings-buttons .btn.btn-close:hover{
-    background-color: #202020;
-}
 
 .global-settings .form-control{
     border-radius: 0;
@@ -162,7 +149,7 @@
     box-shadow: none;
 }
 
-.settings-panel .color-pick-global{
+.color-pick{
     width: 100%;
     height: 50px;
     background-color: #333;
@@ -290,6 +277,8 @@
 }
 .color-options {
     display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 .color-options__item {
     width: 30px;
@@ -303,7 +292,7 @@
     width: 1000px;
     height: 1000px;
 }
-  
+
 .ymap-container {
     height: 100%;
 }

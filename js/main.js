@@ -316,7 +316,7 @@ const creatFragmentImg = (elem) =>{
 }
 
 let predGroup;
-$('.group-element').each(function(){
+$('.group-element, .group-fragment').each(function(){
     let groupName = $(this).attr('group');
     if(groupName == predGroup){
         return;
@@ -324,8 +324,14 @@ $('.group-element').each(function(){
         predGroup = groupName;
         let style = $(this).attr('style');
         let group = creatGroup(style);
-        $('.group-element[group="' + groupName + '"]').each(function(){
-            let elem = creatElement(this);
+        $('.group-element[group="' + groupName + '"], .group-fragment[group="' + groupName + '"]').each(function(){
+            let elem;
+            if($(this).hasClass('element')){
+                elem = creatElement(this);
+            }else{
+                elem = creatFragment(this);
+            }
+            
             group.changeStyle({
                 'font-family': $(elem.$el).css('font-family'),
                 'font-size': $(elem.$el).css('font-size'),
@@ -344,32 +350,32 @@ $('.group-element').each(function(){
     }
     $('.ck-body-wrapper').remove();
 });
-$('.group-fragment').each(function(){
-    let groupName = $(this).attr('group');
-    if(groupName == predGroup){
-        return;
-    }else{
-        predGroup = groupName;
-        let style = $(this).attr('style');
-        let group = creatGroup(style);
-        $('.group-fragment[group="' + groupName + '"]').each(function(){
-            let elem = creatFragment(this);
-            group.changeStyle({
-                'font-family': $(elem.$el).css('font-family'),
-                'font-size': $(elem.$el).css('font-size'),
-                'font-weight': $(elem.$el).css('font-weight'),
-                'color': $(elem.$el).css('color')
-            })
-            group.$on('changeStyle', elem.changeStyle)
-            $('style[data-cke="true"]').remove();
-            $(elem.$el).click(function(){
-                setTimeout(()=>{
-                    settingsPanel.$data.activeElem = group;
-                },200)
-            })
-        })
-    }
-});
+// $('.group-fragment').each(function(){
+//     let groupName = $(this).attr('group');
+//     if(groupName == predGroup){
+//         return;
+//     }else{
+//         predGroup = groupName;
+//         let style = $(this).attr('style');
+//         let group = creatGroup(style);
+//         $('.group-fragment[group="' + groupName + '"]').each(function(){
+//             let elem = creatFragment(this);
+//             group.changeStyle({
+//                 'font-family': $(elem.$el).css('font-family'),
+//                 'font-size': $(elem.$el).css('font-size'),
+//                 'font-weight': $(elem.$el).css('font-weight'),
+//                 'color': $(elem.$el).css('color')
+//             })
+//             group.$on('changeStyle', elem.changeStyle)
+//             $('style[data-cke="true"]').remove();
+//             $(elem.$el).click(function(){
+//                 setTimeout(()=>{
+//                     settingsPanel.$data.activeElem = group;
+//                 },200)
+//             })
+//         })
+//     }
+// });
 $('.element:not(.group-element)').each(function(){
     let elem = creatElement(this);
     elem.changeStyle({

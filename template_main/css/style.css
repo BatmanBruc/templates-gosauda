@@ -13,12 +13,11 @@ p{
 
 .nav-link{
     font-size: 14pt;
-    color: #151515!important;
     font-weight: 500;
 }
 
 .nav-link:hover{
-    color: #26cae5!important;
+    color: #26cae5;
 }
 
 a{

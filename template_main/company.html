@@ -12,9 +12,6 @@
     <link rel="stylesheet" href="../css/spectrum.css">
     <link rel="stylesheet" href="../css/settings-panel.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/22.0.0/balloon/ckeditor.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-vue@1.0.2/dist/ckeditor.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -357,6 +354,7 @@
                 <i class="icon icon-arrow open-btn"></i>
             </div>
     </div>
+<div id="settings-panel"></div>
 <main class="shop">
     <nav class="navbar navbar-expand-lg navbar-light pt-4">
         <div class="container">
@@ -368,7 +366,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a group="top-link" name="link-home" class="group-element element nav-link" href="#">Главная</a>
                     </li>
                     <li class="nav-item">
@@ -409,8 +407,8 @@
                 <div class="col-md-4 mt-2 mt-sm-0">
                     <div class="card-global icons">
                         <p>Социальные сети:</p>
-                        <a href="#" id="instagram-link" class="icon-text-flex"><i class="icon icon-setting icon-instagram mr-2"></i> <span style="display: inline-block;" group="info-block" name="link-inst" class="group-element element">instagram</span></a>
-                        <a href="#" id="whatsapp-link" class="icon-text-flex ml-lg-4"><i class="icon icon-setting icon-whatsapp mr-2"></i> <span style="display: inline-block;" group="info-block" name="link-facebook" class="group-element element">whatsapp</span></a>
+                        <a href="#" id="instagram-link" class="icon-text-flex"><i class="icon icon-setting icon-instagram mr-2"></i> <span style="display: inline-block;" group="info-block" name="link-inst" class="group-fragment fragment">instagram</span></a>
+                        <a href="#" id="whatsapp-link" class="icon-text-flex ml-lg-4"><i class="icon icon-setting icon-whatsapp mr-2"></i> <span style="display: inline-block;" group="info-block" name="link-facebook" class="group-fragment fragment">whatsapp</span></a>
                     </div>
                 </div>
             </div>
@@ -436,7 +434,7 @@
                         <p class="icon-text-flex bold"><i class="icon icon-setting icon-geo mr-2"></i> Адрес компании</p>
                         <hr class="my-2">
                         <ul class="sidebar">
-                            <li><span name="adress" class="element" href="#">Улица пушкина, дом Калатушкина</span></li>
+                            <li><span name="adress" class="element" href="#" id="adress">Ваш адресс</span></li>
                         </ul>
                     </div>
                 </div>
@@ -541,5 +539,6 @@ type="text/javascript">
             $('.switch-panel').toggleClass('open')
         })
     </script>
+<script src="../js/build.js"></script>
 </body>
 </html>

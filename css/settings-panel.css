@@ -149,7 +149,7 @@
     box-shadow: none;
 }
 
-.settings-panel .color-pick-global{
+.color-pick{
     width: 100%;
     height: 50px;
     background-color: #333;
@@ -277,6 +277,8 @@
 }
 .color-options {
     display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 .color-options__item {
     width: 30px;

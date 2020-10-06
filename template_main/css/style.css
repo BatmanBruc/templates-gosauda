@@ -68,14 +68,29 @@ a:hover{
 
 .banner{
     position: relative;
+    border: 2px solid #26cae500;
+    border-radius: 13px;
 }
 
 .banner .banner-img{
     overflow: hidden;
-    max-height: 300px;
+    height: 300px;
     border-radius: 10px;
 }
-
+.banner .banner-img img{
+    width: 100%;
+}
+.banner .banner-img-up img{
+    top: 0px;
+}
+.banner .banner-img-middle img{
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+}
+.banner .banner-img-down img{
+    bottom: 0px;
+}
 .banner.about .banner-img{
     max-height: 150px;
 }

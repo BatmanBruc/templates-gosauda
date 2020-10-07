@@ -16980,15 +16980,6 @@ process.umask = function() { return 0; };
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -17045,7 +17036,9 @@ process.umask = function() { return 0; };
             colorText: {},
 
             geoLocal: '',
-            geoLocalItems: []
+            geoLocalItems: [],
+
+            globalFont: 'Raleway'
         };
     },
     created: function created() {
@@ -17088,6 +17081,9 @@ process.umask = function() { return 0; };
     },
 
     watch: {
+        globalFont: function globalFont() {
+            $('.element, .fragment').css('font-family', this.globalFont);
+        },
         positionBannerImg: function positionBannerImg() {
             $('.banner-img img').css('top', -this.positionBannerImg);
         },
@@ -17143,7 +17139,6 @@ process.umask = function() { return 0; };
         activeElem: function activeElem() {
             console.log(this.activeElem);
             if (this.activeElem != null) {
-                this.textFontFamily = this.activeElem.$data.style['font-family'];
                 this.textFontSize = this.activeElem.$data.style['font-size'];
                 this.textFontWeight = this.activeElem.$data.style['font-weight'];
                 this.colorText = { hex: this.activeElem.$data.style['color'] };
@@ -23554,7 +23549,6 @@ $('.group-element, .group-fragment').each(function () {
             }
 
             group.changeStyle({
-                'font-family': $(elem.$el).css('font-family'),
                 'font-size': $(elem.$el).css('font-size'),
                 'font-weight': $(elem.$el).css('font-weight'),
                 'color': $(elem.$el).css('color')
@@ -23582,7 +23576,6 @@ $('.group-element, .group-fragment').each(function () {
 $('.element:not(.group-element)').each(function () {
     var elem = Object(__WEBPACK_IMPORTED_MODULE_3__element__["a" /* default */])(this);
     elem.changeStyle({
-        'font-family': $(elem.$el).css('font-family'),
         'font-size': $(elem.$el).css('font-size'),
         'font-weight': $(elem.$el).css('font-weight'),
         'color': $(elem.$el).css('color')
@@ -23609,7 +23602,6 @@ $('.element:not(.group-element)').each(function () {
 $('.fragment:not(.group-fragment)').each(function () {
     var elem = Object(__WEBPACK_IMPORTED_MODULE_4__fragment__["a" /* default */])(this);
     elem.changeStyle({
-        'font-family': $(elem.$el).css('font-family'),
         'font-size': $(elem.$el).css('font-size'),
         'font-weight': $(elem.$el).css('font-weight'),
         'color': $(elem.$el).css('color')
@@ -24925,7 +24917,7 @@ var index_esm = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__ = __webpack_require__(136);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_81bc4f7a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(387);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7dd1ef8a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(387);
 function injectStyle (ssrContext) {
   __webpack_require__(356)
 }
@@ -24945,7 +24937,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_81bc4f7a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7dd1ef8a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -24966,7 +24958,7 @@ var content = __webpack_require__(357);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(98)("b2efb1ca", content, true, {});
+var update = __webpack_require__(98)("0482646d", content, true, {});
 
 /***/ }),
 /* 357 */
@@ -26017,7 +26009,7 @@ var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{
                 outline: '0px'
             })
             this$1.activeElem = null;
-        }}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Шрифт")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.textFontFamily),expression:"textFontFamily"}],staticClass:"form-control",attrs:{"name":"font-family","id":"font-family"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.textFontFamily=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"Arial"}},[_vm._v("Arial")]),_vm._v(" "),_c('option',{attrs:{"value":"Roboto"}},[_vm._v("Roboto")]),_vm._v(" "),_c('option',{attrs:{"value":"Montserrat"}},[_vm._v("Montserrat")]),_vm._v(" "),_c('option',{attrs:{"value":"Rubik"}},[_vm._v("Rubik")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Размер")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.textFontSize),expression:"textFontSize"}],staticClass:"form-control",attrs:{"name":"font-size","id":"font-size"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.textFontSize=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"10px"}},[_vm._v("10px")]),_vm._v(" "),_c('option',{attrs:{"value":"12px"}},[_vm._v("12px")]),_vm._v(" "),_c('option',{attrs:{"value":"14px"}},[_vm._v("14px")]),_vm._v(" "),_c('option',{attrs:{"value":"16px"}},[_vm._v("16px")]),_vm._v(" "),_c('option',{attrs:{"value":"20px"}},[_vm._v("20px")]),_vm._v(" "),_c('option',{attrs:{"value":"24px"}},[_vm._v("24px")]),_vm._v(" "),_c('option',{attrs:{"value":"28px"}},[_vm._v("28px")]),_vm._v(" "),_c('option',{attrs:{"value":"32px"}},[_vm._v("32px")]),_vm._v(" "),_c('option',{attrs:{"value":"36px"}},[_vm._v("36px")]),_vm._v(" "),_c('option',{attrs:{"value":"40px"}},[_vm._v("40px")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Жирность")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.textFontWeight),expression:"textFontWeight"}],staticClass:"form-control",attrs:{"name":"font-weight","id":"font-weight"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.textFontWeight=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"100"}},[_vm._v("100, Thin")]),_vm._v(" "),_c('option',{attrs:{"value":"300"}},[_vm._v("300, Light")]),_vm._v(" "),_c('option',{attrs:{"value":"400"}},[_vm._v("400, Normal")]),_vm._v(" "),_c('option',{attrs:{"value":"500"}},[_vm._v("500, Medium")]),_vm._v(" "),_c('option',{attrs:{"value":"600"}},[_vm._v("600, Semi Bold")]),_vm._v(" "),_c('option',{attrs:{"value":"700"}},[_vm._v("700, Bold")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет")]),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorText},on:{"change":_vm.changeColorText}})],1)]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openGlobal,"title":'Шлобальные стили'},on:{"close":function (){this$1.openGlobal = false}}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Шрифт")]),_vm._v(" "),_c('select',{staticClass:"form-control",attrs:{"id":"font-select"}},[_c('option',{attrs:{"value":"Arial"}},[_vm._v("Arial")]),_vm._v(" "),_c('option',{attrs:{"value":"Roboto"}},[_vm._v("Roboto")]),_vm._v(" "),_c('option',{attrs:{"value":"Montserrat"}},[_vm._v("Montserrat")]),_vm._v(" "),_c('option',{attrs:{"value":"Times New Romans"}},[_vm._v("Times New Romans")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Общий цвет")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsGlobal),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorGlobal(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorGlobal},on:{"change":_vm.changeColorGlobal}})],1),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет при наведение")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsHover),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorHover(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorHover},on:{"change":_vm.changeColorHover}})],1),_vm._v(" "),_c('div',{staticClass:"form-group",attrs:{"id":"background-color"}},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет фона")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsBackground),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorBackground(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorBackground},on:{"change":_vm.changeColorBackground}})],1),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Логотип")]),_vm._v(" "),_c('div',{staticClass:"file-drop-area"},[_c('span',{staticClass:"fake-btn"},[_vm._v("Выберите файл "),_c('br'),_vm._v("Или перетащите его сюда ")]),_vm._v(" "),_c('input',{ref:"fileLogo",staticClass:"file-input",attrs:{"type":"file"},on:{"change":_vm.changeLogo}})])])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openBannerSetting,"title":'Настройка баннера'},on:{"close":_vm.saveBanner,"save":_vm.saveBanner}},[_c('div',{staticClass:"form-group",attrs:{"id":"file-input"}},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Изображение баннера")]),_vm._v(" "),_c('div',{staticClass:"file-drop-area"},[_c('span',{staticClass:"fake-btn"},[_vm._v("Выберите файл "),_c('br'),_vm._v("Или перетащите его сюда ")]),_vm._v(" "),_c('input',{ref:"fileBanner",staticClass:"file-input",attrs:{"type":"file"},on:{"change":_vm.changeBanner}})])])]),_vm._v(" "),_vm._m(0)],1)}
+        }}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Размер")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.textFontSize),expression:"textFontSize"}],staticClass:"form-control",attrs:{"name":"font-size","id":"font-size"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.textFontSize=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"10px"}},[_vm._v("10px")]),_vm._v(" "),_c('option',{attrs:{"value":"12px"}},[_vm._v("12px")]),_vm._v(" "),_c('option',{attrs:{"value":"14px"}},[_vm._v("14px")]),_vm._v(" "),_c('option',{attrs:{"value":"16px"}},[_vm._v("16px")]),_vm._v(" "),_c('option',{attrs:{"value":"20px"}},[_vm._v("20px")]),_vm._v(" "),_c('option',{attrs:{"value":"24px"}},[_vm._v("24px")]),_vm._v(" "),_c('option',{attrs:{"value":"28px"}},[_vm._v("28px")]),_vm._v(" "),_c('option',{attrs:{"value":"32px"}},[_vm._v("32px")]),_vm._v(" "),_c('option',{attrs:{"value":"36px"}},[_vm._v("36px")]),_vm._v(" "),_c('option',{attrs:{"value":"40px"}},[_vm._v("40px")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Жирность")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.textFontWeight),expression:"textFontWeight"}],staticClass:"form-control",attrs:{"name":"font-weight","id":"font-weight"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.textFontWeight=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"100"}},[_vm._v("100, Thin")]),_vm._v(" "),_c('option',{attrs:{"value":"300"}},[_vm._v("300, Light")]),_vm._v(" "),_c('option',{attrs:{"value":"400"}},[_vm._v("400, Normal")]),_vm._v(" "),_c('option',{attrs:{"value":"500"}},[_vm._v("500, Medium")]),_vm._v(" "),_c('option',{attrs:{"value":"600"}},[_vm._v("600, Semi Bold")]),_vm._v(" "),_c('option',{attrs:{"value":"700"}},[_vm._v("700, Bold")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет")]),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorText},on:{"change":_vm.changeColorText}})],1)]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openGlobal,"title":'Глобальные стили'},on:{"close":function (){this$1.openGlobal = false}}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Шрифт")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.globalFont),expression:"globalFont"}],staticClass:"form-control",attrs:{"id":"font-select"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.globalFont=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"Raleway"}},[_vm._v("Raleway")]),_vm._v(" "),_c('option',{attrs:{"value":"Roboto"}},[_vm._v("Roboto")]),_vm._v(" "),_c('option',{attrs:{"value":"Montserrat"}},[_vm._v("Montserrat")]),_vm._v(" "),_c('option',{attrs:{"value":"Rubik"}},[_vm._v("Rubik")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Общий цвет")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsGlobal),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorGlobal(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorGlobal},on:{"change":_vm.changeColorGlobal}})],1),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет при наведение")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsHover),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorHover(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorHover},on:{"change":_vm.changeColorHover}})],1),_vm._v(" "),_c('div',{staticClass:"form-group",attrs:{"id":"background-color"}},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет фона")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsBackground),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorBackground(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorBackground},on:{"change":_vm.changeColorBackground}})],1),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Логотип")]),_vm._v(" "),_c('div',{staticClass:"file-drop-area"},[_c('span',{staticClass:"fake-btn"},[_vm._v("Выберите файл "),_c('br'),_vm._v("Или перетащите его сюда ")]),_vm._v(" "),_c('input',{ref:"fileLogo",staticClass:"file-input",attrs:{"type":"file"},on:{"change":_vm.changeLogo}})])])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openBannerSetting,"title":'Настройка баннера'},on:{"close":_vm.saveBanner,"save":_vm.saveBanner}},[_c('div',{staticClass:"form-group",attrs:{"id":"file-input"}},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Изображение баннера")]),_vm._v(" "),_c('div',{staticClass:"file-drop-area"},[_c('span',{staticClass:"fake-btn"},[_vm._v("Выберите файл "),_c('br'),_vm._v("Или перетащите его сюда ")]),_vm._v(" "),_c('input',{ref:"fileBanner",staticClass:"file-input",attrs:{"type":"file"},on:{"change":_vm.changeBanner}})])])]),_vm._v(" "),_vm._m(0)],1)}
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"switch-panel open"},[_c('div',[_c('a',{staticClass:"btn btn-primary btn-block active",attrs:{"href":"#"}},[_vm._v("Главная")]),_vm._v(" "),_c('a',{staticClass:"btn btn-primary btn-block",attrs:{"href":"#"}},[_vm._v("Каталог")]),_vm._v(" "),_c('a',{staticClass:"btn btn-primary btn-block",attrs:{"href":"file:///C:/Users/shepi/OneDrive/%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB/git/templates-gosauda/template_main/item_shop.html"}},[_vm._v("Просмотр товара")]),_vm._v(" "),_c('a',{staticClass:"btn btn-primary btn-block",attrs:{"href":"#"}},[_vm._v("О компании")])])])}]
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);

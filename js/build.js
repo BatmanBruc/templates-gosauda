@@ -16980,6 +16980,8 @@ process.umask = function() { return 0; };
 //
 //
 //
+//
+//
 
 
 
@@ -17009,11 +17011,11 @@ process.umask = function() { return 0; };
                     pattern: /[0-9a-fA-F]+/
                 }
             },
-            defaultColorsGlobal: [{ hex: '#26cae5' }, { hex: '#87b476' }, { hex: '#b47690' }, { hex: '#767cb4' }],
+            defaultColorsGlobal: [{ hex: '#05277c' }, { hex: '#0065b3' }, { hex: '#009cdb' }, { hex: '#a0d5e5' }, { hex: '#00573d' }, { hex: '#f7ce00' }, { hex: '#fef800' }, { hex: '#c06720' }, { hex: '#ffa016' }, { hex: '#ff6600' }, { hex: '#9385c6' }, { hex: '#a048ad' }, { hex: '#e398c5' }, { hex: '#ff1466' }, { hex: '#ff048c' }, { hex: '#c6085b' }, { hex: '#ff0102' }, { hex: '#6bc941' }, { hex: '#000000' }, { hex: '#626262' }, { hex: '#a2a2a2' }],
             colorGlobal: { hex: '#26cae5' },
-            defaultColorsHover: [{ hex: '#26cae5' }, { hex: '#87b476' }, { hex: '#b47690' }, { hex: '#767cb4' }],
+            defaultColorsHover: [{ hex: '#05277c' }, { hex: '#0065b3' }, { hex: '#009cdb' }, { hex: '#a0d5e5' }, { hex: '#00573d' }, { hex: '#f7ce00' }, { hex: '#fef800' }, { hex: '#c06720' }, { hex: '#ffa016' }, { hex: '#ff6600' }, { hex: '#9385c6' }, { hex: '#a048ad' }, { hex: '#e398c5' }, { hex: '#ff1466' }, { hex: '#ff048c' }, { hex: '#c6085b' }, { hex: '#ff0102' }, { hex: '#6bc941' }, { hex: '#000000' }, { hex: '#626262' }, { hex: '#a2a2a2' }],
             colorHover: { hex: '#26cae5' },
-            defaultColorsBackground: [{ hex: '#26cae5' }, { hex: '#87b476' }, { hex: '#b47690' }, { hex: '#767cb4' }],
+            defaultColorsBackground: [{ hex: '#05277c' }, { hex: '#0065b3' }, { hex: '#009cdb' }, { hex: '#a0d5e5' }, { hex: '#00573d' }, { hex: '#f7ce00' }, { hex: '#fef800' }, { hex: '#c06720' }, { hex: '#ffa016' }, { hex: '#ff6600' }, { hex: '#9385c6' }, { hex: '#a048ad' }, { hex: '#e398c5' }, { hex: '#ff1466' }, { hex: '#ff048c' }, { hex: '#c6085b' }, { hex: '#ff0102' }, { hex: '#6bc941' }, { hex: '#000000' }, { hex: '#626262' }, { hex: '#a2a2a2' }],
             colorBackground: { hex: '#f2f2f2' },
 
             activeElem: null,
@@ -17037,6 +17039,7 @@ process.umask = function() { return 0; };
 
             geoLocal: '',
             geoLocalItems: [],
+            geoLocalСlarification: '',
 
             globalFont: 'Raleway'
         };
@@ -17082,7 +17085,8 @@ process.umask = function() { return 0; };
 
     watch: {
         globalFont: function globalFont() {
-            $('.element, .fragment').css('font-family', this.globalFont);
+            console.log('font-family', "'" + this.globalFont + "', sans-serif;");
+            $('.element, .fragment').css('font-family', "'" + this.globalFont + "', sans-serif");
         },
         positionBannerImg: function positionBannerImg() {
             $('.banner-img img').css('top', -this.positionBannerImg);
@@ -17095,13 +17099,6 @@ process.umask = function() { return 0; };
         },
         phoneWhatsapp: function phoneWhatsapp() {
             $('#whatsapp-link').attr('href', 'https://wa.me/' + this.phoneWhatsapp);
-        },
-        geoLocal: function geoLocal() {
-            var _this2 = this;
-
-            ymaps.suggest('Казахстан, ' + this.geoLocal).then(function (items) {
-                _this2.geoLocalItems = items;
-            });
         },
         textFontFamily: function textFontFamily() {
             this.activeElem.changeStyle({
@@ -17137,7 +17134,7 @@ process.umask = function() { return 0; };
             $('.');
         },
         activeElem: function activeElem() {
-            console.log(this.activeElem);
+            this.saveBanner();
             if (this.activeElem != null) {
                 this.textFontSize = this.activeElem.$data.style['font-size'];
                 this.textFontWeight = this.activeElem.$data.style['font-weight'];
@@ -17161,19 +17158,34 @@ process.umask = function() { return 0; };
         },
         colorBackground: function colorBackground() {
             $('.shop').css('background', this.colorBackground.hex);
+        },
+        geoLocalСlarification: function geoLocalLarification() {
+            $('#adress').text(this.geoLocal + ', ' + this.geoLocalСlarification);
+        },
+        geoLocal: function geoLocal() {
+            $('#adress').text(this.geoLocal + ', ' + this.geoLocalСlarification);
         }
     },
     computed: {},
     methods: {
+        searchLocal: function searchLocal() {
+            var _this2 = this;
+
+            ymaps.suggest('Казахстан, ' + this.geoLocal).then(function (items) {
+                _this2.geoLocalItems = items;
+            });
+        },
         saveBanner: function saveBanner() {
-            $('.banner-img').attr('style', this.stylePositionBannerWrapper);
-            $('.cropper-container').css('display', 'none');
-            $('.banner-img>img').removeClass('cropper-hidden');
+            if (this.stylePositionBannerWrapper) {
+                $('.banner-img').attr('style', this.stylePositionBannerWrapper);
+                $('.cropper-container').css('display', 'none');
+                $('.banner-img>img').removeClass('cropper-hidden');
+            }
             this.openBannerSetting = false;
         },
         setGeoItem: function setGeoItem(item) {
-            $('#adress').text(item.displayName);
             this.geoLocal = item.displayName;
+            this.isSelectLocal = 1;
             this.geoLocalItems = [];
         },
         changeColorTextBanner: function changeColorTextBanner(color) {
@@ -17249,7 +17261,7 @@ process.umask = function() { return 0; };
             reader.readAsDataURL(file);
         },
         save: function save() {
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/shop/tpl_save', {
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(window.config.link_save, {
                 params: {
                     html: $('html').html()
                 }
@@ -17917,6 +17929,10 @@ module.exports = Cancel;
         isOpen: {
             type: Boolean,
             default: true
+        },
+        buttonSave: {
+            type: Boolean,
+            default: false
         }
     },
     data: function data() {
@@ -23622,6 +23638,9 @@ $('.fragment:not(.group-fragment)').each(function () {
     });
     $('style[data-cke="true"]').remove();
 });
+$('a').click(function () {
+    return false;
+});
 
 /***/ }),
 /* 352 */
@@ -24917,7 +24936,7 @@ var index_esm = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__ = __webpack_require__(136);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7dd1ef8a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(387);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7d038f93_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(387);
 function injectStyle (ssrContext) {
   __webpack_require__(356)
 }
@@ -24937,7 +24956,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7dd1ef8a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7d038f93_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -24958,7 +24977,7 @@ var content = __webpack_require__(357);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(98)("0482646d", content, true, {});
+var update = __webpack_require__(98)("1c7c1ef9", content, true, {});
 
 /***/ }),
 /* 357 */
@@ -24969,7 +24988,7 @@ exports = module.exports = __webpack_require__(97)(false);
 
 
 // module
-exports.push([module.i, ".list-items-geo{border:1px solid #ccc;margin:auto;border-top:0;margin-top:-12px;padding-top:12px}.list-item-geo{margin:auto;border:1px solid #ccc;background:#f4f4f4;padding:5px 15px;color:#000;margin-bottom:10px;margin-top:10px;border-radius:10px;cursor:pointer;width:95%;font-size:14px}.btn-setting-save svg{width:18px}.btn-setting-save:hover svg{fill:#fff}.banner:hover{border-color:#26cae5;transition:all .3s}.slider-range-container{width:100%}.slider-range{-webkit-appearance:none;width:100%;height:15px;border-radius:5px;background:#d3d3d3;outline:none;opacity:.7;-webkit-transition:.2s;transition:opacity .2s}.slider-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:25px;height:25px;border-radius:50%;background:#26cae5;cursor:pointer}.slider-range::-moz-range-thumb{width:25px;height:25px;border-radius:50%;background:#26cae5;cursor:pointer}", ""]);
+exports.push([module.i, ".list-items-geo{border:1px solid #ccc;margin:auto;border-top:0;margin-top:-12px;padding-top:12px}.list-item-geo{margin:auto;border:1px solid #ccc;background:#f4f4f4;padding:5px 15px;color:#000;margin-bottom:10px;margin-top:10px;border-radius:10px;cursor:pointer;width:95%;font-size:14px}.btn-setting-save svg{width:18px}.btn-setting-save:hover svg{fill:#fff}.banner:hover{border-color:#26cae5;transition:all .3s;cursor:pointer}.slider-range-container{width:100%}.slider-range{-webkit-appearance:none;width:100%;height:15px;border-radius:5px;background:#d3d3d3;outline:none;opacity:.7;-webkit-transition:.2s;transition:opacity .2s}.slider-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:25px;height:25px;border-radius:50%;background:#26cae5;cursor:pointer}.slider-range::-moz-range-thumb{width:25px;height:25px;border-radius:50%;background:#26cae5;cursor:pointer}.mask-instagram{position:absolute;top:32px;left:13px;color:#495057}.form-control-mask-instagram{padding-left:122px}.form-group{position:relative}.color-options{display:flex;justify-content:center;margin-top:10px;flex-flow:wrap}.settings-panel-b-save{background:#26cae5;color:#fff;padding:7px;border-radius:4px;cursor:pointer;margin-left:20px}", ""]);
 
 // exports
 
@@ -25929,7 +25948,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_modal_vue__ = __webpack_require__(147);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_18308fa2_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_modal_vue__ = __webpack_require__(386);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_43476866_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_modal_vue__ = __webpack_require__(386);
 function injectStyle (ssrContext) {
   __webpack_require__(384)
 }
@@ -25949,7 +25968,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_modal_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_18308fa2_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_modal_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_43476866_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_modal_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -25970,7 +25989,7 @@ var content = __webpack_require__(385);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(98)("093a39ff", content, true, {});
+var update = __webpack_require__(98)("844cb304", content, true, {});
 
 /***/ }),
 /* 385 */
@@ -25981,7 +26000,7 @@ exports = module.exports = __webpack_require__(97)(false);
 
 
 // module
-exports.push([module.i, ".settings-modal{position:fixed;right:-350px;top:0;height:100vh;width:300px;z-index:9999;background-color:#fff;color:#151515;box-shadow:0 0 10px 0 #888;transition:.2s ease}.settings-modal-open{right:0}.save-settings{position:fixed;bottom:0;padding:20px;text-align:center;width:300px;background:#26cae5;color:#fff;font-size:22px;cursor:pointer}", ""]);
+exports.push([module.i, ".settings-modal{position:fixed;right:-350px;top:0;height:100vh;width:300px;z-index:9999;background-color:#fff;color:#151515;box-shadow:0 0 10px 0 #888;transition:.2s ease;background-color:#ffffffdb}.settings-modal-open{right:0}.save-settings{position:fixed;bottom:0;padding:20px;text-align:center;width:300px;background:#26cae5;color:#fff;font-size:22px;cursor:pointer}", ""]);
 
 // exports
 
@@ -25991,7 +26010,7 @@ exports.push([module.i, ".settings-modal{position:fixed;right:-350px;top:0;heigh
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"settings-modal",class:{ 'settings-modal-open': _vm.isOpen }},[_c('div',{staticClass:"global-settings-buttons"},[_c('p',{staticClass:"text-center title"},[_vm._v(_vm._s(_vm.title))]),_vm._v(" "),_c('a',{staticClass:"btn-close",on:{"click":_vm.close}},[_c('i',{staticClass:"icon icon-delete"})])]),_vm._v(" "),_c('hr'),_vm._v(" "),_c('div',{staticClass:"px-4 global-settings__fields"},[_vm._t("default")],2),_vm._v(" "),_c('div',{staticClass:"save-settings",on:{"click":_vm.save}},[_vm._v("Сохранить")])])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"settings-modal",class:{ 'settings-modal-open': _vm.isOpen }},[_c('div',{staticClass:"global-settings-buttons"},[_c('p',{staticClass:"text-center title"},[_vm._v(_vm._s(_vm.title))]),_vm._v(" "),_c('a',{staticClass:"btn-close",on:{"click":_vm.close}},[_c('i',{staticClass:"icon icon-delete"})])]),_vm._v(" "),_c('hr'),_vm._v(" "),_c('div',{staticClass:"px-4 global-settings__fields"},[_vm._t("default")],2),_vm._v(" "),(_vm.buttonSave)?_c('div',{staticClass:"save-settings",on:{"click":_vm.save}},[_vm._v("Сохранить")]):_vm._e()])}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -26003,13 +26022,13 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 "use strict";
 var render = function () {
 var this$1 = this;
-var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"settings-panel",attrs:{"id":"settings-panel"}},[_c('div',{staticClass:"setting-item"},[_c('p',{staticClass:"btn btn-setting-item global-btn",attrs:{"data-toggle":"tooltip","data-placement":"bottom","title":"Глобальные стили"},on:{"click":_vm.openGlobalStyle}},[_c('i',{staticClass:"icon icon-globe"})]),_vm._v(" "),_c('p',{staticClass:"btn btn-setting-item settings-btn",attrs:{"data-toggle":"tooltip","data-placement":"bottom","title":"Настройки"},on:{"click":_vm.openSettings}},[_c('i',{staticClass:"icon icon-settings-2"})]),_vm._v(" "),_c('p',{staticClass:"btn btn-setting-item btn-setting-save",attrs:{"data-toggle":"tooltip","data-placement":"bottom","title":"Сохранить"},on:{"click":_vm.save}},[_c('iconSave')],1)]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openSetting,"title":'Настройки'},on:{"close":function (){this$1.openSetting = false}}},[_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Instagram")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.linkInstagram),expression:"linkInstagram"}],staticClass:"form-control",attrs:{"placeholder":"Ссылка на Instagram"},domProps:{"value":(_vm.linkInstagram)},on:{"input":function($event){if($event.target.composing){ return; }_vm.linkInstagram=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Whatsapp")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.phoneWhatsapp),expression:"phoneWhatsapp"}],staticClass:"form-control",attrs:{"placeholder":"Телефон","id":"WhatsappInput"},domProps:{"value":(_vm.phoneWhatsapp)},on:{"input":function($event){if($event.target.composing){ return; }_vm.phoneWhatsapp=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Адресс")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.geoLocal),expression:"geoLocal"}],staticClass:"form-control",attrs:{"placeholder":"Адресс"},domProps:{"value":(_vm.geoLocal)},on:{"input":function($event){if($event.target.composing){ return; }_vm.geoLocal=$event.target.value}}}),_vm._v(" "),(_vm.geoLocalItems.length > 0)?_c('div',{staticClass:"list-items-geo"},_vm._l((_vm.geoLocalItems),function(item){return _c('div',{staticClass:"list-item-geo",on:{"click":function($event){return _vm.setGeoItem(item)}}},[_vm._v(_vm._s(item.displayName))])}),0):_vm._e()])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openText,"title":'Стили текста'},on:{"close":function (){
+var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"settings-panel",attrs:{"id":"settings-panel"}},[_c('div',{staticClass:"setting-item"},[_c('p',{staticClass:"btn btn-setting-item global-btn",attrs:{"data-toggle":"tooltip","data-placement":"bottom","title":"Глобальные стили"},on:{"click":_vm.openGlobalStyle}},[_c('i',{staticClass:"icon icon-globe"})]),_vm._v(" "),_c('p',{staticClass:"btn btn-setting-item settings-btn",attrs:{"data-toggle":"tooltip","data-placement":"bottom","title":"Настройки"},on:{"click":_vm.openSettings}},[_c('i',{staticClass:"icon icon-settings-2"})]),_vm._v(" "),_c('div',{staticClass:"settings-panel-b-save",on:{"click":_vm.save}},[_vm._v("Сохранить шаблон")])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openSetting,"title":'Настройки'},on:{"close":function (){this$1.openSetting = false}}},[_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Instagram")]),_vm._v(" "),_c('span',{staticClass:"mask-instagram"},[_vm._v("instagram.com/")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.linkInstagram),expression:"linkInstagram"}],staticClass:"form-control form-control-mask-instagram",attrs:{"placeholder":"ник"},domProps:{"value":(_vm.linkInstagram)},on:{"input":function($event){if($event.target.composing){ return; }_vm.linkInstagram=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Whatsapp")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.phoneWhatsapp),expression:"phoneWhatsapp"}],staticClass:"form-control",attrs:{"placeholder":"Телефон","id":"WhatsappInput"},domProps:{"value":(_vm.phoneWhatsapp)},on:{"input":function($event){if($event.target.composing){ return; }_vm.phoneWhatsapp=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Адресс")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.geoLocal),expression:"geoLocal"}],staticClass:"form-control",attrs:{"placeholder":"Адресс"},domProps:{"value":(_vm.geoLocal)},on:{"keyup":_vm.searchLocal,"input":function($event){if($event.target.composing){ return; }_vm.geoLocal=$event.target.value}}}),_vm._v(" "),(_vm.geoLocalItems.length > 0)?_c('div',{staticClass:"list-items-geo"},_vm._l((_vm.geoLocalItems),function(item){return _c('div',{staticClass:"list-item-geo",on:{"click":function($event){return _vm.setGeoItem(item)}}},[_vm._v(_vm._s(item.displayName))])}),0):_vm._e(),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.geoLocalСlarification),expression:"geoLocalСlarification"}],staticClass:"form-control",style:({marginTop: '10px'}),attrs:{"placeholder":"Офис/Квартира"},domProps:{"value":(_vm.geoLocalСlarification)},on:{"input":function($event){if($event.target.composing){ return; }_vm.geoLocalСlarification=$event.target.value}}})])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openText,"title":'Стили текста'},on:{"close":function (){
             this$1.openText = false
             this$1.activeElem.changeStyle({
                 outline: '0px'
             })
             this$1.activeElem = null;
-        }}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Размер")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.textFontSize),expression:"textFontSize"}],staticClass:"form-control",attrs:{"name":"font-size","id":"font-size"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.textFontSize=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"10px"}},[_vm._v("10px")]),_vm._v(" "),_c('option',{attrs:{"value":"12px"}},[_vm._v("12px")]),_vm._v(" "),_c('option',{attrs:{"value":"14px"}},[_vm._v("14px")]),_vm._v(" "),_c('option',{attrs:{"value":"16px"}},[_vm._v("16px")]),_vm._v(" "),_c('option',{attrs:{"value":"20px"}},[_vm._v("20px")]),_vm._v(" "),_c('option',{attrs:{"value":"24px"}},[_vm._v("24px")]),_vm._v(" "),_c('option',{attrs:{"value":"28px"}},[_vm._v("28px")]),_vm._v(" "),_c('option',{attrs:{"value":"32px"}},[_vm._v("32px")]),_vm._v(" "),_c('option',{attrs:{"value":"36px"}},[_vm._v("36px")]),_vm._v(" "),_c('option',{attrs:{"value":"40px"}},[_vm._v("40px")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Жирность")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.textFontWeight),expression:"textFontWeight"}],staticClass:"form-control",attrs:{"name":"font-weight","id":"font-weight"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.textFontWeight=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"100"}},[_vm._v("100, Thin")]),_vm._v(" "),_c('option',{attrs:{"value":"300"}},[_vm._v("300, Light")]),_vm._v(" "),_c('option',{attrs:{"value":"400"}},[_vm._v("400, Normal")]),_vm._v(" "),_c('option',{attrs:{"value":"500"}},[_vm._v("500, Medium")]),_vm._v(" "),_c('option',{attrs:{"value":"600"}},[_vm._v("600, Semi Bold")]),_vm._v(" "),_c('option',{attrs:{"value":"700"}},[_vm._v("700, Bold")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет")]),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorText},on:{"change":_vm.changeColorText}})],1)]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openGlobal,"title":'Глобальные стили'},on:{"close":function (){this$1.openGlobal = false}}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Шрифт")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.globalFont),expression:"globalFont"}],staticClass:"form-control",attrs:{"id":"font-select"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.globalFont=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"Raleway"}},[_vm._v("Raleway")]),_vm._v(" "),_c('option',{attrs:{"value":"Roboto"}},[_vm._v("Roboto")]),_vm._v(" "),_c('option',{attrs:{"value":"Montserrat"}},[_vm._v("Montserrat")]),_vm._v(" "),_c('option',{attrs:{"value":"Rubik"}},[_vm._v("Rubik")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Общий цвет")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsGlobal),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorGlobal(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorGlobal},on:{"change":_vm.changeColorGlobal}})],1),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет при наведение")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsHover),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorHover(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorHover},on:{"change":_vm.changeColorHover}})],1),_vm._v(" "),_c('div',{staticClass:"form-group",attrs:{"id":"background-color"}},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет фона")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsBackground),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorBackground(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorBackground},on:{"change":_vm.changeColorBackground}})],1),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Логотип")]),_vm._v(" "),_c('div',{staticClass:"file-drop-area"},[_c('span',{staticClass:"fake-btn"},[_vm._v("Выберите файл "),_c('br'),_vm._v("Или перетащите его сюда ")]),_vm._v(" "),_c('input',{ref:"fileLogo",staticClass:"file-input",attrs:{"type":"file"},on:{"change":_vm.changeLogo}})])])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openBannerSetting,"title":'Настройка баннера'},on:{"close":_vm.saveBanner,"save":_vm.saveBanner}},[_c('div',{staticClass:"form-group",attrs:{"id":"file-input"}},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Изображение баннера")]),_vm._v(" "),_c('div',{staticClass:"file-drop-area"},[_c('span',{staticClass:"fake-btn"},[_vm._v("Выберите файл "),_c('br'),_vm._v("Или перетащите его сюда ")]),_vm._v(" "),_c('input',{ref:"fileBanner",staticClass:"file-input",attrs:{"type":"file"},on:{"change":_vm.changeBanner}})])])]),_vm._v(" "),_vm._m(0)],1)}
+        }}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Размер")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.textFontSize),expression:"textFontSize"}],staticClass:"form-control",attrs:{"name":"font-size","id":"font-size"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.textFontSize=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"10px"}},[_vm._v("10px")]),_vm._v(" "),_c('option',{attrs:{"value":"12px"}},[_vm._v("12px")]),_vm._v(" "),_c('option',{attrs:{"value":"14px"}},[_vm._v("14px")]),_vm._v(" "),_c('option',{attrs:{"value":"16px"}},[_vm._v("16px")]),_vm._v(" "),_c('option',{attrs:{"value":"20px"}},[_vm._v("20px")]),_vm._v(" "),_c('option',{attrs:{"value":"24px"}},[_vm._v("24px")]),_vm._v(" "),_c('option',{attrs:{"value":"28px"}},[_vm._v("28px")]),_vm._v(" "),_c('option',{attrs:{"value":"32px"}},[_vm._v("32px")]),_vm._v(" "),_c('option',{attrs:{"value":"36px"}},[_vm._v("36px")]),_vm._v(" "),_c('option',{attrs:{"value":"40px"}},[_vm._v("40px")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Жирность")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.textFontWeight),expression:"textFontWeight"}],staticClass:"form-control",attrs:{"name":"font-weight","id":"font-weight"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.textFontWeight=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"100"}},[_vm._v("100, Thin")]),_vm._v(" "),_c('option',{attrs:{"value":"300"}},[_vm._v("300, Light")]),_vm._v(" "),_c('option',{attrs:{"value":"400"}},[_vm._v("400, Normal")]),_vm._v(" "),_c('option',{attrs:{"value":"500"}},[_vm._v("500, Medium")]),_vm._v(" "),_c('option',{attrs:{"value":"600"}},[_vm._v("600, Semi Bold")]),_vm._v(" "),_c('option',{attrs:{"value":"700"}},[_vm._v("700, Bold")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет")]),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorText},on:{"change":_vm.changeColorText}})],1)]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openGlobal,"title":'Глобальные стили'},on:{"close":function (){this$1.openGlobal = false}}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Шрифт")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.globalFont),expression:"globalFont"}],staticClass:"form-control",attrs:{"id":"font-select"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.globalFont=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"Raleway"}},[_vm._v("Raleway")]),_vm._v(" "),_c('option',{attrs:{"value":"Roboto"}},[_vm._v("Roboto")]),_vm._v(" "),_c('option',{attrs:{"value":"Montserrat"}},[_vm._v("Montserrat")]),_vm._v(" "),_c('option',{attrs:{"value":"Rubik"}},[_vm._v("Rubik")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Общий цвет")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsGlobal),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorGlobal(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorGlobal},on:{"change":_vm.changeColorGlobal}})],1),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет при наведение")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsHover),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorHover(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorHover},on:{"change":_vm.changeColorHover}})],1),_vm._v(" "),_c('div',{staticClass:"form-group",attrs:{"id":"background-color"}},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет фона")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsBackground),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorBackground(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorBackground},on:{"change":_vm.changeColorBackground}})],1),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Логотип")]),_vm._v(" "),_c('div',{staticClass:"file-drop-area"},[_c('span',{staticClass:"fake-btn"},[_vm._v("Выберите файл "),_c('br'),_vm._v("Или перетащите его сюда ")]),_vm._v(" "),_c('input',{ref:"fileLogo",staticClass:"file-input",attrs:{"type":"file"},on:{"change":_vm.changeLogo}})])])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openBannerSetting,"title":'Настройка баннера',"buttonSave":true},on:{"close":_vm.saveBanner,"save":_vm.saveBanner}},[_c('div',{staticClass:"form-group",attrs:{"id":"file-input"}},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Изображение баннера")]),_vm._v(" "),_c('div',{staticClass:"file-drop-area"},[_c('span',{staticClass:"fake-btn"},[_vm._v("Выберите файл "),_c('br'),_vm._v("Или перетащите его сюда ")]),_vm._v(" "),_c('input',{ref:"fileBanner",staticClass:"file-input",attrs:{"type":"file"},on:{"change":_vm.changeBanner}})])])]),_vm._v(" "),_vm._m(0)],1)}
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"switch-panel open"},[_c('div',[_c('a',{staticClass:"btn btn-primary btn-block active",attrs:{"href":"#"}},[_vm._v("Главная")]),_vm._v(" "),_c('a',{staticClass:"btn btn-primary btn-block",attrs:{"href":"#"}},[_vm._v("Каталог")]),_vm._v(" "),_c('a',{staticClass:"btn btn-primary btn-block",attrs:{"href":"file:///C:/Users/shepi/OneDrive/%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB/git/templates-gosauda/template_main/item_shop.html"}},[_vm._v("Просмотр товара")]),_vm._v(" "),_c('a',{staticClass:"btn btn-primary btn-block",attrs:{"href":"#"}},[_vm._v("О компании")])])])}]
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);

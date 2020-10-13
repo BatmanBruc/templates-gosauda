@@ -17080,7 +17080,6 @@ process.umask = function() { return 0; };
         });
         var heigth = $('.banner-img img').css('heigth');
         this.maxTopBannerImg = heigth - 300;
-        this.textBanner = $('.banner-title').text();
     },
 
     watch: {
@@ -17090,9 +17089,6 @@ process.umask = function() { return 0; };
         },
         positionBannerImg: function positionBannerImg() {
             $('.banner-img img').css('top', -this.positionBannerImg);
-        },
-        textBanner: function textBanner() {
-            $('.banner-title').text(this.textBanner);
         },
         linkInstagram: function linkInstagram() {
             $('#instagram-link').attr('href', 'https://www.instagram.com/' + this.linkInstagram);
@@ -23591,6 +23587,7 @@ $('.group-element, .group-fragment').each(function () {
 });
 $('.element:not(.group-element)').each(function () {
     var elem = Object(__WEBPACK_IMPORTED_MODULE_3__element__["a" /* default */])(this);
+    console.log(elem);
     elem.changeStyle({
         'font-size': $(elem.$el).css('font-size'),
         'font-weight': $(elem.$el).css('font-weight'),
@@ -24936,7 +24933,7 @@ var index_esm = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__ = __webpack_require__(136);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7d038f93_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(387);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_742e8a89_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(387);
 function injectStyle (ssrContext) {
   __webpack_require__(356)
 }
@@ -24956,7 +24953,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7d038f93_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_742e8a89_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -24977,7 +24974,7 @@ var content = __webpack_require__(357);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(98)("1c7c1ef9", content, true, {});
+var update = __webpack_require__(98)("f0850e52", content, true, {});
 
 /***/ }),
 /* 357 */
@@ -26022,7 +26019,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 "use strict";
 var render = function () {
 var this$1 = this;
-var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"settings-panel",attrs:{"id":"settings-panel"}},[_c('div',{staticClass:"setting-item"},[_c('p',{staticClass:"btn btn-setting-item global-btn",attrs:{"data-toggle":"tooltip","data-placement":"bottom","title":"Глобальные стили"},on:{"click":_vm.openGlobalStyle}},[_c('i',{staticClass:"icon icon-globe"})]),_vm._v(" "),_c('p',{staticClass:"btn btn-setting-item settings-btn",attrs:{"data-toggle":"tooltip","data-placement":"bottom","title":"Настройки"},on:{"click":_vm.openSettings}},[_c('i',{staticClass:"icon icon-settings-2"})]),_vm._v(" "),_c('div',{staticClass:"settings-panel-b-save",on:{"click":_vm.save}},[_vm._v("Сохранить шаблон")])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openSetting,"title":'Настройки'},on:{"close":function (){this$1.openSetting = false}}},[_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Instagram")]),_vm._v(" "),_c('span',{staticClass:"mask-instagram"},[_vm._v("instagram.com/")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.linkInstagram),expression:"linkInstagram"}],staticClass:"form-control form-control-mask-instagram",attrs:{"placeholder":"ник"},domProps:{"value":(_vm.linkInstagram)},on:{"input":function($event){if($event.target.composing){ return; }_vm.linkInstagram=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Whatsapp")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.phoneWhatsapp),expression:"phoneWhatsapp"}],staticClass:"form-control",attrs:{"placeholder":"Телефон","id":"WhatsappInput"},domProps:{"value":(_vm.phoneWhatsapp)},on:{"input":function($event){if($event.target.composing){ return; }_vm.phoneWhatsapp=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Адресс")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.geoLocal),expression:"geoLocal"}],staticClass:"form-control",attrs:{"placeholder":"Адресс"},domProps:{"value":(_vm.geoLocal)},on:{"keyup":_vm.searchLocal,"input":function($event){if($event.target.composing){ return; }_vm.geoLocal=$event.target.value}}}),_vm._v(" "),(_vm.geoLocalItems.length > 0)?_c('div',{staticClass:"list-items-geo"},_vm._l((_vm.geoLocalItems),function(item){return _c('div',{staticClass:"list-item-geo",on:{"click":function($event){return _vm.setGeoItem(item)}}},[_vm._v(_vm._s(item.displayName))])}),0):_vm._e(),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.geoLocalСlarification),expression:"geoLocalСlarification"}],staticClass:"form-control",style:({marginTop: '10px'}),attrs:{"placeholder":"Офис/Квартира"},domProps:{"value":(_vm.geoLocalСlarification)},on:{"input":function($event){if($event.target.composing){ return; }_vm.geoLocalСlarification=$event.target.value}}})])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openText,"title":'Стили текста'},on:{"close":function (){
+var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"settings-panel",attrs:{"id":"settings-panel"}},[_c('div',{staticClass:"setting-item"},[_c('p',{staticClass:"btn btn-setting-item global-btn",attrs:{"data-toggle":"tooltip","data-placement":"bottom","title":"Глобальные стили"},on:{"click":_vm.openGlobalStyle}},[_c('i',{staticClass:"icon icon-globe"})]),_vm._v(" "),_c('p',{staticClass:"btn btn-setting-item settings-btn",attrs:{"data-toggle":"tooltip","data-placement":"bottom","title":"Настройки"},on:{"click":_vm.openSettings}},[_c('i',{staticClass:"icon icon-settings"})]),_vm._v(" "),_c('div',{staticClass:"settings-panel-b-save",on:{"click":_vm.save}},[_vm._v("Сохранить шаблон")])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openSetting,"title":'Настройки'},on:{"close":function (){this$1.openSetting = false}}},[_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Instagram")]),_vm._v(" "),_c('span',{staticClass:"mask-instagram"},[_vm._v("instagram.com/")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.linkInstagram),expression:"linkInstagram"}],staticClass:"form-control form-control-mask-instagram",attrs:{"placeholder":"ник"},domProps:{"value":(_vm.linkInstagram)},on:{"input":function($event){if($event.target.composing){ return; }_vm.linkInstagram=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Whatsapp")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.phoneWhatsapp),expression:"phoneWhatsapp"}],staticClass:"form-control",attrs:{"placeholder":"Телефон","id":"WhatsappInput"},domProps:{"value":(_vm.phoneWhatsapp)},on:{"input":function($event){if($event.target.composing){ return; }_vm.phoneWhatsapp=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Адресс")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.geoLocal),expression:"geoLocal"}],staticClass:"form-control",attrs:{"placeholder":"Адресс"},domProps:{"value":(_vm.geoLocal)},on:{"keyup":_vm.searchLocal,"input":function($event){if($event.target.composing){ return; }_vm.geoLocal=$event.target.value}}}),_vm._v(" "),(_vm.geoLocalItems.length > 0)?_c('div',{staticClass:"list-items-geo"},_vm._l((_vm.geoLocalItems),function(item){return _c('div',{staticClass:"list-item-geo",on:{"click":function($event){return _vm.setGeoItem(item)}}},[_vm._v(_vm._s(item.displayName))])}),0):_vm._e(),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.geoLocalСlarification),expression:"geoLocalСlarification"}],staticClass:"form-control",style:({marginTop: '10px'}),attrs:{"placeholder":"Офис/Квартира"},domProps:{"value":(_vm.geoLocalСlarification)},on:{"input":function($event){if($event.target.composing){ return; }_vm.geoLocalСlarification=$event.target.value}}})])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openText,"title":'Стили текста'},on:{"close":function (){
             this$1.openText = false
             this$1.activeElem.changeStyle({
                 outline: '0px'
@@ -26072,7 +26069,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
                 this.style = _extends({}, this.style, { color: color });
             },
             changeStyle: function changeStyle(style) {
-                console.log(style);
                 this.style = _extends({}, this.style, style);
             },
             callback: function callback(func, arg) {
@@ -26128,14 +26124,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         watch: {},
         methods: {
-            onEditorInput: function onEditorInput() {
-                console.log(this.editorData);
-            },
+            onEditorInput: function onEditorInput() {},
             changeColor: function changeColor(color) {
                 this.style = _extends({}, this.style, { color: color });
             },
             changeStyle: function changeStyle(style) {
-                console.log(style);
                 this.style = _extends({}, this.style, style);
             },
             callback: function callback(func, arg) {

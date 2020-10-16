@@ -106,8 +106,9 @@
 }
 
 .sp-container{
-    position: fixed!important;
-    top: 63px!important;
+    /* position: fixed!important;
+    top: 63px!important; */
+    margin-left: 20px;
 }
 
 .sp-container button.sp-choose{

@@ -43382,11 +43382,11 @@ var query = function () {
 
             data = formData(params);
             request = {
-              url: url,
-              headers: {
-                //authorization: `${token}:${hash}`,
-                timestamp: timestamp
-              }
+              url: url
+              // headers: {
+              //   //authorization: `${token}:${hash}`,
+              //   timestamp
+              // }
             };
 
             if (data) request.data = data;

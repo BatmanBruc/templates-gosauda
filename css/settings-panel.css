@@ -682,3 +682,15 @@
     overflow: auto;
     padding-bottom: 200px;
 }
+.double-link{
+  color: white;
+  width: 100%;
+  text-align: center;
+  display: block;
+  padding: 7px;
+  text-decoration: revert;
+}
+.double-link:hover{
+  color: #c6c6c6;
+  text-decoration: revert;
+}

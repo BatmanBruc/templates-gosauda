@@ -16978,13 +16978,6 @@ process.umask = function() { return 0; };
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -17303,9 +17296,8 @@ function getRoundedCanvas(sourceCanvas) {
         },
         save: function save() {
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(window.config.link_save, {
-                params: {
-                    html: $('html').html()
-                }
+                ajax: 1,
+                file: $('html').html()
             });
         }
     }
@@ -23798,8 +23790,12 @@ $('.group-element, .group-fragment').each(function () {
                     });
                 }, 200);
             });
+            var toolpitContent = '<div id="settingText"></div>';
+            if ($(elem.$el)[0].tagName == 'A') {
+                toolpitContent = toolpitContent + '<a class="double-link" href="' + $(elem.$el).attr('href') + '">Перейти по ссылке</a>';
+            }
             tippy(elem.$el, {
-                content: '<div id="settingText"></div>',
+                content: toolpitContent,
                 allowHTML: true,
                 trigger: 'click',
                 interactive: true,
@@ -23842,8 +23838,12 @@ $('.element:not(.group-element)').each(function () {
             });
         }, 200);
     });
+    var toolpitContent = '<div id="settingText"></div>';
+    if ($(elem.$el)[0].tagName == 'A') {
+        toolpitContent = toolpitContent + '<a class="double-link" href="' + $(elem.$el).attr('href') + '">Перейти по ссылке</a>';
+    }
     tippy(elem.$el, {
-        content: '<div id="settingText"></div>',
+        content: toolpitContent,
         allowHTML: true,
         trigger: 'click',
         interactive: true,
@@ -23882,8 +23882,12 @@ $('.fragment:not(.group-fragment)').each(function () {
             });
         }, 200);
     });
+    var toolpitContent = '<div id="settingText"></div>';
+    if ($(elem.$el)[0].tagName == 'A') {
+        toolpitContent = toolpitContent + '<a class="double-link" href="' + $(elem.$el).attr('href') + '">Перейти по ссылке</a>';
+    }
     tippy(elem.$el, {
-        content: '<div id="settingText"></div>',
+        content: toolpitContent,
         allowHTML: true,
         trigger: 'click',
         interactive: true,
@@ -23900,7 +23904,7 @@ $('.fragment:not(.group-fragment)').each(function () {
     });
     $('style[data-cke="true"]').remove();
 });
-$('a').click(function () {
+$('a.element, a.fragment').click(function () {
     return false;
 });
 
@@ -25198,7 +25202,7 @@ var index_esm = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__ = __webpack_require__(136);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2e52a406_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(389);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_8285c886_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(389);
 function injectStyle (ssrContext) {
   __webpack_require__(359)
 }
@@ -25218,7 +25222,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2e52a406_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_8285c886_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -25239,7 +25243,7 @@ var content = __webpack_require__(360);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(71)("104ddba8", content, true, {});
+var update = __webpack_require__(71)("2b5c2a32", content, true, {});
 
 /***/ }),
 /* 360 */
@@ -25250,7 +25254,7 @@ exports = module.exports = __webpack_require__(70)(false);
 
 
 // module
-exports.push([module.i, ".list-items-geo{border:1px solid #ccc;margin:auto;border-top:0;margin-top:-12px;padding-top:12px}.list-item-geo{margin:auto;border:1px solid #ccc;background:#f4f4f4;padding:5px 15px;color:#000;margin-bottom:10px;margin-top:10px;border-radius:10px;cursor:pointer;width:95%;font-size:14px}.btn-setting-save svg{width:18px}.btn-setting-save:hover svg{fill:#fff}.banner:hover{border-color:#26cae5;transition:all .3s;cursor:pointer}.slider-range-container{width:100%}.slider-range{-webkit-appearance:none;width:100%;height:15px;border-radius:5px;background:#d3d3d3;outline:none;opacity:.7;-webkit-transition:.2s;transition:opacity .2s}.slider-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:25px;height:25px;border-radius:50%;background:#26cae5;cursor:pointer}.slider-range::-moz-range-thumb{width:25px;height:25px;border-radius:50%;background:#26cae5;cursor:pointer}.mask-instagram{position:absolute;top:32px;left:13px;color:#495057}.form-control-mask-instagram{padding-left:122px}.form-group{position:relative}.color-options{display:flex;justify-content:center;margin-top:10px;flex-flow:wrap}.settings-panel-b-save{background:#26cae5;color:#fff;padding:7px;border-radius:4px;cursor:pointer;margin-left:20px}.setting-item.once{width:100%;position:absolute;background:#fff;z-index:100}.setting-item-active{display:flex!important}", ""]);
+exports.push([module.i, ".list-items-geo{border:1px solid #ccc;margin:auto;border-top:0;margin-top:-12px;padding-top:12px}.list-item-geo{margin:auto;border:1px solid #ccc;background:#f4f4f4;padding:5px 15px;color:#000;margin-bottom:10px;margin-top:10px;border-radius:10px;cursor:pointer;width:95%;font-size:14px}.btn-setting-save svg{width:18px}.btn-setting-save:hover svg{fill:#fff}.banner:hover{border-color:#26cae5;transition:all .3s;cursor:pointer}.slider-range-container{width:100%}.slider-range{-webkit-appearance:none;width:100%;height:15px;border-radius:5px;background:#d3d3d3;outline:none;opacity:.7;-webkit-transition:.2s;transition:opacity .2s}.slider-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:25px;height:25px;border-radius:50%;background:#26cae5;cursor:pointer}.slider-range::-moz-range-thumb{width:25px;height:25px;border-radius:50%;background:#26cae5;cursor:pointer}.mask-instagram{position:absolute;top:32px;left:13px;color:#495057}.form-control-mask-instagram{padding-left:122px}.form-group{position:relative}.color-options{display:flex;justify-content:center;margin-top:10px;flex-flow:wrap}.settings-panel-b-save{background:#26cae5;color:#fff;padding:7px;border-radius:4px;cursor:pointer;margin-left:20px}.setting-item.once{width:100%;position:absolute;background:#fff;z-index:100;display:none}.setting-item-active{display:flex!important}", ""]);
 
 // exports
 
@@ -26283,8 +26287,8 @@ var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{
                 outline: '0px'
             })
             this$1.activeElem = null;
-        }}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Размер")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.textFontSize),expression:"textFontSize"}],staticClass:"form-control",attrs:{"name":"font-size","id":"font-size"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.textFontSize=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"10px"}},[_vm._v("10px")]),_vm._v(" "),_c('option',{attrs:{"value":"12px"}},[_vm._v("12px")]),_vm._v(" "),_c('option',{attrs:{"value":"14px"}},[_vm._v("14px")]),_vm._v(" "),_c('option',{attrs:{"value":"16px"}},[_vm._v("16px")]),_vm._v(" "),_c('option',{attrs:{"value":"20px"}},[_vm._v("20px")]),_vm._v(" "),_c('option',{attrs:{"value":"24px"}},[_vm._v("24px")]),_vm._v(" "),_c('option',{attrs:{"value":"28px"}},[_vm._v("28px")]),_vm._v(" "),_c('option',{attrs:{"value":"32px"}},[_vm._v("32px")]),_vm._v(" "),_c('option',{attrs:{"value":"36px"}},[_vm._v("36px")]),_vm._v(" "),_c('option',{attrs:{"value":"40px"}},[_vm._v("40px")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Жирность")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.textFontWeight),expression:"textFontWeight"}],staticClass:"form-control",attrs:{"name":"font-weight","id":"font-weight"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.textFontWeight=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"100"}},[_vm._v("100, Thin")]),_vm._v(" "),_c('option',{attrs:{"value":"300"}},[_vm._v("300, Light")]),_vm._v(" "),_c('option',{attrs:{"value":"400"}},[_vm._v("400, Normal")]),_vm._v(" "),_c('option',{attrs:{"value":"500"}},[_vm._v("500, Medium")]),_vm._v(" "),_c('option',{attrs:{"value":"600"}},[_vm._v("600, Semi Bold")]),_vm._v(" "),_c('option',{attrs:{"value":"700"}},[_vm._v("700, Bold")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет")]),_vm._v(" "),_c('text',{attrs:{"color":_vm.colorText},on:{"change":_vm.changeColorText}})])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openGlobal,"title":'Глобальные стили'},on:{"close":function (){this$1.openGlobal = false}}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Шрифт")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.globalFont),expression:"globalFont"}],staticClass:"form-control",attrs:{"id":"font-select"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.globalFont=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"Raleway"}},[_vm._v("Raleway")]),_vm._v(" "),_c('option',{attrs:{"value":"Roboto"}},[_vm._v("Roboto")]),_vm._v(" "),_c('option',{attrs:{"value":"Montserrat"}},[_vm._v("Montserrat")]),_vm._v(" "),_c('option',{attrs:{"value":"Rubik"}},[_vm._v("Rubik")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Общий цвет")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsGlobal),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorGlobal(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorGlobal},on:{"change":_vm.changeColorGlobal}})],1),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет при наведение")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsHover),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorHover(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorHover},on:{"change":_vm.changeColorHover}})],1),_vm._v(" "),_c('div',{staticClass:"form-group",attrs:{"id":"background-color"}},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет фона")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsBackground),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorBackground(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorBackground},on:{"change":_vm.changeColorBackground}})],1),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Логотип")]),_vm._v(" "),_c('div',{staticClass:"file-drop-area"},[_c('span',{staticClass:"fake-btn"},[_vm._v("Выберите файл "),_c('br'),_vm._v("Или перетащите его сюда ")]),_vm._v(" "),_c('input',{ref:"fileLogo",staticClass:"file-input",attrs:{"type":"file"},on:{"change":_vm.changeLogo}})])])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openBannerSetting,"title":'Настройка баннера',"buttonSave":true},on:{"close":_vm.saveBanner,"save":_vm.saveBanner}},[_c('div',{staticClass:"form-group",attrs:{"id":"file-input"}},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Изображение баннера")]),_vm._v(" "),_c('div',{staticClass:"file-drop-area"},[_c('span',{staticClass:"fake-btn"},[_vm._v("Выберите файл "),_c('br'),_vm._v("Или перетащите его сюда ")]),_vm._v(" "),_c('input',{ref:"fileBanner",staticClass:"file-input",attrs:{"type":"file"},on:{"change":_vm.changeBanner}})])])]),_vm._v(" "),_vm._m(0)],1)}
-var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"switch-panel open"},[_c('div',[_c('a',{staticClass:"btn btn-primary btn-block active",attrs:{"href":"#"}},[_vm._v("Главная")]),_vm._v(" "),_c('a',{staticClass:"btn btn-primary btn-block",attrs:{"href":"#"}},[_vm._v("Каталог")]),_vm._v(" "),_c('a',{staticClass:"btn btn-primary btn-block",attrs:{"href":"file:///C:/Users/shepi/OneDrive/%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB/git/templates-gosauda/template_main/item_shop.html"}},[_vm._v("Просмотр товара")]),_vm._v(" "),_c('a',{staticClass:"btn btn-primary btn-block",attrs:{"href":"#"}},[_vm._v("О компании")])])])}]
+        }}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Размер")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.textFontSize),expression:"textFontSize"}],staticClass:"form-control",attrs:{"name":"font-size","id":"font-size"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.textFontSize=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"10px"}},[_vm._v("10px")]),_vm._v(" "),_c('option',{attrs:{"value":"12px"}},[_vm._v("12px")]),_vm._v(" "),_c('option',{attrs:{"value":"14px"}},[_vm._v("14px")]),_vm._v(" "),_c('option',{attrs:{"value":"16px"}},[_vm._v("16px")]),_vm._v(" "),_c('option',{attrs:{"value":"20px"}},[_vm._v("20px")]),_vm._v(" "),_c('option',{attrs:{"value":"24px"}},[_vm._v("24px")]),_vm._v(" "),_c('option',{attrs:{"value":"28px"}},[_vm._v("28px")]),_vm._v(" "),_c('option',{attrs:{"value":"32px"}},[_vm._v("32px")]),_vm._v(" "),_c('option',{attrs:{"value":"36px"}},[_vm._v("36px")]),_vm._v(" "),_c('option',{attrs:{"value":"40px"}},[_vm._v("40px")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Жирность")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.textFontWeight),expression:"textFontWeight"}],staticClass:"form-control",attrs:{"name":"font-weight","id":"font-weight"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.textFontWeight=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"100"}},[_vm._v("100, Thin")]),_vm._v(" "),_c('option',{attrs:{"value":"300"}},[_vm._v("300, Light")]),_vm._v(" "),_c('option',{attrs:{"value":"400"}},[_vm._v("400, Normal")]),_vm._v(" "),_c('option',{attrs:{"value":"500"}},[_vm._v("500, Medium")]),_vm._v(" "),_c('option',{attrs:{"value":"600"}},[_vm._v("600, Semi Bold")]),_vm._v(" "),_c('option',{attrs:{"value":"700"}},[_vm._v("700, Bold")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет")]),_vm._v(" "),_c('text',{attrs:{"color":_vm.colorText},on:{"change":_vm.changeColorText}})])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openGlobal,"title":'Глобальные стили'},on:{"close":function (){this$1.openGlobal = false}}},[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Шрифт")]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.globalFont),expression:"globalFont"}],staticClass:"form-control",attrs:{"id":"font-select"},on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.globalFont=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"Raleway"}},[_vm._v("Raleway")]),_vm._v(" "),_c('option',{attrs:{"value":"Roboto"}},[_vm._v("Roboto")]),_vm._v(" "),_c('option',{attrs:{"value":"Montserrat"}},[_vm._v("Montserrat")]),_vm._v(" "),_c('option',{attrs:{"value":"Rubik"}},[_vm._v("Rubik")])])]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Общий цвет")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsGlobal),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorGlobal(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorGlobal},on:{"change":_vm.changeColorGlobal}})],1),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет при наведение")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsHover),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorHover(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorHover},on:{"change":_vm.changeColorHover}})],1),_vm._v(" "),_c('div',{staticClass:"form-group",attrs:{"id":"background-color"}},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Цвет фона")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsBackground),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorBackground(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorBackground},on:{"change":_vm.changeColorBackground}})],1),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Логотип")]),_vm._v(" "),_c('div',{staticClass:"file-drop-area"},[_c('span',{staticClass:"fake-btn"},[_vm._v("Выберите файл "),_c('br'),_vm._v("Или перетащите его сюда ")]),_vm._v(" "),_c('input',{ref:"fileLogo",staticClass:"file-input",attrs:{"type":"file"},on:{"change":_vm.changeLogo}})])])]),_vm._v(" "),_c('settingModal',{attrs:{"isOpen":_vm.openBannerSetting,"title":'Настройка баннера',"buttonSave":true},on:{"close":_vm.saveBanner,"save":_vm.saveBanner}},[_c('div',{staticClass:"form-group",attrs:{"id":"file-input"}},[_c('label',{attrs:{"for":"font-select"}},[_vm._v("Изображение баннера")]),_vm._v(" "),_c('div',{staticClass:"file-drop-area"},[_c('span',{staticClass:"fake-btn"},[_vm._v("Выберите файл "),_c('br'),_vm._v("Или перетащите его сюда ")]),_vm._v(" "),_c('input',{ref:"fileBanner",staticClass:"file-input",attrs:{"type":"file"},on:{"change":_vm.changeBanner}})])])])],1)}
+var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
 

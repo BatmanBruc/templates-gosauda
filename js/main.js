@@ -1,3 +1,3 @@
 window.config = {
-    link_save: 'test',
+    link_save: 'https://gosauda.kz/shop/tpl_save',
 }

@@ -61,7 +61,7 @@ a:hover{
     justify-content: space-between;
 }
 
-.sidebar li a i{
+.sidebar li a .icon-arrow{
     transform: rotate(-90deg);
     font-size: 9pt;
 }

@@ -72854,7 +72854,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
             class: selector
         },
         created: function created() {
-            if (!$('style[name-elem="' + selector + '"]')[0]) $('body').append('<style name-elem="' + selector + '"></style>');
+            if (!$('style[name-elem="' + selector + '"]')[0]) $('main.shop').append('<style name-elem="' + selector + '"></style>');
         },
 
         watch: {},
@@ -72931,7 +72931,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         created: function created() {
             $(this.$el).addClass(this.class);
-            if (!$('style[name-elem="' + selector + '"]')[0]) $('body').append('<style name-frag="' + selector + '"></style>');
+            if (!$('style[name-elem="' + selector + '"]')[0]) $('main.shop').append('<style name-frag="' + selector + '"></style>');
         },
 
         watch: {},

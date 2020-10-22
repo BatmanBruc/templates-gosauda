@@ -72911,6 +72911,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
         watch: {},
         methods: {
             destroy: function destroy() {
+                $(this.$el).html(content);
                 this.$destroy();
             },
             init: function init() {
@@ -72997,6 +72998,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         watch: {},
         methods: {
             destroy: function destroy() {
+                $(this.$el).html(content);
                 $(this.$el).html(this.content);
             },
             onEditorInput: function onEditorInput() {},

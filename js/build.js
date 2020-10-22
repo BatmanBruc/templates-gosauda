@@ -29439,6 +29439,8 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_color__ = __webpack_require__(185);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_color___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_color__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Query_js__ = __webpack_require__(473);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -29874,21 +29876,19 @@ function getRoundedCanvas(sourceCanvas) {
             reader.readAsDataURL(file);
         },
         save: function save() {
-            var _this3 = this;
-
             this.$emit('destroy');
-            // $.ajax({
-            //     url: window.config.link_save,
-            //     type: 'POST',
-            //     data: { ...{
-            //         ajax: 1,
-            //         file: $('html').html()
-            //     }, ...window.config.data_save}
-            // })
-            setTimeout(function () {
-                alert('event');
-                _this3.$emit('initElements');
-            }, 2000);
+            var cntx = this;
+            $.ajax({
+                url: window.config.link_save,
+                type: 'POST',
+                data: _extends({
+                    ajax: 1,
+                    file: $('html').html()
+                }, window.config.data_save),
+                success: function success() {
+                    cntx.$emit('initElements');
+                }
+            });
         }
     }
 });
@@ -42323,7 +42323,7 @@ var index_esm = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__ = __webpack_require__(183);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2c82ac38_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(579);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_fa8cdf92_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(579);
 function injectStyle (ssrContext) {
   __webpack_require__(444)
 }
@@ -42343,7 +42343,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2c82ac38_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_fa8cdf92_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -42364,7 +42364,7 @@ var content = __webpack_require__(445);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(94)("e0eab7c2", content, true, {});
+var update = __webpack_require__(94)("6c8b7a20", content, true, {});
 
 /***/ }),
 /* 445 */
@@ -72891,7 +72891,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_1__ckeditor_ckeditor5_vue___default.a);
 
 /* harmony default export */ __webpack_exports__["a"] = (function (elem) {
-    console.log($(elem)[0]);
     var content = $(elem).html();
     var style = $(elem).attr('styleParams');
     var selector = $(elem).attr('name');
@@ -72912,7 +72911,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
         watch: {},
         methods: {
             destroy: function destroy() {
-                $(this.$el).html(content);
                 this.$destroy();
             },
             init: function init() {

@@ -40918,6 +40918,8 @@ $('.group-element, .group-fragment').each(function () {
         var style = $(this).attr('style');
         var group = Object(__WEBPACK_IMPORTED_MODULE_6__group__["a" /* default */])(style);
         $('.group-element[group="' + groupName + '"], .group-fragment[group="' + groupName + '"]').each(function () {
+            var _this = this;
+
             $(this).attr('go', 1);
             var cntx = this;
             var elem = void 0;
@@ -40927,6 +40929,7 @@ $('.group-element, .group-fragment').each(function () {
                 elem = Object(__WEBPACK_IMPORTED_MODULE_5__fragment__["a" /* default */])(this);
             }
             callBacksDestroyElements.push(function () {
+                $(_this).removeAttr('go');
                 elem.destroy();
             });
             callBacksInitElements.push(function () {
@@ -40982,17 +40985,18 @@ $('.group-element, .group-fragment').each(function () {
     $('.ck-body-wrapper').remove();
 });
 $('.element:not(.group-element)').each(function () {
-    var _this = this;
+    var _this2 = this;
 
     var elem = Object(__WEBPACK_IMPORTED_MODULE_4__element__["a" /* default */])(this);
     callBacksDestroyElements.push(function () {
+        $(_this2).removeAttr('go');
         elem.destroy();
     });
     callBacksInitElements.push(function () {
-        if ($(_this).hasClass('element')) {
-            elem = Object(__WEBPACK_IMPORTED_MODULE_4__element__["a" /* default */])(_this);
+        if ($(_this2).hasClass('element')) {
+            elem = Object(__WEBPACK_IMPORTED_MODULE_4__element__["a" /* default */])(_this2);
         } else {
-            elem = Object(__WEBPACK_IMPORTED_MODULE_5__fragment__["a" /* default */])(_this);
+            elem = Object(__WEBPACK_IMPORTED_MODULE_5__fragment__["a" /* default */])(_this2);
         }
     });
     console.log(elem);
@@ -41041,17 +41045,18 @@ $('.element:not(.group-element)').each(function () {
 });
 
 $('.fragment:not(.group-fragment)').each(function () {
-    var _this2 = this;
+    var _this3 = this;
 
     var elem = Object(__WEBPACK_IMPORTED_MODULE_5__fragment__["a" /* default */])(this);
     callBacksDestroyElements.push(function () {
+        $(_this3).removeAttr('go');
         elem.destroy();
     });
     callBacksInitElements.push(function () {
-        if ($(_this2).hasClass('element')) {
-            elem = Object(__WEBPACK_IMPORTED_MODULE_4__element__["a" /* default */])(_this2);
+        if ($(_this3).hasClass('element')) {
+            elem = Object(__WEBPACK_IMPORTED_MODULE_4__element__["a" /* default */])(_this3);
         } else {
-            elem = Object(__WEBPACK_IMPORTED_MODULE_5__fragment__["a" /* default */])(_this2);
+            elem = Object(__WEBPACK_IMPORTED_MODULE_5__fragment__["a" /* default */])(_this3);
         }
     });
     elem.changeStyle({

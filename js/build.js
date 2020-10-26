@@ -29439,8 +29439,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_color__ = __webpack_require__(185);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_color___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_color__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Query_js__ = __webpack_require__(473);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 //
 //
 //
@@ -29878,17 +29876,21 @@ function getRoundedCanvas(sourceCanvas) {
         save: function save() {
             this.$emit('destroy');
             var cntx = this;
-            $.ajax({
-                url: window.config.link_save,
-                type: 'POST',
-                data: _extends({
-                    ajax: 1,
-                    file: $('html').html()
-                }, window.config.data_save),
-                success: function success() {
-                    cntx.$emit('initElements');
-                }
-            });
+            // $.ajax({
+            //     url: window.config.link_save,
+            //     type: 'POST',
+            //     data: { ...{
+            //         ajax: 1,
+            //         file: $('html').html()
+            //     }, ...window.config.data_save},
+            //     success(){
+            //         cntx.$emit('initElements');
+            //     }
+            // })
+            setTimeout(function () {
+                alert('init');
+                cntx.$emit('initElements');
+            }, 1000);
         }
     }
 });
@@ -35193,7 +35195,6 @@ module.exports = withPublic
                 }, 200);
             }
         });
-        console.log(this);
     },
 
     watch: {
@@ -40900,6 +40901,7 @@ settingsPanel.$children[0].$on('destroy', function () {
     for (var index = 0; index < callBacksDestroyElements.length; index++) {
         callBacksDestroyElements[index]();
     }
+    callBacksDestroyElements = [];
 });
 var callBacksInitElements = [];
 settingsPanel.$children[0].$on('initElements', function () {
@@ -40907,7 +40909,98 @@ settingsPanel.$children[0].$on('initElements', function () {
         callBacksInitElements[index]();
     }
 });
-console.log(settingsPanel);
+function initElement(domElement, group, isInit) {
+    var idElem = void 0;
+    if (!$(domElement).attr('id-elem')) {
+        idElem = new Date().getTime();
+        $(domElement).attr('id-elem', idElem);
+    } else {
+        idElem = $(domElement).attr('id-elem');
+    }
+    $(domElement).attr('go', 1);
+    console.log($(domElement).attr('go'));
+    var cntx = domElement;
+    var elem = void 0;
+    if ($(domElement).hasClass('element')) {
+        elem = Object(__WEBPACK_IMPORTED_MODULE_4__element__["a" /* default */])(domElement);
+    } else {
+        elem = Object(__WEBPACK_IMPORTED_MODULE_5__fragment__["a" /* default */])(domElement);
+    }
+    var tippyObject = void 0;
+    var toolpitContent = '<div id="settingText"></div>';
+    console.log(domElement);
+    if ($(domElement)[0].tagName == 'A') {
+        $(domElement).click(function () {
+            return false;
+        });
+        toolpitContent = toolpitContent + '<a class="double-link" href="' + $(domElement).attr('href') + '">Перейти по ссылке</a>';
+    }
+    tippy(elem.$el, {
+        content: toolpitContent,
+        allowHTML: true,
+        trigger: 'click',
+        interactive: true,
+        placement: 'bottom',
+        onCreate: function onCreate(instance) {
+            tippyObject = instance;
+            var settingsText = new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
+                el: $(instance.popper).find('#settingText')[0],
+                render: function render(h) {
+                    return h(__WEBPACK_IMPORTED_MODULE_3__components_setting_text_vue__["a" /* default */]);
+                }
+            });
+            if (group) settingsText.$children[0].$on('changeStyle', group.changeStyle);else settingsText.$children[0].$on('changeStyle', elem.changeStyle);
+        }
+    });
+    callBacksDestroyElements.push(function () {
+        elem.changeStyle({
+            outline: '0px'
+        });
+        $(elem.$el).removeAttr('go');
+        elem.changeStyle({
+            outline: '0px'
+        });
+        elem.destroy();
+        elem = undefined;
+        tippyObject.destroy();
+    });
+    if (!isInit) {
+        callBacksInitElements.push(function () {
+            var domElement = $('*[id-elem="' + idElem + '"]').attr('id-elem', idElem)[0];
+            initElement(domElement, group, 1);
+        });
+    }
+    if (group) {
+        group.changeStyle({
+            'font-size': $(elem.$el).css('font-size'),
+            'font-weight': $(elem.$el).css('font-weight'),
+            'color': $(elem.$el).css('color')
+        });
+        group.$on('changeStyle', elem.changeStyle);
+    } else {
+        elem.changeStyle({
+            'font-size': $(elem.$el).css('font-size'),
+            'font-weight': $(elem.$el).css('font-weight'),
+            'color': $(elem.$el).css('color')
+        });
+    }
+    $('style[data-cke="true"]').remove();
+    $(elem.$el).click(function () {
+        if (settingsPanel.$children[0].$data.activeElem) {
+            settingsPanel.$children[0].$data.activeElem.changeStyle({
+                outline: '0px'
+            });
+        }
+        settingsPanel.$children[0].$data.activeElem = null;
+        setTimeout(function () {
+            settingsPanel.$children[0].$data.activeElem = group;
+            settingsPanel.$children[0].$data.activeElem.changeStyle({
+                outline: '1px solid #ccc'
+            });
+        }, 200);
+        return false;
+    });
+}
 var predGroup = void 0;
 $('.group-element, .group-fragment').each(function () {
     var groupName = $(this).attr('group');
@@ -40918,187 +41011,120 @@ $('.group-element, .group-fragment').each(function () {
         var style = $(this).attr('style');
         var group = Object(__WEBPACK_IMPORTED_MODULE_6__group__["a" /* default */])(style);
         $('.group-element[group="' + groupName + '"], .group-fragment[group="' + groupName + '"]').each(function () {
-            var _this = this;
-
-            $(this).attr('go', 1);
-            var cntx = this;
-            var elem = void 0;
-            if ($(this).hasClass('element')) {
-                elem = Object(__WEBPACK_IMPORTED_MODULE_4__element__["a" /* default */])(this);
-            } else {
-                elem = Object(__WEBPACK_IMPORTED_MODULE_5__fragment__["a" /* default */])(this);
-            }
-            callBacksDestroyElements.push(function () {
-                $(_this).removeAttr('go');
-                elem.destroy();
-            });
-            callBacksInitElements.push(function () {
-                if ($(cntx).hasClass('element')) {
-                    elem = Object(__WEBPACK_IMPORTED_MODULE_4__element__["a" /* default */])(elem.$el);
-                } else {
-                    elem = Object(__WEBPACK_IMPORTED_MODULE_5__fragment__["a" /* default */])(elem.$el);
-                }
-            });
-            group.changeStyle({
-                'font-size': $(elem.$el).css('font-size'),
-                'font-weight': $(elem.$el).css('font-weight'),
-                'color': $(elem.$el).css('color')
-            });
-            group.$on('changeStyle', elem.changeStyle);
-            $('style[data-cke="true"]').remove();
-            $(elem.$el).click(function () {
-                if (settingsPanel.$children[0].$data.activeElem) {
-                    settingsPanel.$children[0].$data.activeElem.changeStyle({
-                        outline: '0px'
-                    });
-                }
-                settingsPanel.$children[0].$data.activeElem = null;
-                setTimeout(function () {
-                    settingsPanel.$children[0].$data.activeElem = group;
-                    settingsPanel.$children[0].$data.activeElem.changeStyle({
-                        outline: '1px solid #ccc'
-                    });
-                }, 200);
-            });
-            var toolpitContent = '<div id="settingText"></div>';
-            if ($(elem.$el)[0].tagName == 'A') {
-                toolpitContent = toolpitContent + '<a class="double-link" href="' + $(elem.$el).attr('href') + '">Перейти по ссылке</a>';
-            }
-            tippy(elem.$el, {
-                content: toolpitContent,
-                allowHTML: true,
-                trigger: 'click',
-                interactive: true,
-                placement: 'bottom',
-                onCreate: function onCreate(instance) {
-                    var settingsText = new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
-                        el: $(instance.popper).find('#settingText')[0],
-                        render: function render(h) {
-                            return h(__WEBPACK_IMPORTED_MODULE_3__components_setting_text_vue__["a" /* default */]);
-                        }
-                    });
-                    settingsText.$children[0].$on('changeStyle', group.changeStyle);
-                }
-            });
+            initElement(this, group);
         });
     }
     $('.ck-body-wrapper').remove();
 });
 $('.element:not(.group-element)').each(function () {
-    var _this2 = this;
-
-    var elem = Object(__WEBPACK_IMPORTED_MODULE_4__element__["a" /* default */])(this);
-    callBacksDestroyElements.push(function () {
-        $(_this2).removeAttr('go');
-        elem.destroy();
-    });
-    callBacksInitElements.push(function () {
-        if ($(_this2).hasClass('element')) {
-            elem = Object(__WEBPACK_IMPORTED_MODULE_4__element__["a" /* default */])(_this2);
-        } else {
-            elem = Object(__WEBPACK_IMPORTED_MODULE_5__fragment__["a" /* default */])(_this2);
-        }
-    });
-    console.log(elem);
-    elem.changeStyle({
-        'font-size': $(elem.$el).css('font-size'),
-        'font-weight': $(elem.$el).css('font-weight'),
-        'color': $(elem.$el).css('color')
-    });
-    elem.$on('changeStyle', elem.changeStyle);
-    $('style[data-cke="true"]').remove();
-    $(elem.$el).click(function () {
-        if (settingsPanel.$children[0].$data.activeElem) {
-            settingsPanel.$children[0].$data.activeElem.changeStyle({
-                outline: '0px'
-            });
-        }
-        settingsPanel.$children[0].$data.activeElem = null;
-        setTimeout(function () {
-            settingsPanel.$children[0].$data.activeElem = elem;
-            settingsPanel.$children[0].$data.activeElem.changeStyle({
-                outline: '1px solid #ccc'
-            });
-        }, 200);
-    });
-    var toolpitContent = '<div id="settingText"></div>';
-    if ($(elem.$el)[0].tagName == 'A') {
-        toolpitContent = toolpitContent + '<a class="double-link" href="' + $(elem.$el).attr('href') + '">Перейти по ссылке</a>';
-    }
-    tippy(elem.$el, {
-        content: toolpitContent,
-        allowHTML: true,
-        trigger: 'click',
-        interactive: true,
-        placement: 'bottom',
-        onCreate: function onCreate(instance) {
-            var settingsText = new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
-                el: $(instance.popper).find('#settingText')[0],
-                render: function render(h) {
-                    return h(__WEBPACK_IMPORTED_MODULE_3__components_setting_text_vue__["a" /* default */]);
-                }
-            });
-            settingsText.$children[0].$on('changeStyle', elem.changeStyle);
-        }
-    });
-    $('.ck-body-wrapper').remove();
+    //   let elem = element(this);
+    //   callBacksDestroyElements.push(()=>{
+    //     $(this).removeAttr('go')
+    //     elem.destroy();
+    //     })
+    //     callBacksInitElements.push(()=>{
+    //         if($(this).hasClass('element')){
+    //             elem = element(this);
+    //         }else{
+    //             elem = fragment(this);
+    //         }
+    //     })
+    //   console.log(elem);
+    //   elem.changeStyle({
+    //       'font-size': $(elem.$el).css('font-size'),
+    //       'font-weight': $(elem.$el).css('font-weight'),
+    //       'color': $(elem.$el).css('color')
+    //   })
+    //   elem.$on('changeStyle', elem.changeStyle)
+    //   $('style[data-cke="true"]').remove();
+    //   $(elem.$el).click(function(){
+    //     if(settingsPanel.$children[0].$data.activeElem){
+    //         settingsPanel.$children[0].$data.activeElem.changeStyle({
+    //             outline: '0px'
+    //         })
+    //     }
+    //     settingsPanel.$children[0].$data.activeElem = null;
+    //       setTimeout(()=>{
+    //           settingsPanel.$children[0].$data.activeElem = elem;
+    //           settingsPanel.$children[0].$data.activeElem.changeStyle({
+    //             outline: '1px solid #ccc'
+    //         })
+    //       },200)
+    //   })
+    //   let toolpitContent = '<div id="settingText"></div>';
+    //   if($(elem.$el)[0].tagName == 'A'){
+    //       toolpitContent = toolpitContent + '<a class="double-link" href="' + $(elem.$el).attr('href') + '">Перейти по ссылке</a>'
+    //   }
+    //   tippy(elem.$el, {
+    //       content: toolpitContent,
+    //         allowHTML: true,
+    //         trigger: 'click',
+    //         interactive: true,
+    //         placement: 'bottom',
+    //         onCreate(instance) {
+    //             let settingsText = new Vue({
+    //                 el: $(instance.popper).find('#settingText')[0],
+    //                 render: h => h(compSettingsText)
+    //             })
+    //             settingsText.$children[0].$on('changeStyle', elem.changeStyle);
+    //         },
+    //     });
+    //   $('.ck-body-wrapper').remove();
+    initElement(this);
 });
 
 $('.fragment:not(.group-fragment)').each(function () {
-    var _this3 = this;
-
-    var elem = Object(__WEBPACK_IMPORTED_MODULE_5__fragment__["a" /* default */])(this);
-    callBacksDestroyElements.push(function () {
-        $(_this3).removeAttr('go');
-        elem.destroy();
-    });
-    callBacksInitElements.push(function () {
-        if ($(_this3).hasClass('element')) {
-            elem = Object(__WEBPACK_IMPORTED_MODULE_4__element__["a" /* default */])(_this3);
-        } else {
-            elem = Object(__WEBPACK_IMPORTED_MODULE_5__fragment__["a" /* default */])(_this3);
-        }
-    });
-    elem.changeStyle({
-        'font-size': $(elem.$el).css('font-size'),
-        'font-weight': $(elem.$el).css('font-weight'),
-        'color': $(elem.$el).css('color')
-    });
-    $(elem.$el).click(function () {
-        if (settingsPanel.$children[0].$data.activeElem) {
-            settingsPanel.$children[0].$data.activeElem.changeStyle({
-                outline: '0px'
-            });
-        }
-        settingsPanel.$children[0].$data.activeElem = null;
-        setTimeout(function () {
-            settingsPanel.$children[0].$data.activeElem = elem;
-            settingsPanel.$children[0].$data.activeElem.changeStyle({
-                outline: '1px solid #ccc'
-            });
-        }, 200);
-    });
-    var toolpitContent = '<div id="settingText"></div>';
-    if ($(elem.$el)[0].tagName == 'A') {
-        toolpitContent = toolpitContent + '<a class="double-link" href="' + $(elem.$el).attr('href') + '">Перейти по ссылке</a>';
-    }
-    tippy(elem.$el, {
-        content: toolpitContent,
-        allowHTML: true,
-        trigger: 'click',
-        interactive: true,
-        placement: 'bottom',
-        onCreate: function onCreate(instance) {
-            var settingsText = new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
-                el: $(instance.popper).find('#settingText')[0],
-                render: function render(h) {
-                    return h(__WEBPACK_IMPORTED_MODULE_3__components_setting_text_vue__["a" /* default */]);
-                }
-            });
-            settingsText.$children[0].$on('changeStyle', elem.changeStyle);
-        }
-    });
-    $('style[data-cke="true"]').remove();
+    //     let elem = fragment(this);
+    //     callBacksDestroyElements.push(()=>{
+    //         $(this).removeAttr('go')
+    //         elem.destroy();
+    //     })
+    //     callBacksInitElements.push(()=>{
+    //         if($(this).hasClass('element')){
+    //             elem = element(this);
+    //         }else{
+    //             elem = fragment(this);
+    //         }
+    //     })
+    //     elem.changeStyle({
+    //         'font-size': $(elem.$el).css('font-size'),
+    //         'font-weight': $(elem.$el).css('font-weight'),
+    //         'color': $(elem.$el).css('color')
+    //     })
+    //     $(elem.$el).click(function(){
+    //         if(settingsPanel.$children[0].$data.activeElem){
+    //             settingsPanel.$children[0].$data.activeElem.changeStyle({
+    //                 outline: '0px'
+    //             })
+    //         }
+    //         settingsPanel.$children[0].$data.activeElem = null;
+    //         setTimeout(()=>{
+    //             settingsPanel.$children[0].$data.activeElem = elem;
+    //             settingsPanel.$children[0].$data.activeElem.changeStyle({
+    //                 outline: '1px solid #ccc'
+    //             })
+    //         },200)
+    //     })
+    //     let toolpitContent = '<div id="settingText"></div>';
+    //     if($(elem.$el)[0].tagName == 'A'){
+    //         toolpitContent = toolpitContent + '<a class="double-link" href="' + $(elem.$el).attr('href') + '">Перейти по ссылке</a>'
+    //     }
+    //     tippy(elem.$el, {
+    //         content: toolpitContent,
+    //         allowHTML: true,
+    //         trigger: 'click',
+    //         interactive: true,
+    //         placement: 'bottom',
+    //         onCreate(instance) {
+    //             let settingsText = new Vue({
+    //                 el: $(instance.popper).find('#settingText')[0],
+    //                 render: h => h(compSettingsText)
+    //             })
+    //             settingsText.$children[0].$on('changeStyle', elem.changeStyle);
+    //         },
+    //     });
+    //   $('style[data-cke="true"]').remove();
+    initElement(this);
 });
 $('a.element, a.fragment').click(function () {
     return false;
@@ -42328,7 +42354,7 @@ var index_esm = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__ = __webpack_require__(183);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_fa8cdf92_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(579);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e52a9dfa_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(579);
 function injectStyle (ssrContext) {
   __webpack_require__(444)
 }
@@ -42348,7 +42374,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_fa8cdf92_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e52a9dfa_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -42369,7 +42395,7 @@ var content = __webpack_require__(445);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(94)("6c8b7a20", content, true, {});
+var update = __webpack_require__(94)("01549a0c", content, true, {});
 
 /***/ }),
 /* 445 */
@@ -72806,7 +72832,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_text_vue__ = __webpack_require__(235);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_070972d0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_text_vue__ = __webpack_require__(583);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f95c2daa_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_text_vue__ = __webpack_require__(583);
 function injectStyle (ssrContext) {
   __webpack_require__(581)
 }
@@ -72826,7 +72852,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_text_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_070972d0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_text_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f95c2daa_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_text_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -72847,7 +72873,7 @@ var content = __webpack_require__(582);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(94)("65ffa087", content, true, {});
+var update = __webpack_require__(94)("0fca7aea", content, true, {});
 
 /***/ }),
 /* 582 */
@@ -72897,9 +72923,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
 
 /* harmony default export */ __webpack_exports__["a"] = (function (elem) {
     var content = $(elem).html();
+    console.log(content);
     var style = $(elem).attr('styleParams');
     var selector = $(elem).attr('name');
-    $(elem).attr(':style', 'style');
+    //$(elem).attr(':style', 'style');
     $(elem).html('<ckeditor @ready="ReadyEditor" @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor>');
     return new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
         el: elem,
@@ -72916,18 +72943,14 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
         watch: {},
         methods: {
             destroy: function destroy() {
-                $(this.$el).html(content);
+                $(this.$el).html(this.editorData);
                 this.$destroy();
             },
             init: function init() {
                 $(this.$el).html('<ckeditor @ready="ReadyEditor" @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor>');
             },
-            ReadyEditor: function ReadyEditor() {
-                console.log(this.editor);
-            },
-            onEditorInput: function onEditorInput() {
-                console.log(this.editorData);
-            },
+            ReadyEditor: function ReadyEditor() {},
+            onEditorInput: function onEditorInput() {},
             changeColor: function changeColor(color) {
                 this.style = _extends({}, this.style, { color: color });
             },
@@ -72936,7 +72959,11 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
                     indentation: '  '
                 });
                 this.style = _extends({}, this.style, style);
-                css.addRule('.element[name="' + selector + '"]', this.style);
+                var newStyle = {};
+                for (var key in style) {
+                    newStyle[key] = style[key] + '!important';
+                }
+                css.addRule('.element[name="' + selector + '"]', newStyle);
                 $('style[name-elem="' + selector + '"]').text(css.getOutput());
             },
             callback: function callback(func, arg) {

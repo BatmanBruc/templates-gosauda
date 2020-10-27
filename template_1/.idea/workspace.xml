@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27e5e5b6-2970-45b0-8f1c-82c460725265" name="Default Changelist" comment="" />
+    <list default="true" id="27e5e5b6-2970-45b0-8f1c-82c460725265" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,7 +14,11 @@
       <executable />
     </execution>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1eJ1p4JWyoQN8YiYGE4isLPE4WZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -41,6 +47,7 @@
       <option name="presentableId" value="Default" />
       <updated>1594025060793</updated>
       <workItem from="1594025061935" duration="1314000" />
+      <workItem from="1601447764214" duration="16000" />
     </task>
     <servers />
   </component>
@@ -48,10 +55,11 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1594035429235">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1601447778796">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594035429235" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-2560.0.2560.1040@0.0.1920.1040" timestamp="1601447778796" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1594035418798">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

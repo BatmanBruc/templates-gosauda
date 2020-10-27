@@ -29439,6 +29439,8 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_color__ = __webpack_require__(185);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_color___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_color__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Query_js__ = __webpack_require__(473);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -29603,11 +29605,37 @@ function getRoundedCanvas(sourceCanvas) {
                     pattern: /[0-9a-fA-F]+/
                 }
             },
-            defaultColorsGlobal: [{ hex: '#05277c' }, { hex: '#0065b3' }, { hex: '#009cdb' }, { hex: '#a0d5e5' }, { hex: '#00573d' }, { hex: '#f7ce00' }, { hex: '#fef800' }, { hex: '#c06720' }, { hex: '#ffa016' }, { hex: '#ff6600' }, { hex: '#9385c6' }, { hex: '#a048ad' }, { hex: '#e398c5' }, { hex: '#ff1466' }, { hex: '#ff048c' }, { hex: '#c6085b' }, { hex: '#ff0102' }, { hex: '#6bc941' }, { hex: '#000000' }, { hex: '#626262' }, { hex: '#a2a2a2' }],
+            defaultColorsGlobal: [{ hex: '#05277c' }, { hex: '#0065b3' }, { hex: '#009cdb' }, { hex: '#a0d5e5' }, { hex: '#00573d' },
+            // { hex: '#f7ce00' },
+            // { hex: '#fef800' },
+            { hex: '#c06720' }, { hex: '#ffa016' },
+            // { hex: '#ff6600' },
+            { hex: '#9385c6' },
+            // { hex: '#a048ad' },
+            { hex: '#e398c5' }, { hex: '#ff1466' },
+            // { hex: '#ff048c' },
+            // { hex: '#c6085b' },
+            { hex: '#ff0102' },
+            // { hex: '#6bc941' },
+            // { hex: '#000000' },
+            { hex: '#626262' }, { hex: '#a2a2a2' }],
             colorGlobal: { hex: '#26cae5' },
-            defaultColorsHover: [{ hex: '#05277c' }, { hex: '#0065b3' }, { hex: '#009cdb' }, { hex: '#a0d5e5' }, { hex: '#00573d' }, { hex: '#f7ce00' }, { hex: '#fef800' }, { hex: '#c06720' }, { hex: '#ffa016' }, { hex: '#ff6600' }, { hex: '#9385c6' }, { hex: '#a048ad' }, { hex: '#e398c5' }, { hex: '#ff1466' }, { hex: '#ff048c' }, { hex: '#c6085b' }, { hex: '#ff0102' }, { hex: '#6bc941' }, { hex: '#000000' }, { hex: '#626262' }, { hex: '#a2a2a2' }],
+            defaultColorsHover: [{ hex: '#05277c' }, { hex: '#0065b3' }, { hex: '#009cdb' }, { hex: '#a0d5e5' }, { hex: '#00573d' },
+            // { hex: '#f7ce00' },
+            // { hex: '#fef800' },
+            { hex: '#c06720' }, { hex: '#ffa016' },
+            // { hex: '#ff6600' },
+            { hex: '#9385c6' },
+            // { hex: '#a048ad' },
+            { hex: '#e398c5' }, { hex: '#ff1466' },
+            // { hex: '#ff048c' },
+            // { hex: '#c6085b' },
+            { hex: '#ff0102' },
+            // { hex: '#6bc941' },
+            // { hex: '#000000' },
+            { hex: '#626262' }, { hex: '#a2a2a2' }],
             colorHover: { hex: '#26cae5' },
-            defaultColorsBackground: [{ hex: '#05277c' }, { hex: '#0065b3' }, { hex: '#009cdb' }, { hex: '#a0d5e5' }, { hex: '#00573d' }, { hex: '#f7ce00' }, { hex: '#fef800' }, { hex: '#c06720' }, { hex: '#ffa016' }, { hex: '#ff6600' }, { hex: '#9385c6' }, { hex: '#a048ad' }, { hex: '#e398c5' }, { hex: '#ff1466' }, { hex: '#ff048c' }, { hex: '#c6085b' }, { hex: '#ff0102' }, { hex: '#6bc941' }, { hex: '#000000' }, { hex: '#626262' }, { hex: '#a2a2a2' }],
+            defaultColorsBackground: [{ hex: '#f2f2f2' }, { hex: '#f0e8dc' }, { hex: '#f0dcdc' }, { hex: '#eef0dc' }, { hex: '#dcf0e3' }, { hex: '#dcdcf0' }],
             colorBackground: { hex: '#f2f2f2' },
 
             activeElem: null,
@@ -29876,21 +29904,21 @@ function getRoundedCanvas(sourceCanvas) {
         save: function save() {
             this.$emit('destroy');
             var cntx = this;
-            // $.ajax({
-            //     url: window.config.link_save,
-            //     type: 'POST',
-            //     data: { ...{
-            //         ajax: 1,
-            //         file: $('html').html()
-            //     }, ...window.config.data_save},
-            //     success(){
-            //         cntx.$emit('initElements');
-            //     }
-            // })
-            setTimeout(function () {
-                alert('init');
-                cntx.$emit('initElements');
-            }, 1000);
+            $.ajax({
+                url: window.config.link_save,
+                type: 'POST',
+                data: _extends({
+                    ajax: 1,
+                    file: $('html').html()
+                }, window.config.data_save),
+                success: function success() {
+                    cntx.$emit('initElements');
+                }
+            });
+            // setTimeout(()=>{
+            //     alert('init');
+            //     cntx.$emit('initElements');
+            // },1000)
         }
     }
 });
@@ -42354,7 +42382,7 @@ var index_esm = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__ = __webpack_require__(183);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e52a9dfa_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(579);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_32e6b1ad_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__ = __webpack_require__(579);
 function injectStyle (ssrContext) {
   __webpack_require__(444)
 }
@@ -42374,7 +42402,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e52a9dfa_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_32e6b1ad_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -42395,7 +42423,7 @@ var content = __webpack_require__(445);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(94)("01549a0c", content, true, {});
+var update = __webpack_require__(94)("1eab304f", content, true, {});
 
 /***/ }),
 /* 445 */

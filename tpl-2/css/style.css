@@ -144,10 +144,19 @@ box-shadow: 0 0 8px 0 #ccc;
 
 .card .card-img{
     height: 200px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+    overflow: hidden;
+    position: relative;
 }
+
+.card .card-img img{
+    width: 300px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
 
 .card .card-title{
     font-weight: 600;

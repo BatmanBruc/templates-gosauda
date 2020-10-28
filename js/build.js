@@ -40946,7 +40946,6 @@ function initElement(domElement, group, isInit) {
         idElem = $(domElement).attr('id-elem');
     }
     $(domElement).attr('go', 1);
-    console.log($(domElement).attr('go'));
     var cntx = domElement;
     var elem = void 0;
     if ($(domElement).hasClass('element')) {
@@ -40956,7 +40955,6 @@ function initElement(domElement, group, isInit) {
     }
     var tippyObject = void 0;
     var toolpitContent = '<div id="settingText"></div>';
-    console.log(domElement);
     if ($(domElement)[0].tagName == 'A') {
         $(domElement).click(function () {
             return false;
@@ -72951,7 +72949,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
 
 /* harmony default export */ __webpack_exports__["a"] = (function (elem) {
     var content = $(elem).html();
-    console.log(content);
     var style = $(elem).attr('styleParams');
     var selector = $(elem).attr('name');
     //$(elem).attr(':style', 'style');
@@ -72971,7 +72968,12 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
         watch: {},
         methods: {
             destroy: function destroy() {
-                $(this.$el).html(this.editorData);
+                console.log(this.editorData);
+                try {
+                    $(this.$el).html($(this.editorData).text());
+                } catch (err) {
+                    $(this.$el).html(this.editorData);
+                }
                 this.$destroy();
             },
             init: function init() {

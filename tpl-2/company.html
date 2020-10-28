@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-nucleo.css">
+    <link rel="stylesheet" href="../css/spectrum.css">
+    <link rel="stylesheet" href="../css/settings-panel.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="settings-panel"></div>
+<main class="shop" id="app">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="../img/logo.svg" alt="logo" class="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a group="top-link" name="link-home" class="group-element element nav-link" href="#">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a group="top-link" name="link-about" class="group-element element nav-link"
+                           href="#">Каталог</a>
+                    </li>
+                    <li class="nav-item">
+                        <a group="top-link" name="link-catalog" class="group-element element nav-link" href="#">О
+                            комапнии</a>
+                    </li>
+                </ul>
+                <form class="form-search border-setting">
+                    <input class="form-control" type="search" placeholder="Что вы ищете?" aria-label="Search">
+                    <button class="btn btn-tpl background-setting" type="submit"><i class="icon icon-search mr-2"></i>
+                        Поиск
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <section class="main" style="background-image: url('../img/bg_main.jpg')">
+        <div class="main-content">
+            <h1>UMA STONE - Изделия из натурального камня</h1>
+            <a href="#" class="btn btn-template">Смотреть каталог</a>
+        </div>
+    </section>
+
+    <section class="goods">
+        <div class="container">
+            <h2 class="text-center">Топ 20 товаров</h2>
+            <div class="row">
+                <div class="col-md-4 col-lg-3 mt-4" v-for="item in goods">
+                    <a href="#">
+                        <div class="card">
+                            <div class="card-img" v-bind:style="{ backgroundImage: 'url(' + item.img + ')' }">
+                            </div>
+                            <div class="card-body">
+                                <p class="card-title">{{item.title}}</p>
+                                <p class="card-price">{{item.price}} ₸</p>
+                                <br>
+                                <p class="card-other">{{item.city}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <br><br>
+            <div class="text-center">
+                <a href="#" class="btn btn-template">Смотреть каталог</a>
+            </div>
+        </div>
+    </section>
+
+<section class="contacts">
+    <div class="container">
+        <h2 class="text-center">Контакты</h2>
+       <div class="row">
+           <div class="col-md-4 mt-3">
+               <div class="card">
+                <div class="card-body">
+                    <p class="card-other">Номер телефона:</p>
+                    <p class="card-title mt-2"><i class="icon icon-phone blue"></i> + 7 747 523 4323</p>
+                </div>
+               </div>
+           </div>
+           <div class="col-md-4 mt-3">
+               <div class="card">
+                   <div class="card-body">
+                       <p class="card-other">Почтовый адрес:</p>
+                       <p class="card-title mt-2"><i class="icon icon-mail-alt blue"></i> qwerty.qwery@gmail.qwerty</p>
+                   </div>
+               </div>
+           </div>
+           <div class="col-md-4 mt-3">
+               <div class="card">
+                   <div class="card-body">
+                       <p class="card-other">Социальные сети:</p>
+                           <p class="card-title mt-2"><i class="icon icon-instagram blue"></i> qwerty</p>
+                           <p class="card-title mt-2 ml-md-4"><i class="icon icon-facebook blue"></i> qwerty</p>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
+</section>
+
+    <section class="footer">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <p class=" footer-title">
+                        Использование сайта, в том числе подача объявлений, означает согласие с
+                        <a href="https://gosauda.kz/page/agreement">Пользовательскимим соглашением</a>. Оплачивая услуги
+                        на сайте, вы принимаете
+                        <a href="https://gosauda.kz/page/offert">оферту</a>. Информация о
+                        <a href="https://gosauda.kz/page/privacy">cookies</a>.
+                    </p>
+                </div>
+
+                <div class="col-md-12 hidden-xs mt-5 footer-muted">
+                    <a href="https://gosauda.kz">Сайт работает на платформе GoSauda.kz</a>
+                    <p>Компания "HUBE" © 2020, Все права защищены ®</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/cropper.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU"
+        type="text/javascript">
+</script>
+<script>
+    $('.open-btn').click(function () {
+        $('.switch-panel').toggleClass('open')
+    })
+
+
+    $(window).scroll(function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 200) {
+            $('.navbar').addClass("scrolled");
+        } else {
+            $('.navbar').removeClass("scrolled");
+        }
+    });
+</script>
+<!--<script src="../js/build.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            goods: [
+                {
+                    img: '../img/cover/wall-1.jpg',
+                    title: 'Toyota Camry 550',
+                    price: '6 000 000',
+                    city: 'Нур-Султан (Астана)'
+                },
+                {
+                    img: '../img/cover/wall-2.jpg',
+                    title: 'Пирожки с мясом (оптом)',
+                    price: '10 000',
+                    city: 'Кызылорда'
+                },
+                {
+                    img: '../img/cover/wall-3.jpg',
+                    title: 'Мангал, разбираемый',
+                    price: '5 000',
+                    city: 'Нур-Султан (Астана)'
+                },
+                {
+                    img: '../img/cover/ring.jpg',
+                    title: 'Кольцо всевластия',
+                    price: 'Договорная',
+                    city: 'Средиземье, Мордор'
+                },
+                {
+                    img: '../img/cover/wall-4.jpg',
+                    title: 'Еще какой-то товар',
+                    price: '123 123',
+                    city: 'Актау'
+                },
+                {
+                    img: '../img/cover/wall-5.jpg',
+                    title: 'И еще один какой-то товар',
+                    price: '321 312',
+                    city: 'Актобе'
+                },
+                {
+                    img: '../img/cover/wall-1.jpg',
+                    title: 'Toyota Camry 550',
+                    price: '6 000 000',
+                    city: 'Нур-Султан (Астана)'
+                },
+                {
+                    img: '../img/cover/wall-2.jpg',
+                    title: 'Пирожки с мясом (оптом)',
+                    price: '10 000',
+                    city: 'Кызылорда'
+                },
+                {
+                    img: '../img/cover/wall-3.jpg',
+                    title: 'Мангал, разбираемый',
+                    price: '5 000',
+                    city: 'Нур-Султан (Астана)'
+                },
+                {
+                    img: '../img/cover/ring.jpg',
+                    title: 'Кольцо всевластия',
+                    price: 'Договорная',
+                    city: 'Средиземье, Мордор'
+                },
+                {
+                    img: '../img/cover/wall-4.jpg',
+                    title: 'Еще какой-то товар',
+                    price: '123 123',
+                    city: 'Актау'
+                },
+                {
+                    img: '../img/cover/wall-5.jpg',
+                    title: 'И еще один какой-то товар',
+                    price: '321 312',
+                    city: 'Актобе'
+                },
+                {
+                    img: '../img/cover/wall-1.jpg',
+                    title: 'Toyota Camry 550',
+                    price: '6 000 000',
+                    city: 'Нур-Султан (Астана)'
+                },
+                {
+                    img: '../img/cover/wall-2.jpg',
+                    title: 'Пирожки с мясом (оптом)',
+                    price: '10 000',
+                    city: 'Кызылорда'
+                },
+                {
+                    img: '../img/cover/wall-3.jpg',
+                    title: 'Мангал, разбираемый',
+                    price: '5 000',
+                    city: 'Нур-Султан (Астана)'
+                },
+                {
+                    img: '../img/cover/ring.jpg',
+                    title: 'Кольцо всевластия',
+                    price: 'Договорная',
+                    city: 'Средиземье, Мордор'
+                }
+
+            ]
+        }
+    })
+</script>
+</body>
+</html>

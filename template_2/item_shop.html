@@ -18,9 +18,10 @@
 <main class="shop comp-color-{val=color}">
     <section class="item-shop">
         <nav class="navbar navbar-default">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -34,7 +35,8 @@
                         <li><a href="#">О компании</a></li>
                         <li><a href="#">Каталог</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Категории</a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">Категории</a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Категория 1</a></li>
                                 <li><a href="#">Категория 2</a></li>
@@ -44,24 +46,64 @@
                             </ul>
                         </li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right search">
-                        <form class="form-inline my-lg-0 py-2">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Поиск среди товаров..." aria-label="Search">
+                    <ul class="nav navbar-nav navbar-right">
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Поиск среди товаров..."
+                                   aria-label="Search">
                             <button class="btn btn-outline-template-sm my-sm-0" type="submit">поиск</button>
                         </form>
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <hr>
-        <section class="good">
-            <div class="container-fluid">
+        <section class="info">
+            <div class="container">
+                <div class="card-info">
+                    <div class="block">
+                        <i class="icon icon-phone"></i>
+                        <div>
+                            <p>Телефон</p>
+                            <p>+7 (747) 506 72 52</p>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <i class="icon icon-mail-alt"></i>
+                        <div>
+                            <p>Почта</p>
+                            <p>showman.ad@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <a href="#"><i class="icon icon-instagram"></i></a>
+                        <a href="#"><i class="icon icon-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="good mt-4">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
+                        <div class="card-sidebar">
+                            <div class="card-sidebar-head">
+                                категории
+                            </div>
+                            <ul class="sidebar">
+                                <li><a href="">Категория 1</a></li>
+                                <li><a href="">Категория 2</a></li>
+                                <li><a href="">Категория 3</a></li>
+                                <li><a href="">Категория 4</a></li>
+                                <li><a href="">Посмотреть всё</a></li>
+                            </ul>
+                        </div>
+                        <div class="card-map mt-4">
+                            <p>Казахстан, Акмолинская область, Нур-Султан (Астана)</p>
+                            <a href="#"><img src="../img/map.png" alt="" width="100%"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
                         <div id="carousel_ads" class="carousel carousel-ads slide" data-ride="carousel">
                             <div class="carousel-inner">
-
                                 <a class="item active"
                                    href="#">
                                     <img src="../img/cover/wall-1.jpg"
@@ -97,9 +139,6 @@
                                     <img src="../img/cover/wall-6.jpg"
                                          class="img-responsive">
                                 </a>
-
-
-
                                 <a class="left carousel-control" href="#carousel_ads" data-slide="prev">
                                     <i class="icon icon-arrow icon-rotate-90"></i>
                                     <span class="sr-only">Previous</span>
@@ -137,21 +176,19 @@
                                 </li>
                             </ol>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h4 class="bold text-uppercase">Описание вашего товара</h4>
-                        <div class="icons">
-                            <span>999 <i class="icon icon-eye"></i></span>
-                            <span class="ml-3">999 <i class="icon icon-phone-alt"></i></span>
+                        <h4 class="bold text-uppercase">Заголовок вашего товара</h4>
+                        <p class="price m-0">99 999 ₸</p>
+                        <div class="icons mt-2">
+                            <span>99 <i class="icon icon-eye"></i></span>
+                            <span class="ml-3">99 <i class="icon icon-phone-alt"></i></span>
                         </div>
-                        <div class="bb-item"></div>
-                        <p class="price">99 999 ₸</p>
+                        <hr>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dignissimos ea, eius
                             error, est exercitationem, facilis fuga libero nam nemo numquam officia optio quaerat qui
                             quibusdam quo sed. Obcaecati, reiciendis.</p>
                         <hr>
-                        <a href="#" class="btn btn-outline-template">купить</a>
-                        <a href="#" class="btn btn-outline-template">оставить заявку</a>
+                        <a href="#" class="btn btn-template">купить</a>
+                        <a href="#" class="btn btn-template">оставить заявку</a>
                         <hr>
                         <div class="row youtube-instagram">
                             <div class="col-md-6">
@@ -162,7 +199,8 @@
                             </div>
                             <div class="col-md-6">
                                 <a href="#" class="d-flex align-items-center">
-                                    <img src="../img/icons/instagram.svg" alt="" width="40px" class="gray-scale opacity-05">
+                                    <img src="../img/icons/instagram.svg" alt="" width="40px"
+                                         class="gray-scale opacity-05">
                                     <p class="m-0 ml-2 text-muted">Посмотреть Instagram</p>
                                 </a>
                             </div>
@@ -171,58 +209,31 @@
                 </div>
             </div>
         </section>
+        <hr>
+        <div class="footer-light">
+            <div class="container">
+                <div class="row text-center">
 
-    </section>
+                    <div class="col-md-12">
+                        <p class=" footer-title">
+                            Использование сайта, в том числе подача объявлений, означает согласие с
+                            <a href="https://gosauda.kz/page/agreement">Пользовательскимим соглашением</a>. Оплачивая
+                            услуги
+                            на сайте, вы принимаете
+                            <a href="https://gosauda.kz/page/offert">оферту</a>. Информация о
+                            <a href="https://gosauda.kz/page/privacy">cookies</a>.
+                        </p>
+                    </div>
 
-    <hr>
-    <section class="footer-shop text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="head-footer-shop">Адрес</p>
-                    <p class="content-footer-shop m-0">Ваш адрес</p>
-                </div>
-                <div class="col-md-3">
-                    <p class="head-footer-shop">Телефон</p>
-                    <p class="content-footer-shop m-0">+7 (999) 999 99 99</p>
-                </div>
-                <div class="col-md-3">
-                    <p class="head-footer-shop">Почта</p>
-                    <p class="content-footer-shop m-0">you.mail@mail.ru</p>
-                </div>
-                <div class="col-md-3">
-                    <p class="head-footer-shop">Социальные сети</p>
-                    <p class="content-footer-shop m-0">
-                        <a href="#"><i class="icon icon-instagram"></i></a>
-                        <a href="#"><i class="icon icon-facebook"></i></a>
-                    </p>
+                    <div class="col-md-12 hidden-xs">
+                        <a href="https://gosauda.kz">Сайт работает на платформе GoSauda.kz</a>
+                        <p>Компания "HUBE" © 2020, Все права защищены ®</p>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
-    <hr>
-    <div class="footer-light">
-        <div class="container">
-            <div class="row text-center">
-
-                <div class="col-md-12">
-                    <p class=" footer-title">
-                        Использование сайта, в том числе подача объявлений, означает согласие с
-                        <a href="https://gosauda.kz/page/agreement">Пользовательскимим соглашением</a>. Оплачивая услуги
-                        на сайте, вы принимаете
-                        <a href="https://gosauda.kz/page/offert">оферту</a>. Информация о
-                        <a href="https://gosauda.kz/page/privacy">cookies</a>.
-                    </p>
-                </div>
-
-                <div class="col-md-12 hidden-xs">
-                    <a href="https://gosauda.kz">Сайт работает на платформе GoSauda.kz</a>
-                    <p>Компания "HUBE" © 2020, Все права защищены ®</p>
-                </div>
-
-            </div>
-        </div>
-    </div>
 </main>
 
 <div class="templates-switch">
@@ -245,5 +256,6 @@
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/main.js"></script>
+<script src="../js/jquery.touchSwipe.min.js"></script>
 </body>
 </html>

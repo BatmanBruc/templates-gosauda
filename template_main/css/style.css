@@ -7,8 +7,8 @@ p{
 }
 
 .logo{
-    width: 140px;
-    height: auto;
+    height: 100%;
+    max-width: 100%;
 }
 
 .nav-link{
@@ -61,7 +61,7 @@ a:hover{
     justify-content: space-between;
 }
 
-.sidebar li a i{
+.sidebar li a .icon-arrow{
     transform: rotate(-90deg);
     font-size: 9pt;
 }
@@ -93,9 +93,9 @@ a:hover{
 .banner .banner-img-down img{
     bottom: 0px;
 }
-.banner.about .banner-img{
+/* .banner.about .banner-img{
     max-height: 150px;
-}
+} */
 
 
 .card-title{
@@ -358,4 +358,9 @@ section.main{
 .goods.grid .card-global.good .col-md-8{
     width: 100% !important;
     max-width: 100% !important;
+}
+.wrapper-logo{
+    width: 140px;
+    height: 40px;
+    text-align: center;
 }

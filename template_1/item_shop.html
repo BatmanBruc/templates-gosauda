@@ -8,214 +8,217 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/bootstrap4-classes.css">
     <link rel="stylesheet" href="../css/font-nucleo.css">
+    <link rel="stylesheet" href="../css/spectrum.css">
+    <link rel="stylesheet" href="../css/settings-panel.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
 
-<main class="shop comp-color-{val=color}">
-    <section class="item-shop">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">LOGO</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="#">О компании</a></li>
-                        <li><a href="#">Каталог</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Категории</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Категория 1</a></li>
-                                <li><a href="#">Категория 2</a></li>
-                                <li><a href="#">Категория 3</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Показать всё</a></li>
-                            </ul>
+    <div id="settings-panel"></div>
+    <main class="shop">
+        <nav class="navbar navbar-expand-lg navbar-light pt-4">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="../img/logo.svg" alt="logo" class="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a group="top-link" name="link-home" class="group-element element nav-link" href="#">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a group="top-link" name="link-about" class="group-element element nav-link" href="#">Каталог</a>
+                        </li>
+                        <li class="nav-item">
+                            <a group="top-link" name="link-catalog" class="group-element element nav-link" href="#">О комапнии</a>
                         </li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right search">
-                        <form class="form-inline my-lg-0 py-2">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Поиск среди товаров..." aria-label="Search">
-                            <button class="btn btn-outline-template-sm my-sm-0" type="submit">поиск</button>
-                        </form>
-                    </ul>
+                    <form class="form-search border-setting">
+                        <input class="form-control" type="search" placeholder="Поиск" aria-label="Search">
+                        <button class="btn btn-tpl background-setting" type="submit"><i class="icon icon-search mr-2"></i> Поиск</button>
+                    </form>
                 </div>
             </div>
         </nav>
-
-        <hr>
-        <section class="good">
-            <div class="container-fluid">
+    
+        <section class="info mt-4">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-                        <div id="carousel_ads" class="carousel carousel-ads slide" data-ride="carousel">
-                            <div class="carousel-inner">
-
-                                <a class="item active"
-                                   href="#">
-                                    <img src="../img/cover/wall-1.jpg"
-                                         class="img-responsive">
-                                </a>
-
-                                <a class="item"
-                                   href="#">
-                                    <img src="../img/cover/wall-2.jpg"
-                                         class="img-responsive">
-                                </a>
-
-                                <a class="item"
-                                   href="#">
-                                    <img src="../img/cover/wall-3.jpg"
-                                         class="img-responsive">
-                                </a>
-
-                                <a class="item"
-                                   href="#">
-                                    <img src="../img/cover/wall-4.jpg"
-                                         class="img-responsive">
-                                </a>
-
-                                <a class="item"
-                                   href="#">
-                                    <img src="../img/cover/wall-5.jpg"
-                                         class="img-responsive">
-                                </a>
-
-                                <a class="item"
-                                   href="#">
-                                    <img src="../img/cover/wall-6.jpg"
-                                         class="img-responsive">
-                                </a>
-
-
-
-                                <a class="left carousel-control" href="#carousel_ads" data-slide="prev">
-                                    <i class="icon icon-arrow icon-rotate-90"></i>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="right carousel-control" href="#carousel_ads" data-slide="next">
-                                    <i class="icon icon-arrow icon-rotate-270"></i>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel_ads" data-slide-to="0" class="active">
-                                    <img src="../img/cover/wall-1.jpg"
-                                         class="img-responsive">
-                                </li>
-                                <li data-target="#carousel_ads" data-slide-to="1" class="">
-                                    <img src="../img/cover/wall-2.jpg"
-                                         class="img-responsive">
-                                </li>
-                                <li data-target="#carousel_ads" data-slide-to="2" class="">
-                                    <img src="../img/cover/wall-3.jpg"
-                                         class="img-responsive">
-                                </li>
-                                <li data-target="#carousel_ads" data-slide-to="3" class="">
-                                    <img src="../img/cover/wall-4.jpg"
-                                         class="img-responsive">
-                                </li>
-                                <li data-target="#carousel_ads" data-slide-to="4" class="">
-                                    <img src="../img/cover/wall-5.jpg"
-                                         class="img-responsive">
-                                </li>
-                                <li data-target="#carousel_ads" data-slide-to="5" class="">
-                                    <img src="../img/cover/wall-6.jpg"
-                                         class="img-responsive">
-                                </li>
-                            </ol>
+                    <div class="col-md-4 mt-2 mt-md-0">
+    
+                        <div class="card-global">
+                            <p><span group="top-title" name="title-phone" class="group-element element">Номер телефон:</span></p>
+                            <p class="d-inline-flex align-items-center">
+                                <i class="icon icon-setting icon-phone mr-2"></i> <span group="info-block" name="text-phone" class="group-element element text-info-block">+7914324324</span>
+                            </p>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <h4 class="bold text-uppercase">Описание вашего товара</h4>
-                        <div class="icons">
-                            <span>999 <i class="icon icon-eye"></i></span>
-                            <span class="ml-3">999 <i class="icon icon-phone-alt"></i></span>
+                    <div class="col-md-4 mt-2 mt-md-0">
+                        <div class="card-global">
+                            <p><span group="top-title" name="title-mail" class="group-element element">Почтовый адрес:</span></p>
+                            <p class="d-inline-flex align-items-center">
+                                <i class="icon icon-setting icon-mail-alt mr-2"></i> <span group="info-block" name="text-mail" class="group-element element text-info-block">email@inbox.com</span>
+                            </p>
                         </div>
-                        <div class="bb-item"></div>
-                        <p class="price">99 999 ₸</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dignissimos ea, eius
-                            error, est exercitationem, facilis fuga libero nam nemo numquam officia optio quaerat qui
-                            quibusdam quo sed. Obcaecati, reiciendis.</p>
-                        <hr>
-                        <a href="#" class="btn btn-outline-template">купить</a>
-                        <a href="#" class="btn btn-outline-template">оставить заявку</a>
-                        <hr>
-                        <div class="row youtube-instagram">
-                            <div class="col-md-6">
-                                <a href="#" class="d-flex align-items-center">
-                                    <img src="../img/icons/youtube.svg" alt="" width="50px">
-                                    <p class="m-0 ml-2">Посмотреть Youtube</p>
-                                </a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="#" class="d-flex align-items-center">
-                                    <img src="../img/icons/instagram.svg" alt="" width="40px" class="gray-scale opacity-05">
-                                    <p class="m-0 ml-2 text-muted">Посмотреть Instagram</p>
-                                </a>
-                            </div>
+                    </div>
+                    <div class="col-md-4 mt-2 mt-sm-0">
+                        <div class="card-global icons">
+                            <p><span group="top-title" name="title-soc-net" class="group-element element">Социальные сети:</span></p>
+                            <a href="#" id="instagram-link" class="icon-text-flex"><i class="icon icon-setting icon-instagram mr-2"></i> <span style="display: inline-block;" group="info-block" name="link-inst" class="group-fragment fragment">instagram</span></a>
+                            <a href="#" id="whatsapp-link" class="icon-text-flex ml-lg-4"><i class="icon icon-setting icon-whatsapp mr-2"></i> <span style="display: inline-block;" group="info-block" name="link-facebook" class="group-fragment fragment">whatsapp</span></a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+    
+        <section class="main mt-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card-global">
+                            <p class="icon-text-flex bold"><i class="icon icon-setting icon-list mr-2"></i> <span style="display: inline-block" group="left-title-block" name="title-category" class="group-element element">Каталог категорий</span></p>
+                            <hr class="my-2">
+                            <ul class="sidebar">
+                                <li><a href="#">Категория 1 <i class="icon icon-setting icon-arrow"></i></a></li>
+                                <li><a href="#">Категория 2 <i class="icon icon-setting icon-arrow"></i></a></li>
+                                <li><a href="#">Категория 3 <i class="icon icon-setting icon-arrow"></i></a></li>
+                                <li><a href="#">Категория 4 <i class="icon icon-setting icon-arrow"></i></a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <div class="card-global">
+                            <p class="icon-text-flex bold"><i class="icon icon-setting icon-geo mr-2"></i> <span style="display: inline-block" group="left-title-block" name="title-adress" class="group-element element">Адрес компании</span></p>
+                            <hr class="my-2">
+                            <ul class="sidebar">
+                                <li><span name="adress" class="fragment" href="#" id="adress">Ваш адресс</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                <div class="col-md-8">
+                    <div class="good mb-5">
+                        <div id="carousel_ads" class="carousel carousel-ads slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <a class="carousel-item active"
+                                   href="#">
+                                    <img src="../img/cover/wall-1.jpg"
+                                         class="img-responsive">
+                                </a>
 
-    </section>
+                                <a class="carousel-item"
+                                   href="#">
+                                    <img src="../img/cover/wall-2.jpg"
+                                         class="img-responsive">
+                                </a>
 
-    <hr>
-    <section class="footer-shop text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="head-footer-shop">Адрес</p>
-                    <p class="content-footer-shop m-0">Ваш адрес</p>
-                </div>
-                <div class="col-md-3">
-                    <p class="head-footer-shop">Телефон</p>
-                    <p class="content-footer-shop m-0">+7 (999) 999 99 99</p>
-                </div>
-                <div class="col-md-3">
-                    <p class="head-footer-shop">Почта</p>
-                    <p class="content-footer-shop m-0">you.mail@mail.ru</p>
-                </div>
-                <div class="col-md-3">
-                    <p class="head-footer-shop">Социальные сети</p>
-                    <p class="content-footer-shop m-0">
-                        <a href="#"><i class="icon icon-instagram"></i></a>
-                        <a href="#"><i class="icon icon-facebook"></i></a>
-                    </p>
+                                <a class="carousel-item"
+                                   href="#">
+                                    <img src="../img/cover/wall-3.jpg"
+                                         class="img-responsive">
+                                </a>
+
+                                <a class="carousel-item"
+                                   href="#">
+                                    <img src="../img/cover/wall-4.jpg"
+                                         class="img-responsive">
+                                </a>
+
+                                <a class="carousel-item"
+                                   href="#">
+                                    <img src="../img/cover/wall-5.jpg"
+                                         class="img-responsive">
+                                </a>
+
+                                <a class="carousel-item"
+                                   href="#">
+                                    <img src="../img/cover/wall-6.jpg"
+                                         class="img-responsive">
+                                </a>
+                                <a class="carousel-control-prev" href="#carousel_ads" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carousel_ads" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel_ads" data-slide-to="0" class="active">
+                                    <img src="../img/cover/wall-1.jpg"
+                                         class="img-fluid">
+                                </li>
+                                <li data-target="#carousel_ads" data-slide-to="1" class="">
+                                    <img src="../img/cover/wall-2.jpg"
+                                         class="img-fluid">
+                                </li>
+                                <li data-target="#carousel_ads" data-slide-to="2" class="">
+                                    <img src="../img/cover/wall-3.jpg"
+                                         class="img-fluid">
+                                </li>
+                                <li data-target="#carousel_ads" data-slide-to="3" class="">
+                                    <img src="../img/cover/wall-4.jpg"
+                                         class="img-fluid">
+                                </li>
+                                <li data-target="#carousel_ads" data-slide-to="4" class="">
+                                    <img src="../img/cover/wall-5.jpg"
+                                         class="img-fluid">
+                                </li>
+                                <li data-target="#carousel_ads" data-slide-to="5" class="">
+                                    <img src="../img/cover/wall-6.jpg"
+                                         class="img-fluid">
+                                </li>
+                            </ol>
+                        </div>
+                        <br>
+                     <div class="card-global">
+                         <h4 class="bold text-uppercase">Заголовок вашего товара</h4>
+                       <div class="d-md-flex justify-content-md-between align-items-md-center">
+                           <p class="price m-0">99 999 ₸</p>
+                           <div class="icons mt-2">
+                               <span class="d-inline-flex align-items-center">99 <i class="icon icon-eye ml-2"></i></span>
+                               <span class="d-inline-flex align-items-center ml-3">99 <i class="icon icon-phone-alt ml-2"></i></span>
+                           </div>
+                       </div>
+                         <hr>
+                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dignissimos ea, eius
+                             error, est exercitationem, facilis fuga libero nam nemo numquam officia optio quaerat qui
+                             quibusdam quo sed. Obcaecati, reiciendis.</p>
+                         <hr>
+                         <a href="#" class="btn btn-template">купить</a>
+                         <a href="#" class="btn btn-template">оставить заявку</a>
+                         <hr>
+                         <div class="row youtube-instagram">
+                             <div class="col-md-6">
+                                 <a href="#" class="d-flex align-items-center">
+                                     <img src="../img/icons/youtube.svg" alt="" width="50px">
+                                     <p class="m-0 ml-2">Посмотреть Youtube</p>
+                                 </a>
+                             </div>
+                             <div class="col-md-6">
+                                 <a href="#" class="d-flex align-items-center">
+                                     <img src="../img/icons/instagram.svg" alt="" width="40px"
+                                          class="gray-scale opacity-05">
+                                     <p class="m-0 ml-2 text-muted">Посмотреть Instagram</p>
+                                 </a>
+                             </div>
+                         </div>
+                     </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <hr>
-    <div class="footer-light">
+
+    <div class="footer">
         <div class="container">
             <div class="row text-center">
-
-                <div class="col-md-12">
-                    <p class=" footer-title">
-                        Использование сайта, в том числе подача объявлений, означает согласие с
-                        <a href="https://gosauda.kz/page/agreement">Пользовательскимим соглашением</a>. Оплачивая услуги
-                        на сайте, вы принимаете
-                        <a href="https://gosauda.kz/page/offert">оферту</a>. Информация о
-                        <a href="https://gosauda.kz/page/privacy">cookies</a>.
-                    </p>
-                </div>
-
-                <div class="col-md-12 hidden-xs">
+                <div class="col-md-12 hidden-xs mt-5 footer-muted">
                     <a href="https://gosauda.kz">Сайт работает на платформе GoSauda.kz</a>
                     <p>Компания "HUBE" © 2020, Все права защищены ®</p>
                 </div>
@@ -224,26 +227,12 @@
         </div>
     </div>
 </main>
-
-<div class="templates-switch">
-    <div class="switch-hide">
-        Скрыть панель
-    </div>
-    <div class="switch-head">
-        <p>Переключатель между страницами</p>
-    </div>
-    <div class="switch-body">
-        <a href="company.html">Главная</a>
-        <a href="item_shop.html" class="active">Просмотр товара</a>
-        <a href="catalog.html">Каталог</a>
-    </div>
-    <div class="switch-footer">
-        <a href="../../gosauda_html/templates_list.html" class="back">Вернуться к списку шаблонов</a>
-        <a href="#" class="choice mt-2">Изпользовать</a>
-    </div>
-</div>
 <script src="../js/jquery.min.js"></script>
+<script src="../js/popper.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/cropper.js"></script>
+<script src="../js/build.js"></script>
 <script src="../js/main.js"></script>
+<script src="../js/spectrum.js"></script>
 </body>
 </html>

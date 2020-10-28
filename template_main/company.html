@@ -21,7 +21,7 @@
 <main class="shop">
     <nav class="navbar navbar-expand-lg navbar-light pt-4">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="../img/logo.svg" alt="logo" class="logo"></a>
+            <a class="navbar-brand wrapper-logo" href="#"><img src="../img/logo.svg" alt="logo" class="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a group="top-link" name="link-home" class="group-element element nav-link" href="#">Главная</a>
+                        <a group="top-link" name="link-home" class="group-element element nav-link" href="file:///C:/Users/shepi/OneDrive/Рабочий%20стол/git/templates-gosauda/template_main/company.html">Главная</a>
                     </li>
                     <li class="nav-item">
                         <a group="top-link" name="link-about" class="group-element element nav-link" href="#">Каталог</a>
@@ -86,10 +86,10 @@
                         <p class="icon-text-flex bold"><i class="icon icon-setting icon-list mr-2"></i> <span style="display: inline-block" group="left-title-block" name="title-category" class="group-element element">Каталог категорий</span></p>
                         <hr class="my-2">
                         <ul class="sidebar">
-                            <li><a href="#">Категория 1 <i class="icon icon-setting icon-arrow"></i></a></li>
-                            <li><a href="#">Категория 2 <i class="icon icon-setting icon-arrow"></i></a></li>
-                            <li><a href="#">Категория 3 <i class="icon icon-setting icon-arrow"></i></a></li>
-                            <li><a href="#">Категория 4 <i class="icon icon-setting icon-arrow"></i></a></li>
+                            <li><a href="#" ><span group="category" name="category" class="group-fragment gragment">Категория 1</span> <i class="icon icon-setting icon-arrow"></i></a></li>
+                            <li><a href="#" ><span group="category" name="category" class="group-fragment gragment">Категория 2</span> <i class="icon icon-setting icon-arrow"></i></a></li>
+                            <li><a href="#" ><span group="category" name="category" class="group-fragment gragment">Категория 3</span> <i class="icon icon-setting icon-arrow"></i></a></li>
+                            <li><a href="#" ><span group="category" name="category" class="group-fragment gragment">Категория 4</span> <i class="icon icon-setting icon-arrow"></i></a></li>
                         </ul>
                     </div>
                     <br>
@@ -97,7 +97,7 @@
                         <p class="icon-text-flex bold"><i class="icon icon-setting icon-geo mr-2"></i> <span style="display: inline-block" group="left-title-block" name="title-adress" class="group-element element">Адрес компании</span></p>
                         <hr class="my-2">
                         <ul class="sidebar">
-                            <li><span name="adress" class="fragment" href="#" id="adress">Ваш адресс</span></li>
+                            <li><span name="adress" class="fragment" href="#" id="adress"><em>Задайте адрес в настройках</em></span></li>
                         </ul>
                     </div>
                 </div>
@@ -170,16 +170,6 @@
     <div class="footer">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-12">
-                    <p class=" footer-title">
-                        Использование сайта, в том числе подача объявлений, означает согласие с
-                        <a href="https://gosauda.kz/page/agreement">Пользовательскимим соглашением</a>. Оплачивая услуги
-                        на сайте, вы принимаете
-                        <a href="https://gosauda.kz/page/offert">оферту</a>. Информация о
-                        <a href="https://gosauda.kz/page/privacy">cookies</a>.
-                    </p>
-                </div>
-
                 <div class="col-md-12 hidden-xs mt-5 footer-muted">
                     <a href="https://gosauda.kz">Сайт работает на платформе GoSauda.kz</a>
                     <p>Компания "HUBE" © 2020, Все права защищены ®</p>
@@ -191,8 +181,10 @@
 </main>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/popper.min.js"></script>
+<script src="../js/popover.2.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/cropper.js"></script>
+<script src="../js/spectrum.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU"
 type="text/javascript">
 </script>
@@ -200,7 +192,12 @@ type="text/javascript">
         $('.open-btn').click(function () {
             $('.switch-panel').toggleClass('open')
         })
+        window.config = {
+            link_save: 'http://beta.gosauda.kz/category/find_count',
+            data_save: {}
+        }
     </script>
+    
 <script src="../js/build.js"></script>
 </body>
 </html>

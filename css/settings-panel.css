@@ -3,7 +3,7 @@
 }
 
 .settings-panel{
-    position: absolute;
+    position: relative;
     left: 0;
     top: 0;
     width: 100%;
@@ -106,8 +106,9 @@
 }
 
 .sp-container{
-    position: fixed!important;
-    top: 63px!important;
+    /* position: fixed!important;
+    top: 63px!important; */
+    margin-left: 20px;
 }
 
 .sp-container button.sp-choose{
@@ -680,4 +681,16 @@
     height: 100%;
     overflow: auto;
     padding-bottom: 200px;
+}
+.double-link{
+  color: white;
+  width: 100%;
+  text-align: center;
+  display: block;
+  padding: 7px;
+  text-decoration: revert;
+}
+.double-link:hover{
+  color: #c6c6c6;
+  text-decoration: revert;
 }

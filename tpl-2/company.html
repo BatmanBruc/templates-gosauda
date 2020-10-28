@@ -52,25 +52,81 @@
     </nav>
     <section class="main" style="background-image: url('../img/bg_main.jpg')">
         <div class="main-content">
-            <h1>UMA STONE - Изделия из натурального камня</h1>
+            <h1 name="text-banner" class="element" >UMA STONE - Изделия из натурального камня</h1>
             <a href="#" class="btn btn-template">Смотреть каталог</a>
         </div>
     </section>
 
     <section class="goods">
         <div class="container">
-            <h2 class="text-center">Топ 20 товаров</h2>
+            <h2 name="title-list-product" class="element text-center">Топ 20 товаров</h2>
             <div class="row">
-                <div class="col-md-4 col-lg-3 mt-4" v-for="item in goods">
+                <div class="col-md-4 col-lg-3 mt-4">
                     <a href="#">
                         <div class="card">
-                            <div class="card-img" v-bind:style="{ backgroundImage: 'url(' + item.img + ')' }">
+                            <div class="card-img" style="background: url(../img/cover/wall-1.jpg)">
                             </div>
                             <div class="card-body">
-                                <p class="card-title">{{item.title}}</p>
-                                <p class="card-price">{{item.price}} ₸</p>
+                                <p group="product-name" name="product-name" class="group-fragment fragment card-title">ывавыаыва</p>
+                                <p group="product-price" name="product-price" class="group-fragment fragment card-price">234234 ₸</p>
                                 <br>
-                                <p class="card-other">{{item.city}}</p>
+                                <p group="product-local" name="product-local" class="group-fragment fragment card-other">Владивосток</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-lg-3 mt-4">
+                    <a href="#">
+                        <div class="card">
+                            <div class="card-img" style="background: url(../img/cover/wall-1.jpg)">
+                            </div>
+                            <div class="card-body">
+                                <p group="product-name" name="product-name" class="group-fragment fragment card-title">ывавыаыва</p>
+                                <p group="product-price" name="product-price" class="group-fragment fragment card-price">234234 ₸</p>
+                                <br>
+                                <p group="product-local" name="product-local" class="group-fragment fragment card-other">Владивосток</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-lg-3 mt-4">
+                    <a href="#">
+                        <div class="card">
+                            <div class="card-img" style="background: url(../img/cover/wall-1.jpg)">
+                            </div>
+                            <div class="card-body">
+                                <p group="product-name" name="product-name" class="group-fragment fragment card-title">ывавыаыва</p>
+                                <p group="product-price" name="product-price" class="group-fragment fragment card-price">234234 ₸</p>
+                                <br>
+                                <p group="product-local" name="product-local" class="group-fragment fragment card-other">Владивосток</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-lg-3 mt-4">
+                    <a href="#">
+                        <div class="card">
+                            <div class="card-img" style="background: url(../img/cover/wall-1.jpg)">
+                            </div>
+                            <div class="card-body">
+                                <p group="product-name" name="product-name" class="group-fragment fragment card-title">ывавыаыва</p>
+                                <p group="product-price" name="product-price" class="group-fragment fragment card-price">234234 ₸</p>
+                                <br>
+                                <p group="product-local" name="product-local" class="group-fragment fragment card-other">Владивосток</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-lg-3 mt-4">
+                    <a href="#">
+                        <div class="card">
+                            <div class="card-img" style="background: url(../img/cover/wall-1.jpg)">
+                            </div>
+                            <div class="card-body">
+                                <p group="product-name" name="product-name" class="group-fragment fragment card-title">ывавыаыва</p>
+                                <p group="product-price" name="product-price" class="group-fragment fragment card-price">234234 ₸</p>
+                                <br>
+                                <p group="product-local" name="product-local" class="group-fragment fragment card-other">Владивосток</p>
                             </div>
                         </div>
                     </a>
@@ -85,12 +141,12 @@
 
 <section class="contacts">
     <div class="container">
-        <h2 class="text-center">Контакты</h2>
+        <h2 name="title-contact" class="element text-center">Контакты</h2>
        <div class="row">
-           <div class="col-md-4 mt-3">
+           <div class="col-md-4 сщд-дп-3 mt-3">
                <div class="card">
                 <div class="card-body">
-                    <p class="card-other">Номер телефона:</p>
+                    <p group="top-title" name="title-phone" class="group-element element card-other">Номер телефона:</p>
                     <p class="card-title mt-2"><i class="icon icon-phone blue"></i> + 7 747 523 4323</p>
                 </div>
                </div>
@@ -98,7 +154,7 @@
            <div class="col-md-4 mt-3">
                <div class="card">
                    <div class="card-body">
-                       <p class="card-other">Почтовый адрес:</p>
+                       <p group="top-title" name="title-phone" class="group-element element card-other">Почтовый адрес:</p>
                        <p class="card-title mt-2"><i class="icon icon-mail-alt blue"></i> qwerty.qwery@gmail.qwerty</p>
                    </div>
                </div>
@@ -106,7 +162,7 @@
            <div class="col-md-4 mt-3">
                <div class="card">
                    <div class="card-body">
-                       <p class="card-other">Социальные сети:</p>
+                       <p group="top-title" name="title-phone" class="group-element element card-other">Социальные сети:</p>
                            <p class="card-title mt-2"><i class="icon icon-instagram blue"></i> qwerty</p>
                            <p class="card-title mt-2 ml-md-4"><i class="icon icon-facebook blue"></i> qwerty</p>
                    </div>
@@ -140,8 +196,10 @@
 </main>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/popper.min.js"></script>
+<script src="../js/popover.2.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/cropper.js"></script>
+<script src="../js/spectrum.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU"
         type="text/javascript">
 </script>
@@ -161,113 +219,7 @@
         }
     });
 </script>
-<!--<script src="../js/build.js"></script>-->
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script>
-    var app = new Vue({
-        el: '#app',
-        data: {
-            goods: [
-                {
-                    img: '../img/cover/wall-1.jpg',
-                    title: 'Toyota Camry 550',
-                    price: '6 000 000',
-                    city: 'Нур-Султан (Астана)'
-                },
-                {
-                    img: '../img/cover/wall-2.jpg',
-                    title: 'Пирожки с мясом (оптом)',
-                    price: '10 000',
-                    city: 'Кызылорда'
-                },
-                {
-                    img: '../img/cover/wall-3.jpg',
-                    title: 'Мангал, разбираемый',
-                    price: '5 000',
-                    city: 'Нур-Султан (Астана)'
-                },
-                {
-                    img: '../img/cover/ring.jpg',
-                    title: 'Кольцо всевластия',
-                    price: 'Договорная',
-                    city: 'Средиземье, Мордор'
-                },
-                {
-                    img: '../img/cover/wall-4.jpg',
-                    title: 'Еще какой-то товар',
-                    price: '123 123',
-                    city: 'Актау'
-                },
-                {
-                    img: '../img/cover/wall-5.jpg',
-                    title: 'И еще один какой-то товар',
-                    price: '321 312',
-                    city: 'Актобе'
-                },
-                {
-                    img: '../img/cover/wall-1.jpg',
-                    title: 'Toyota Camry 550',
-                    price: '6 000 000',
-                    city: 'Нур-Султан (Астана)'
-                },
-                {
-                    img: '../img/cover/wall-2.jpg',
-                    title: 'Пирожки с мясом (оптом)',
-                    price: '10 000',
-                    city: 'Кызылорда'
-                },
-                {
-                    img: '../img/cover/wall-3.jpg',
-                    title: 'Мангал, разбираемый',
-                    price: '5 000',
-                    city: 'Нур-Султан (Астана)'
-                },
-                {
-                    img: '../img/cover/ring.jpg',
-                    title: 'Кольцо всевластия',
-                    price: 'Договорная',
-                    city: 'Средиземье, Мордор'
-                },
-                {
-                    img: '../img/cover/wall-4.jpg',
-                    title: 'Еще какой-то товар',
-                    price: '123 123',
-                    city: 'Актау'
-                },
-                {
-                    img: '../img/cover/wall-5.jpg',
-                    title: 'И еще один какой-то товар',
-                    price: '321 312',
-                    city: 'Актобе'
-                },
-                {
-                    img: '../img/cover/wall-1.jpg',
-                    title: 'Toyota Camry 550',
-                    price: '6 000 000',
-                    city: 'Нур-Султан (Астана)'
-                },
-                {
-                    img: '../img/cover/wall-2.jpg',
-                    title: 'Пирожки с мясом (оптом)',
-                    price: '10 000',
-                    city: 'Кызылорда'
-                },
-                {
-                    img: '../img/cover/wall-3.jpg',
-                    title: 'Мангал, разбираемый',
-                    price: '5 000',
-                    city: 'Нур-Султан (Астана)'
-                },
-                {
-                    img: '../img/cover/ring.jpg',
-                    title: 'Кольцо всевластия',
-                    price: 'Договорная',
-                    city: 'Средиземье, Мордор'
-                }
+<script src="../js/build.js"></script>
 
-            ]
-        }
-    })
-</script>
 </body>
 </html>

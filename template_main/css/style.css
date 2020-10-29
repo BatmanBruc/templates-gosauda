@@ -292,7 +292,7 @@ a:hover{
 }
 
 .btn-template:hover{
-    background-color:transparent;
+    background-color: transparent!important;
     color: #26cae5;
 }
 

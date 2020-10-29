@@ -98,10 +98,10 @@ box-shadow: 0 0 8px 0 #ccc;
 .btn-template{
     background-color: #26cae5;
     color: #fff;
-    box-shadow:
+    /* box-shadow:
             0 0 10px 0px #26cae5,
             0 0 20px 0px rgba(38, 202, 229, 0.51),
-            0 0 30px 0px rgba(38, 202, 229, 0.52);
+            0 0 30px 0px rgba(38, 202, 229, 0.52); */
     border-radius: 10px;
     padding: 10px 40px;
     font-weight: 600;

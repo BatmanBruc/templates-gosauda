@@ -72971,6 +72971,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
                 console.log(this.editorData);
                 try {
                     $(this.$el).html($(this.editorData).text());
+                    if (!$(this.editorData).text()) {
+                        $(this.$el).html(this.editorData);
+                    }
                 } catch (err) {
                     $(this.$el).html(this.editorData);
                 }

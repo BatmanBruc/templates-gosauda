@@ -40983,9 +40983,6 @@ function initElement(domElement, group, isInit) {
             outline: '0px'
         });
         $(elem.$el).removeAttr('go');
-        elem.changeStyle({
-            outline: '0px'
-        });
         elem.destroy();
         elem = undefined;
         tippyObject.destroy();
@@ -41019,7 +41016,11 @@ function initElement(domElement, group, isInit) {
         }
         settingsPanel.$children[0].$data.activeElem = null;
         setTimeout(function () {
-            settingsPanel.$children[0].$data.activeElem = group;
+            if (group) {
+                settingsPanel.$children[0].$data.activeElem = group;
+            } else {
+                settingsPanel.$children[0].$data.activeElem = elem;
+            }
             settingsPanel.$children[0].$data.activeElem.changeStyle({
                 outline: '1px solid #ccc'
             });
@@ -72992,9 +72993,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
                     indentation: '  '
                 });
                 this.style = _extends({}, this.style, style);
+                console.log(this.style, style);
                 var newStyle = {};
-                for (var key in style) {
-                    newStyle[key] = style[key] + '!important';
+                for (var key in this.style) {
+                    newStyle[key] = this.style[key] + '!important';
                 }
                 css.addRule('.element[name="' + selector + '"]', newStyle);
                 $('style[name-elem="' + selector + '"]').text(css.getOutput());

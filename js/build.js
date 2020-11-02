@@ -41016,6 +41016,13 @@ settingsPanel.$children[0].$on('initElements', function () {
 function initImgPanel(elem, wrapper) {
     var tippyObject = void 0;
     var toolpitContent = '<div id="settingImg"></div>';
+    if ($(elem)[0].tagName == 'A' || $(elem).parent("a")[0]) {
+        var link = $(elem)[0].tagName == 'A' ? elem : $(elem).parent("a")[0];
+        $(link).click(function () {
+            return false;
+        });
+        toolpitContent = toolpitContent + '<a class="double-link" href="' + $(link).attr('href') + '">Перейти по ссылке</a>';
+    }
     tippy(wrapper ? wrapper : elem, {
         content: toolpitContent,
         allowHTML: true,
@@ -41057,33 +41064,6 @@ function initElement(domElement, group, isInit) {
     } else {
         elem = Object(__WEBPACK_IMPORTED_MODULE_6__fragment__["a" /* default */])(domElement);
     }
-    var tippyObject = void 0;
-    var toolpitContent = '<div id="settingText"></div>';
-    console.log($(domElement).parent());
-    if ($(domElement)[0].tagName == 'A' || $(domElement).parent("a")[0]) {
-        var link = $(domElement)[0].tagName == 'A' ? domElement : $(domElement).parent("a")[0];
-        $(link).click(function () {
-            return false;
-        });
-        toolpitContent = toolpitContent + '<a class="double-link" href="' + $(link).attr('href') + '">Перейти по ссылке</a>';
-    }
-    tippy(elem.$el, {
-        content: toolpitContent,
-        allowHTML: true,
-        trigger: 'click',
-        interactive: true,
-        placement: 'bottom',
-        onCreate: function onCreate(instance) {
-            tippyObject = instance;
-            var settingsText = new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
-                el: $(instance.popper).find('#settingText')[0],
-                render: function render(h) {
-                    return h(__WEBPACK_IMPORTED_MODULE_3__components_setting_text_vue__["a" /* default */]);
-                }
-            });
-            if (group) settingsText.$children[0].$on('changeStyle', group.changeStyle);else settingsText.$children[0].$on('changeStyle', elem.changeStyle);
-        }
-    });
     callBacksDestroyElements.push(function () {
         elem.changeStyle({
             outline: '0px'
@@ -41133,6 +41113,7 @@ function initElement(domElement, group, isInit) {
         }, 200);
         return false;
     });
+    return elem;
 }
 var predGroup = void 0;
 $('.group-element, .group-fragment').each(function () {
@@ -41143,8 +41124,34 @@ $('.group-element, .group-fragment').each(function () {
         predGroup = groupName;
         var style = $(this).attr('style');
         var group = Object(__WEBPACK_IMPORTED_MODULE_7__group__["a" /* default */])(style);
-        $('.group-element[group="' + groupName + '"], .group-fragment[group="' + groupName + '"]').each(function () {
-            initElement(this, group);
+        $('.group-element[group="' + groupName + '"], .group-fragment[group="' + groupName + '"]').each(function (i, domElement) {
+            var elem = initElement(this, group);
+            var tippyObject = void 0;
+            var toolpitContent = '<div id="settingText"></div>';
+            if ($(elem.$el)[0].tagName == 'A' || $(elem.$el).parent("a")[0]) {
+                var link = $(elem.$el)[0].tagName == 'A' ? elem.$el : $(elem.$el).parent("a")[0];
+                $(link).click(function () {
+                    return false;
+                });
+                toolpitContent = toolpitContent + '<a class="double-link" href="' + $(link).attr('href') + '">Перейти по ссылке</a>';
+            }
+            tippy(elem.$el, {
+                content: toolpitContent,
+                allowHTML: true,
+                trigger: 'click',
+                interactive: true,
+                placement: 'bottom',
+                onCreate: function onCreate(instance) {
+                    tippyObject = instance;
+                    var settingsText = new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
+                        el: $(instance.popper).find('#settingText')[0],
+                        render: function render(h) {
+                            return h(__WEBPACK_IMPORTED_MODULE_3__components_setting_text_vue__["a" /* default */]);
+                        }
+                    });
+                    if (group) settingsText.$children[0].$on('changeStyle', group.changeStyle);else settingsText.$children[0].$on('changeStyle', elem.changeStyle);
+                }
+            });
         });
     }
     $('.ck-body-wrapper').remove();

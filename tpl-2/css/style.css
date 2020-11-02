@@ -255,3 +255,12 @@ box-shadow: 0 0 8px 0 #ccc;
 p{
     margin: 0px;
 }
+.icon-setting, .card-price, .link {
+    color: #26cae5;
+}
+.border-setting{
+    border-color: #26cae5;
+}
+.background-setting{
+    background: #26cae5;
+}

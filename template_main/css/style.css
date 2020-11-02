@@ -44,9 +44,7 @@ a:hover{
     align-items: center;
 }
 
-.card-global i{
-    color: #26cae5;
-}
+
 
 .sidebar{
     margin-left: -40px;
@@ -70,7 +68,6 @@ a:hover{
     position: relative;
     border: 2px solid #26cae500;
     border-radius: 13px;
-    overflow: hidden;
     height: 300px;
 }
 
@@ -363,4 +360,13 @@ section.main{
     width: 140px;
     height: 40px;
     text-align: center;
+}
+.icon-setting, .card-price, .link {
+    color: #26cae5;
+}
+.border-setting{
+    border-color: #26cae5;
+}
+.background-setting{
+    background: #26cae5;
 }

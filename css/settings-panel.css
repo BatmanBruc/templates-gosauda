@@ -694,3 +694,10 @@
   color: #c6c6c6;
   text-decoration: revert;
 }
+.alert.alert-success {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  z-index: 10000;
+  display: none;
+}

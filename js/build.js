@@ -41013,7 +41013,7 @@ settingsPanel.$children[0].$on('initElements', function () {
         callBacksInitElements[index]();
     }
 });
-function initImgPanel(elem, wrapper) {
+function initImgPanel(elem, wrapper, isInit) {
     var tippyObject = void 0;
     var toolpitContent = '<div id="settingImg"></div>';
     if ($(elem)[0].tagName == 'A' || $(elem).parent("a")[0]) {
@@ -41042,6 +41042,14 @@ function initImgPanel(elem, wrapper) {
             });
         }
     });
+    callBacksDestroyElements.push(function () {
+        tippyObject.destroy();
+    });
+    if (!isInit) {
+        callBacksInitElements.push(function () {
+            initImgPanel(elem, wrapper, 1);
+        });
+    }
 }
 // $('.wrapper-logo').click(()=>{
 //     return false;
@@ -41064,6 +41072,32 @@ function initElement(domElement, group, isInit) {
     } else {
         elem = Object(__WEBPACK_IMPORTED_MODULE_6__fragment__["a" /* default */])(domElement);
     }
+    var tippyObject = void 0;
+    var toolpitContent = '<div id="settingText"></div>';
+    if ($(elem.$el)[0].tagName == 'A' || $(elem.$el).parent("a")[0]) {
+        var link = $(elem.$el)[0].tagName == 'A' ? elem.$el : $(elem.$el).parent("a")[0];
+        $(link).click(function () {
+            return false;
+        });
+        toolpitContent = toolpitContent + '<a class="double-link" href="' + $(link).attr('href') + '">Перейти по ссылке</a>';
+    }
+    tippy(elem.$el, {
+        content: toolpitContent,
+        allowHTML: true,
+        trigger: 'click',
+        interactive: true,
+        placement: 'bottom',
+        onCreate: function onCreate(instance) {
+            tippyObject = instance;
+            var settingsText = new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
+                el: $(instance.popper).find('#settingText')[0],
+                render: function render(h) {
+                    return h(__WEBPACK_IMPORTED_MODULE_3__components_setting_text_vue__["a" /* default */]);
+                }
+            });
+            if (group) settingsText.$children[0].$on('changeStyle', group.changeStyle);else settingsText.$children[0].$on('changeStyle', elem.changeStyle);
+        }
+    });
     callBacksDestroyElements.push(function () {
         elem.changeStyle({
             outline: '0px'
@@ -41126,32 +41160,6 @@ $('.group-element, .group-fragment').each(function () {
         var group = Object(__WEBPACK_IMPORTED_MODULE_7__group__["a" /* default */])(style);
         $('.group-element[group="' + groupName + '"], .group-fragment[group="' + groupName + '"]').each(function (i, domElement) {
             var elem = initElement(this, group);
-            var tippyObject = void 0;
-            var toolpitContent = '<div id="settingText"></div>';
-            if ($(elem.$el)[0].tagName == 'A' || $(elem.$el).parent("a")[0]) {
-                var link = $(elem.$el)[0].tagName == 'A' ? elem.$el : $(elem.$el).parent("a")[0];
-                $(link).click(function () {
-                    return false;
-                });
-                toolpitContent = toolpitContent + '<a class="double-link" href="' + $(link).attr('href') + '">Перейти по ссылке</a>';
-            }
-            tippy(elem.$el, {
-                content: toolpitContent,
-                allowHTML: true,
-                trigger: 'click',
-                interactive: true,
-                placement: 'bottom',
-                onCreate: function onCreate(instance) {
-                    tippyObject = instance;
-                    var settingsText = new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
-                        el: $(instance.popper).find('#settingText')[0],
-                        render: function render(h) {
-                            return h(__WEBPACK_IMPORTED_MODULE_3__components_setting_text_vue__["a" /* default */]);
-                        }
-                    });
-                    if (group) settingsText.$children[0].$on('changeStyle', group.changeStyle);else settingsText.$children[0].$on('changeStyle', elem.changeStyle);
-                }
-            });
         });
     }
     $('.ck-body-wrapper').remove();

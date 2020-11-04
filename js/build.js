@@ -29584,6 +29584,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -29706,6 +29714,7 @@ function getRoundedCanvas(sourceCanvas) {
     },
     created: function created() {
         ;
+        $('main.shop').append('<style name-elem="global-style-font"></style>');
         $('main.shop').append('<style name-elem="global-style-color"></style>');
         $('main.shop').append('<style name-elem="global-style-color-hover"></style>');
         var data = void 0;
@@ -29732,6 +29741,7 @@ function getRoundedCanvas(sourceCanvas) {
             toggleDragModeOnDblclick: false,
             viewMode: 3,
             crop: function crop(event) {
+                window.isChange = 1;
                 data = this.cropper.getData();
                 cntx.stylePositionBannerWrapper = $('.cropper-canvas').attr('style');
                 cntx.stylePositionBannerImg = $('.cropper-canvas img').attr('style');
@@ -29744,16 +29754,22 @@ function getRoundedCanvas(sourceCanvas) {
 
     watch: {
         globalFont: function globalFont() {
-            console.log('font-family', "'" + this.globalFont + "', sans-serif;");
-            $('.element, .fragment').css('font-family', "'" + this.globalFont + "', sans-serif");
+            window.isChange = 1;
+            var css = __WEBPACK_IMPORTED_MODULE_9_css_generator___default.a.create({
+                indentation: '  '
+            });
+            css.addRaw('.element, .fragment { font-family: ' + this.globalFont + ', sans-serif }');
+            $('style[name-elem="global-style-font"]').text(css.getOutput());
         },
         positionBannerImg: function positionBannerImg() {
             $('.banner-img img').css('top', -this.positionBannerImg);
         },
         linkInstagram: function linkInstagram() {
+            window.isChange = 1;
             $('#instagram-link').attr('href', 'https://www.instagram.com/' + this.linkInstagram);
         },
         phoneWhatsapp: function phoneWhatsapp() {
+            window.isChange = 1;
             $('#whatsapp-link').attr('href', 'https://wa.me/' + this.phoneWhatsapp);
         },
         textFontFamily: function textFontFamily() {
@@ -29813,6 +29829,7 @@ function getRoundedCanvas(sourceCanvas) {
             }
         },
         colorGlobal: function colorGlobal() {
+            window.isChange = 1;
             var css = __WEBPACK_IMPORTED_MODULE_9_css_generator___default.a.create({
                 indentation: '  '
             });
@@ -29822,6 +29839,7 @@ function getRoundedCanvas(sourceCanvas) {
             $('style[name-elem="global-style-color"]').text(css.getOutput());
         },
         colorHover: function colorHover() {
+            window.isChange = 1;
             var css = __WEBPACK_IMPORTED_MODULE_9_css_generator___default.a.create({
                 indentation: '  '
             });
@@ -29829,12 +29847,15 @@ function getRoundedCanvas(sourceCanvas) {
             $('style[name-elem="global-style-color-hover"]').text(css.getOutput());
         },
         colorBackground: function colorBackground() {
+            window.isChange = 1;
             $('.shop').css('background', this.colorBackground.hex);
         },
         geoLocalСlarification: function geoLocalLarification() {
+            window.isChange = 1;
             $('#adress').text(this.geoLocal + ', ' + this.geoLocalСlarification);
         },
         geoLocal: function geoLocal() {
+            window.isChange = 1;
             $('#adress').text(this.geoLocal + ', ' + this.geoLocalСlarification);
         }
     },
@@ -29896,12 +29917,15 @@ function getRoundedCanvas(sourceCanvas) {
             this.openGlobal = false;
         },
         changeColorGlobal: function changeColorGlobal(color) {
+            window.isChange = 1;
             this.colorGlobal = color;
         },
         changeColorHover: function changeColorHover(color) {
+            window.isChange = 1;
             this.colorHover = color;
         },
         changeColorBackground: function changeColorBackground(color) {
+            window.isChange = 1;
             this.colorBackground = color;
         },
         openGlobalStyle: function openGlobalStyle() {
@@ -29947,6 +29971,7 @@ function getRoundedCanvas(sourceCanvas) {
             reader.readAsDataURL(file);
         },
         save: function save() {
+            window.isChange = 0;
             this.$emit('destroy');
             this.saveBanner();
             var cntx = this;
@@ -41028,7 +41053,7 @@ function initImgPanel(elem, wrapper, isInit) {
     tippy(wrapper ? wrapper : elem, {
         content: toolpitContent,
         allowHTML: true,
-        trigger: 'click',
+        trigger: 'mouseenter',
         interactive: true,
         placement: 'bottom',
         onCreate: function onCreate(instance) {
@@ -41040,6 +41065,7 @@ function initImgPanel(elem, wrapper, isInit) {
                 }
             });
             settingsImg.$children[0].$on('changeImg', function (img) {
+                window.isChange = 1;
                 console.log(settingsPanel.$children[0].$data);
                 settingsPanel.$children[0].$data.cropper.replace(img);
             });
@@ -41280,6 +41306,9 @@ $('.fragment:not(.group-fragment)').each(function () {
 });
 $('a.element, a.fragment').click(function () {
     return false;
+});
+$(window).on("beforeunload", function () {
+    if (window.isChange) return "У вас не сохраненные изменения.";
 });
 
 /***/ }),
@@ -42506,7 +42535,7 @@ var index_esm = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_new_vue__ = __webpack_require__(184);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_45163cf8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7528c052_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__ = __webpack_require__(589);
 function injectStyle (ssrContext) {
   __webpack_require__(448)
 }
@@ -42526,7 +42555,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_new_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_45163cf8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7528c052_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -42547,7 +42576,7 @@ var content = __webpack_require__(449);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(73)("7cd1f02f", content, true, {});
+var update = __webpack_require__(73)("2bc68549", content, true, {});
 
 /***/ }),
 /* 449 */
@@ -42558,7 +42587,7 @@ exports = module.exports = __webpack_require__(72)(false);
 
 
 // module
-exports.push([module.i, "div.settings-panel-new{position:fixed;top:0;bottom:0;margin:auto;max-height:100%;z-index:1000}.settings-panel-new-buttons{position:absolute;top:0;bottom:0;margin:auto}.settings-panel-new-button-wrapper{position:relative}.settings-panel-new-button{cursor:pointer;padding:15px;position:relative;margin:10px;background:#fff;border-radius:5px;border:1px solid #ccc}.settings-panel-new-button-wrapper:hover .settings-panel-new-button{background:#26cae536}.settings-panel-new-button svg{width:30px;height:30px;fill:#5b5b5b}.settings-panel-toolpit{position:absolute;width:250px;background:#fff;left:76px;top:-1px;padding:12px;border-radius:5px;border:1px solid #ccc;display:none}.form-group{position:relative}.form-control-mask-instagram,.settings-panel .form-control{height:30px;line-height:30px}.settings-panel-toolpit-open{display:block}.color-options{display:flex;flex-wrap:wrap;justify-content:center;margin-top:10px}.color-pick{width:100%;height:35px;background-color:#333;cursor:pointer;transition:.2s ease;border:2px solid #5f5f5f;border-radius:29px}.settings-panel-toolpit-option{background:#fff;padding:5px 15px;border:1px solid #ebebeb;margin-bottom:5px;border-radius:4px;cursor:pointer}.settings-panel-toolpit-option:hover{background:#26cae536}.mask-instagram{position:absolute;top:35px;left:13px;color:#495057}.form-control-mask-instagram{padding-left:122px}.settings-panel .form-group{position:relative}", ""]);
+exports.push([module.i, "div.settings-panel-new{position:fixed;top:0;bottom:0;margin:auto;max-height:100%;z-index:1000}.settings-panel-new-buttons{position:absolute;top:0;bottom:0;margin:auto}.settings-panel-new-button-wrapper{position:relative}.settings-panel-new-button{cursor:pointer;padding:15px;position:relative;margin:10px;background:#fff;border-radius:5px;border:1px solid #ccc}.settings-panel-new-button-wrapper:hover .settings-panel-new-button{background:#26cae536}.settings-panel-new-button svg{width:30px;height:30px;fill:#5b5b5b}.settings-panel-toolpit{position:absolute;width:250px;background:#fff;left:76px;top:-1px;padding:12px;border-radius:5px;border:1px solid #ccc;display:none}.form-group{position:relative}.form-control-mask-instagram,.settings-panel .form-control{height:30px;line-height:30px}.settings-panel-toolpit-open{display:block}.color-options{display:flex;flex-wrap:wrap;justify-content:center;margin-top:10px}.color-pick{width:100%;height:35px;background-color:#333;cursor:pointer;transition:.2s ease;border:2px solid #5f5f5f;border-radius:29px}.settings-panel-toolpit-option{background:#fff;padding:5px 15px;border:1px solid #ebebeb;margin-bottom:5px;border-radius:4px;cursor:pointer}.settings-panel-toolpit-option:hover{background:#26cae536}.mask-instagram{position:absolute;top:35px;left:13px;color:#495057}.form-control-mask-instagram{padding-left:122px}.settings-panel .form-group{position:relative}.list-items-geo{border:1px solid #ccc;margin:auto;border-top:0;margin-top:-12px;padding-top:12px}.list-item-geo{margin:auto;border:1px solid #ccc;background:#f4f4f4;padding:5px 15px;color:#000;margin-bottom:10px;margin-top:10px;border-radius:10px;cursor:pointer;width:95%;font-size:14px}", ""]);
 
 // exports
 
@@ -73098,7 +73127,7 @@ function randomFillSync (buf, offset, size) {
 "use strict";
 var render = function () {
 var this$1 = this;
-var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"settings-panel-new",attrs:{"id":"settings-panel"}},[_c('div',{staticClass:"settings-panel-new-buttons"},[_c('div',{staticClass:"settings-panel-new-button-wrapper",on:{"mouseover":function (){this$1.openGlobalColor = true},"mouseout":function (){this$1.openGlobalColor = false}}},[_c('div',{staticClass:"settings-panel-new-button"},[_c('iconPallete')],1),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit",class:{'settings-panel-toolpit-open': this.openGlobalColor}},[_c('div',{staticClass:"settings-panel-toolpit-title"},[_vm._v("Основной цвет")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsGlobal),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorGlobal(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorGlobal},on:{"change":_vm.changeColorGlobal}}),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit-title"},[_vm._v("Цвет фона")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsBackground),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorBackground(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorBackground},on:{"change":_vm.changeColorBackground}}),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit-title"},[_vm._v("Цвет при наведение")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsHover),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorHover(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorHover},on:{"change":_vm.changeColorHover}})],1)]),_vm._v(" "),_c('div',{staticClass:"settings-panel-new-button-wrapper",on:{"mouseover":function (){this$1.openFont = true},"mouseout":function (){this$1.openFont = false}}},[_c('div',{staticClass:"settings-panel-new-button"},[_c('iconFont')],1),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit",class:{'settings-panel-toolpit-open': this.openFont}},[_c('div',{staticClass:"settings-panel-toolpit-title"},[_vm._v("Шрифт")]),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit-option",on:{"click":function (){this$1.globalFont = 'Raleway'}}},[_vm._v("Raleway")]),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit-option",on:{"click":function (){this$1.globalFont = 'Roboto'}}},[_vm._v("Roboto")]),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit-option",on:{"click":function (){this$1.globalFont = 'Montserrat'}}},[_vm._v("Montserrat")]),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit-option",on:{"click":function (){this$1.globalFont = 'Rubik'}}},[_vm._v("Rubik")])])]),_vm._v(" "),_c('div',{staticClass:"settings-panel-new-button-wrapper",on:{"mouseover":function (){this$1.openSettings = true},"mouseout":function (){this$1.openSettings = false}}},[_c('div',{staticClass:"settings-panel-new-button"},[_c('iconSetting')],1),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit",class:{'settings-panel-toolpit-open': this.openSettings}},[_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Instagram")]),_vm._v(" "),_c('span',{staticClass:"mask-instagram"},[_vm._v("instagram.com/")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.linkInstagram),expression:"linkInstagram"}],staticClass:"form-control form-control-mask-instagram",attrs:{"placeholder":"ник"},domProps:{"value":(_vm.linkInstagram)},on:{"input":function($event){if($event.target.composing){ return; }_vm.linkInstagram=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Whatsapp")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.phoneWhatsapp),expression:"phoneWhatsapp"}],staticClass:"form-control",attrs:{"placeholder":"Телефон","id":"WhatsappInput"},domProps:{"value":(_vm.phoneWhatsapp)},on:{"input":function($event){if($event.target.composing){ return; }_vm.phoneWhatsapp=$event.target.value}}})])])]),_vm._v(" "),_c('div',{staticClass:"settings-panel-new-button-wrapper",on:{"click":_vm.save}},[_c('div',{staticClass:"settings-panel-new-button"},[_c('iconSave')],1)])])])}
+var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"settings-panel-new",attrs:{"id":"settings-panel"}},[_c('div',{staticClass:"settings-panel-new-buttons"},[_c('div',{staticClass:"settings-panel-new-button-wrapper",on:{"mouseover":function (){this$1.openGlobalColor = true},"mouseout":function (){this$1.openGlobalColor = false}}},[_c('div',{staticClass:"settings-panel-new-button"},[_c('iconPallete')],1),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit",class:{'settings-panel-toolpit-open': this.openGlobalColor}},[_c('div',{staticClass:"settings-panel-toolpit-title"},[_vm._v("Основной цвет")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsGlobal),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorGlobal(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorGlobal},on:{"change":_vm.changeColorGlobal}}),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit-title"},[_vm._v("Цвет фона")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsBackground),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorBackground(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorBackground},on:{"change":_vm.changeColorBackground}}),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit-title"},[_vm._v("Цвет при наведение")]),_vm._v(" "),_c('div',{staticClass:"color-options"},_vm._l((_vm.defaultColorsHover),function(color){return _c('div',{staticClass:"color-options__item",style:({ 'background': color.hex }),on:{"click":function($event){return _vm.changeColorHover(color)}}})}),0),_vm._v(" "),_c('colorPicker',{attrs:{"color":_vm.colorHover},on:{"change":_vm.changeColorHover}})],1)]),_vm._v(" "),_c('div',{staticClass:"settings-panel-new-button-wrapper",on:{"mouseover":function (){this$1.openFont = true},"mouseout":function (){this$1.openFont = false}}},[_c('div',{staticClass:"settings-panel-new-button"},[_c('iconFont')],1),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit",class:{'settings-panel-toolpit-open': this.openFont}},[_c('div',{staticClass:"settings-panel-toolpit-title"},[_vm._v("Шрифт")]),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit-option",on:{"click":function (){this$1.globalFont = 'Raleway'}}},[_vm._v("Raleway")]),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit-option",on:{"click":function (){this$1.globalFont = 'Roboto'}}},[_vm._v("Roboto")]),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit-option",on:{"click":function (){this$1.globalFont = 'Montserrat'}}},[_vm._v("Montserrat")]),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit-option",on:{"click":function (){this$1.globalFont = 'Rubik'}}},[_vm._v("Rubik")])])]),_vm._v(" "),_c('div',{staticClass:"settings-panel-new-button-wrapper",on:{"mouseover":function (){this$1.openSettings = true},"mouseout":function (){this$1.openSettings = false}}},[_c('div',{staticClass:"settings-panel-new-button"},[_c('iconSetting')],1),_vm._v(" "),_c('div',{staticClass:"settings-panel-toolpit",class:{'settings-panel-toolpit-open': this.openSettings}},[_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Instagram")]),_vm._v(" "),_c('span',{staticClass:"mask-instagram"},[_vm._v("instagram.com/")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.linkInstagram),expression:"linkInstagram"}],staticClass:"form-control form-control-mask-instagram",attrs:{"placeholder":"ник"},domProps:{"value":(_vm.linkInstagram)},on:{"input":function($event){if($event.target.composing){ return; }_vm.linkInstagram=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Whatsapp")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.phoneWhatsapp),expression:"phoneWhatsapp"}],staticClass:"form-control",attrs:{"placeholder":"Телефон","id":"WhatsappInput"},domProps:{"value":(_vm.phoneWhatsapp)},on:{"input":function($event){if($event.target.composing){ return; }_vm.phoneWhatsapp=$event.target.value}}})]),_vm._v(" "),_c('div',{staticClass:"form-group"},[_c('label',[_vm._v("Адресс")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.geoLocal),expression:"geoLocal"}],staticClass:"form-control",attrs:{"placeholder":"Адресс"},domProps:{"value":(_vm.geoLocal)},on:{"keyup":_vm.searchLocal,"input":function($event){if($event.target.composing){ return; }_vm.geoLocal=$event.target.value}}}),_vm._v(" "),(_vm.geoLocalItems.length > 0)?_c('div',{staticClass:"list-items-geo"},_vm._l((_vm.geoLocalItems),function(item){return _c('div',{staticClass:"list-item-geo",on:{"click":function($event){return _vm.setGeoItem(item)}}},[_vm._v(_vm._s(item.displayName))])}),0):_vm._e(),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.geoLocalСlarification),expression:"geoLocalСlarification"}],staticClass:"form-control",style:({marginTop: '10px'}),attrs:{"placeholder":"Офис/Квартира"},domProps:{"value":(_vm.geoLocalСlarification)},on:{"input":function($event){if($event.target.composing){ return; }_vm.geoLocalСlarification=$event.target.value}}})])])]),_vm._v(" "),_c('div',{staticClass:"settings-panel-new-button-wrapper",on:{"click":_vm.save}},[_c('div',{staticClass:"settings-panel-new-button"},[_c('iconSave')],1)])])])}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -73309,7 +73338,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
                 $(this.$el).html('<ckeditor @ready="ReadyEditor" @input="onEditorInput" :editor="editor" v-model="editorData"></ckeditor>');
             },
             ReadyEditor: function ReadyEditor() {},
-            onEditorInput: function onEditorInput() {},
+            onEditorInput: function onEditorInput() {
+                window.isChange = 1;
+            },
             changeColor: function changeColor(color) {
                 this.style = _extends({}, this.style, { color: color });
             },
@@ -73439,6 +73470,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 this.style = _extends({}, this.style, { color: color });
             },
             changeStyle: function changeStyle(style) {
+                window.isChange = 1;
                 this.style = _extends({}, this.style, style);
             },
             callback: function callback(func, arg) {

@@ -63,17 +63,16 @@ box-shadow: 0 0 8px 0 #ccc;
 
 .main{
     position: relative;
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    top: 0px;
 }
 
 .main .img-main{
     width: 100%;
     height: auto;
-    position: absolute;
     top: 0;
     left: 0;
 }
@@ -91,7 +90,7 @@ box-shadow: 0 0 8px 0 #ccc;
 }
 
 .main-content{
-    position: relative;
+    position: absolute;
     z-index: 4;
     width: 40%;
     text-align: center;

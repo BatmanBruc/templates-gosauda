@@ -1,3 +1,7 @@
+body{
+    background-color: #f2f2f2;
+}
+
 .form-search input{
     border-radius: 4px 0 0 4px;
     border: none;
@@ -20,6 +24,15 @@
     background-color: #fff;
     padding-top: 8px;
 box-shadow: 0 0 8px 0 #ccc;
+}
+
+
+.navbar.scrolled-fixed{
+    background-color: #f2f2f2;
+    padding-top: 8px;
+    box-shadow: none!important;
+    position: relative;
+    margin-top: 20px;
 }
 
 
@@ -53,6 +66,10 @@ box-shadow: 0 0 8px 0 #ccc;
 }
 
 .navbar.scrolled .nav-item .nav-link{
+    color: #000!important;
+}
+
+.navbar.scrolled-fixed .nav-item .nav-link{
     color: #000!important;
 }
 
@@ -109,9 +126,13 @@ box-shadow: 0 0 8px 0 #ccc;
             0 0 20px 0px rgba(38, 202, 229, 0.51),
             0 0 30px 0px rgba(38, 202, 229, 0.52);
     border-radius: 10px;
-    padding: 10px 40px;
+    padding: 5px 30px;
     font-weight: 600;
     font-size: 14pt;
+}
+
+.btn-template.not-shadow{
+    box-shadow: none!important;
 }
 
 
@@ -257,4 +278,96 @@ box-shadow: 0 0 8px 0 #ccc;
 .contacts{
     padding: 50px 0;
     background-color: #f2f2f2;
+}
+
+
+.carousel-control-prev,
+.carousel-control-next{
+    transition: 0.2s all ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover{
+    background-color: rgba(0,0,0,0.2);
+}
+
+.carousel-ads .carousel-indicators {
+    z-index: 1;
+    position: relative;
+    left: auto;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+    width: 100%;
+    outline: 0 !important;
+    display: flex;
+}
+
+.carousel-ads .carousel-indicators li {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.carousel-ads .carousel-indicators li:first-child {
+    margin-left: 0
+}
+
+.carousel-ads .carousel-indicators li:last-child {
+    margin-right: 0
+}
+
+.carousel-ads .carousel-indicators li.active {
+    opacity: 0.9;
+    box-shadow: 0 0 5px 0 #26cae5;
+}
+
+.carousel-ads .carousel-indicators li {
+    text-indent: 0;
+}
+
+.carousel-inner{
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.good{
+    margin-top: 50px;
+}
+
+.img-responsive{
+    width: 100%;
+    height: auto;
+}
+
+.good .price{
+    font-size: 25pt;
+    font-weight: 600;
+    color: #26cae5;
+}
+
+.good .icon{
+    color: #26cae5;
+}
+
+.youtube-instagram img{
+    width: 25px;
+    height: auto;
+}
+
+.youtube-instagram a{
+    background-color: #fff;
+    padding: 7px 20px;
+    border-radius: 10px;
+    color: #000;
+}
+
+.youtube-instagram a:hover{
+    text-decoration: none;
+    background-color: #fafafa;
 }

@@ -29518,8 +29518,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Query_js__ = __webpack_require__(483);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_css_generator__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_css_generator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_css_generator__);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 //
 //
 //
@@ -29750,6 +29748,7 @@ function getRoundedCanvas(sourceCanvas) {
             viewMode: 3,
             crop: function crop(event) {
                 window.isChange = 1;
+                console.log('change');
                 data = this.cropper.getData();
                 cntx.stylePositionBannerWrapper = $('.cropper-canvas').attr('style');
                 cntx.stylePositionBannerImg = $('.cropper-canvas img').attr('style');
@@ -29763,6 +29762,7 @@ function getRoundedCanvas(sourceCanvas) {
     watch: {
         globalFont: function globalFont() {
             window.isChange = 1;
+            console.log('change');
             var css = __WEBPACK_IMPORTED_MODULE_9_css_generator___default.a.create({
                 indentation: '  '
             });
@@ -29774,10 +29774,12 @@ function getRoundedCanvas(sourceCanvas) {
         },
         linkInstagram: function linkInstagram() {
             window.isChange = 1;
+            console.log('change');
             $('#instagram-link').attr('href', 'https://www.instagram.com/' + this.linkInstagram);
         },
         phoneWhatsapp: function phoneWhatsapp() {
             window.isChange = 1;
+            console.log('change');
             $('#whatsapp-link').attr('href', 'https://wa.me/' + this.phoneWhatsapp);
         },
         textFontFamily: function textFontFamily() {
@@ -29838,6 +29840,7 @@ function getRoundedCanvas(sourceCanvas) {
         },
         colorGlobal: function colorGlobal() {
             window.isChange = 1;
+            console.log('change');
             var css = __WEBPACK_IMPORTED_MODULE_9_css_generator___default.a.create({
                 indentation: '  '
             });
@@ -29848,6 +29851,7 @@ function getRoundedCanvas(sourceCanvas) {
         },
         colorHover: function colorHover() {
             window.isChange = 1;
+            console.log('change');
             var css = __WEBPACK_IMPORTED_MODULE_9_css_generator___default.a.create({
                 indentation: '  '
             });
@@ -29856,14 +29860,17 @@ function getRoundedCanvas(sourceCanvas) {
         },
         colorBackground: function colorBackground() {
             window.isChange = 1;
+            console.log('change');
             $('.shop').css('background', this.colorBackground.hex);
         },
         geoLocalСlarification: function geoLocalLarification() {
             window.isChange = 1;
+            console.log('change');
             $('#adress').text(this.geoLocal + ', ' + this.geoLocalСlarification);
         },
         geoLocal: function geoLocal() {
             window.isChange = 1;
+            console.log('change');
             $('#adress').text(this.geoLocal + ', ' + this.geoLocalСlarification);
         }
     },
@@ -29926,14 +29933,17 @@ function getRoundedCanvas(sourceCanvas) {
         },
         changeColorGlobal: function changeColorGlobal(color) {
             window.isChange = 1;
+            console.log('change');
             this.colorGlobal = color;
         },
         changeColorHover: function changeColorHover(color) {
             window.isChange = 1;
+            console.log('change');
             this.colorHover = color;
         },
         changeColorBackground: function changeColorBackground(color) {
             window.isChange = 1;
+            console.log('change');
             this.colorBackground = color;
         },
         openGlobalStyle: function openGlobalStyle() {
@@ -29979,33 +29989,38 @@ function getRoundedCanvas(sourceCanvas) {
             reader.readAsDataURL(file);
         },
         save: function save() {
-            this.alertSave = 1;
+            var _this2 = this;
+
+            this.alertSave = true;
             window.isChange = 0;
+            console.log(window.isChange);
             this.$emit('destroy');
             this.saveBanner();
             var cntx = this;
-            $.ajax({
-                url: window.config.link_save,
-                type: 'POST',
-                data: _extends({
-                    ajax: 1,
-                    file: $('html').html()
-                }, window.config.data_save),
-                success: function success() {
-                    var _this2 = this;
-
-                    this.alertSave = 0;
-                    this.alertSuccess = 1;
-                    setTimeout(function () {
-                        _this2.alertSuccess = 0;
-                    }, 2000);
-                    cntx.$emit('initElements');
-                }
-            });
-            // setTimeout(()=>{
-            //     alert('init');
-            //     cntx.$emit('initElements');
-            // },1000)
+            // $.ajax({
+            //     url: window.config.link_save,
+            //     type: 'POST',
+            //     data: { ...{
+            //         ajax: 1,
+            //         file: $('html').html()
+            //     }, ...window.config.data_save},
+            //     success(){
+            //         this.alertSave = 0;
+            //         this.alertSuccess = 1;
+            //         setTimeout(()=>{
+            //             this.alertSuccess = 0;
+            //         },2000)
+            //         cntx.$emit('initElements');
+            //     }
+            // })
+            setTimeout(function () {
+                _this2.alertSave = false;
+                _this2.alertSuccess = true;
+                setTimeout(function () {
+                    _this2.alertSuccess = false;
+                }, 2000);
+                cntx.$emit('initElements');
+            }, 1000);
         }
     }
 });
@@ -41079,7 +41094,7 @@ function initImgPanel(elem, wrapper, isInit) {
             settingsImg.$children[0].$on('changeImg', function (img) {
                 window.isChange = 1;
                 console.log(settingsPanel.$children[0].$data);
-                settingsPanel.$children[0].$data.cropper.replace(img);
+                if (wrapper == '.banner-img') settingsPanel.$children[0].$data.cropper.replace(img);else $(elem).attr('href', href);
             });
         }
     });
@@ -41144,6 +41159,7 @@ function initElement(domElement, group, isInit) {
         elem.changeStyle({
             outline: '0px'
         });
+        window.isChange = 0;
         $(elem.$el).removeAttr('go');
         elem.destroy();
         elem = undefined;
@@ -41320,7 +41336,12 @@ $('a.element, a.fragment').click(function () {
     return false;
 });
 $(window).on("beforeunload", function () {
-    if (window.isChange) return "У вас не сохраненные изменения.";
+    if (window.isChange) {
+        alert(window.isChange);
+        return "У вас не сохраненные изменения.";
+    } else {
+        alert(window.isChange);
+    }
 });
 
 /***/ }),
@@ -42547,7 +42568,7 @@ var index_esm = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_new_vue__ = __webpack_require__(184);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7f943814_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_21ba16b0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__ = __webpack_require__(589);
 function injectStyle (ssrContext) {
   __webpack_require__(448)
 }
@@ -42567,7 +42588,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_new_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7f943814_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_21ba16b0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -42588,7 +42609,7 @@ var content = __webpack_require__(449);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(73)("8e8e1376", content, true, {});
+var update = __webpack_require__(73)("73ba05a6", content, true, {});
 
 /***/ }),
 /* 449 */
@@ -73351,6 +73372,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
             },
             ReadyEditor: function ReadyEditor() {},
             onEditorInput: function onEditorInput() {
+                console.log('change');
                 window.isChange = 1;
             },
             changeColor: function changeColor(color) {

@@ -29723,37 +29723,9 @@ function getRoundedCanvas(sourceCanvas) {
         $('main.shop').append('<style name-elem="global-style-font"></style>');
         $('main.shop').append('<style name-elem="global-style-color"></style>');
         $('main.shop').append('<style name-elem="global-style-color-hover"></style>');
-        var data = void 0;
-        var cntx = this;
         //$('.banner-img>img').click(()=>{
 
-        $('.banner-img').attr('style', '');
-        $('.banner-img>img').addClass('cropper-hidden');
-        this.openBannerSetting = true;
-        if (this.cropper) {
-            $('.cropper-container').css('display', 'block');
-            return;
-        }
-
-        this.cropper = new Cropper($('.banner-img>img')[0], {
-            dragMode: 'move',
-            autoCropArea: 1,
-            restore: false,
-            modal: false,
-            guides: false,
-            highlight: false,
-            cropBoxMovable: false,
-            cropBoxResizable: false,
-            toggleDragModeOnDblclick: false,
-            viewMode: 3,
-            crop: function crop(event) {
-                window.isChange = 1;
-                console.log('change');
-                data = this.cropper.getData();
-                cntx.stylePositionBannerWrapper = $('.cropper-canvas').attr('style');
-                cntx.stylePositionBannerImg = $('.cropper-canvas img').attr('style');
-            }
-        });
+        this.initBanner();
         //})
         var heigth = $('.banner-img img').css('heigth');
         this.maxTopBannerImg = heigth - 300;
@@ -29876,6 +29848,41 @@ function getRoundedCanvas(sourceCanvas) {
     },
     computed: {},
     methods: {
+        initBanner: function initBanner() {
+            var data = void 0;
+            var cntx = this;
+            $('.banner-img').attr('style', '');
+            $('.banner-img>img').addClass('cropper-hidden');
+            this.openBannerSetting = true;
+            if (this.cropper) {
+                $('.cropper-container').css('display', 'block');
+                return;
+            }
+
+            this.cropper = new Cropper($('.banner-img>img')[0], {
+                dragMode: 'move',
+                autoCropArea: 1,
+                restore: false,
+                modal: false,
+                guides: false,
+                highlight: false,
+                cropBoxMovable: false,
+                cropBoxResizable: false,
+                toggleDragModeOnDblclick: false,
+                viewMode: 3,
+                crop: function crop(event) {
+                    if (!this.cropper.first_init) {
+                        this.cropper.first_init = 1;
+                    } else {
+                        window.isChange = 1;
+                        console.log('change');
+                    }
+                    data = this.cropper.getData();
+                    cntx.stylePositionBannerWrapper = $('.cropper-canvas').attr('style');
+                    cntx.stylePositionBannerImg = $('.cropper-canvas img').attr('style');
+                }
+            });
+        },
         changeTextSize: function changeTextSize(value) {
             this.textFontSize = value;
         },
@@ -30015,10 +30022,13 @@ function getRoundedCanvas(sourceCanvas) {
             // })
             setTimeout(function () {
                 _this2.alertSave = false;
+                console.log(_this2.alertSave);
                 _this2.alertSuccess = true;
+                _this2.initBanner();
                 setTimeout(function () {
                     _this2.alertSuccess = false;
-                }, 2000);
+                    console.log(_this2.alertSuccess);
+                }, 20000);
                 cntx.$emit('initElements');
             }, 1000);
         }
@@ -41093,6 +41103,7 @@ function initImgPanel(elem, wrapper, isInit) {
             });
             settingsImg.$children[0].$on('changeImg', function (img) {
                 window.isChange = 1;
+                console.log(window.isChange);
                 console.log(settingsPanel.$children[0].$data);
                 if (wrapper == '.banner-img') settingsPanel.$children[0].$data.cropper.replace(img);else $(elem).attr('href', href);
             });
@@ -41160,6 +41171,7 @@ function initElement(domElement, group, isInit) {
             outline: '0px'
         });
         window.isChange = 0;
+        console.log(isChange);
         $(elem.$el).removeAttr('go');
         elem.destroy();
         elem = undefined;
@@ -41337,11 +41349,8 @@ $('a.element, a.fragment').click(function () {
 });
 $(window).on("beforeunload", function () {
     if (window.isChange) {
-        alert(window.isChange);
         return "У вас не сохраненные изменения.";
-    } else {
-        alert(window.isChange);
-    }
+    } else {}
 });
 
 /***/ }),
@@ -42568,7 +42577,7 @@ var index_esm = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_new_vue__ = __webpack_require__(184);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_21ba16b0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_76d8b288_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__ = __webpack_require__(589);
 function injectStyle (ssrContext) {
   __webpack_require__(448)
 }
@@ -42588,7 +42597,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_new_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_21ba16b0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_76d8b288_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -42609,7 +42618,7 @@ var content = __webpack_require__(449);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(73)("73ba05a6", content, true, {});
+var update = __webpack_require__(73)("0a6daed8", content, true, {});
 
 /***/ }),
 /* 449 */
@@ -73504,7 +73513,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 this.style = _extends({}, this.style, { color: color });
             },
             changeStyle: function changeStyle(style) {
-                window.isChange = 1;
                 this.style = _extends({}, this.style, style);
             },
             callback: function callback(func, arg) {

@@ -62,14 +62,20 @@ box-shadow: 0 0 8px 0 #ccc;
 }
 
 .main{
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center;
+    position: relative;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+.main .img-main{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .main:before{
@@ -134,7 +140,6 @@ box-shadow: 0 0 8px 0 #ccc;
 .card{
     border: none;
     border-radius: 20px;
-    overflow: hidden;
     transition: 0.2s all ease;
 }
 
@@ -146,6 +151,7 @@ box-shadow: 0 0 8px 0 #ccc;
     height: 200px;
     overflow: hidden;
     position: relative;
+    border-radius: 20px 20px 0 0;
 }
 
 .card .card-img img{

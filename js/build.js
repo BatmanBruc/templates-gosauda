@@ -41105,7 +41105,7 @@ function initImgPanel(elem, wrapper, isInit) {
                 window.isChange = 1;
                 console.log(window.isChange);
                 console.log(settingsPanel.$children[0].$data);
-                if (wrapper == '.banner-img') settingsPanel.$children[0].$data.cropper.replace(img);else $(elem).attr('href', href);
+                if (wrapper == '.banner-img') settingsPanel.$children[0].$data.cropper.replace(img);else $(elem).attr('src', img);
             });
         }
     });

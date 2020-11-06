@@ -7,7 +7,6 @@ p{
 }
 
 .logo{
-    height: 100%;
     max-width: 100%;
 }
 
@@ -68,12 +67,12 @@ a:hover{
     position: relative;
     border: 2px solid #26cae500;
     border-radius: 13px;
-    height: 300px;
+    max-height: 300px;
 }
 
 .banner .banner-img{
     overflow: hidden;
-    height: 300px;
+    max-height: 300px;
     border-radius: 10px;
 }
 .banner .banner-img img{
@@ -358,7 +357,6 @@ section.main{
 }
 .wrapper-logo{
     width: 140px;
-    height: 40px;
     text-align: center;
 }
 .icon-setting, .card-price, .link {

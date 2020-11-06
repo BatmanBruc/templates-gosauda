@@ -29518,8 +29518,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Query_js__ = __webpack_require__(483);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_css_generator__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_css_generator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_css_generator__);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 //
 //
 //
@@ -29717,7 +29715,8 @@ function getRoundedCanvas(sourceCanvas) {
             globalFont: 'Raleway',
 
             fontSizes: [{ value: "10px", name: "10px" }, { value: "12px", name: "12px" }, { value: "14px", name: "14px" }, { value: "16px", name: "16px" }, { value: "20px", name: "20px" }, { value: "24px", name: "24px" }, { value: "28px", name: "28px" }, { value: "32px", name: "32px" }, { value: "36px", name: "36px" }, { value: "40px", name: "40px" }],
-            fontWeight: [{ value: "100", name: "Thin" }, { value: "300", name: "Light" }, { value: "400", name: "Normal" }, { value: "500", name: "Medium" }, { value: "600", name: "Semi Bold" }, { value: "700", name: "Bold" }]
+            fontWeight: [{ value: "100", name: "Thin" }, { value: "300", name: "Light" }, { value: "400", name: "Normal" }, { value: "500", name: "Medium" }, { value: "600", name: "Semi Bold" }, { value: "700", name: "Bold" }],
+            dataBanner: null
         };
     },
     created: function created() {
@@ -29850,7 +29849,11 @@ function getRoundedCanvas(sourceCanvas) {
     },
     computed: {},
     methods: {
+        changeOriginBannerImg: function changeOriginBannerImg(img) {
+            this.originBannerImg = img;
+        },
         initBanner: function initBanner() {
+
             var data = void 0;
             var cntx = this;
             $('.banner-img').attr('style', '');
@@ -29860,10 +29863,21 @@ function getRoundedCanvas(sourceCanvas) {
                 $('.cropper-container').css('display', 'block');
                 return;
             }
-
+            if (!this.originBannerImg) {
+                this.originBannerImg = $('.banner-img>img').attr('src');
+            } else {
+                $('.banner-img>img').attr('src', this.originBannerImg);
+            }
             this.cropper = new Cropper($('.banner-img>img')[0], {
                 dragMode: 'move',
                 autoCropArea: 1,
+                ready: function ready() {
+                    console.log(cntx.dataBanner);
+                    if (cntx.dataBanner) {
+                        cntx.cropper.setCanvasData(cntx.dataBanner);
+                    }
+                },
+
                 restore: false,
                 modal: false,
                 guides: false,
@@ -29876,14 +29890,15 @@ function getRoundedCanvas(sourceCanvas) {
                     if (!this.cropper.first_init) {
                         this.cropper.first_init = 1;
                     } else {
+                        cntx.dataBanner = Object.assign({}, cntx.cropper.getCanvasData());
                         window.isChange = 1;
                         console.log('change');
                     }
-                    data = this.cropper.getData();
                     cntx.stylePositionBannerWrapper = $('.cropper-canvas').attr('style');
                     cntx.stylePositionBannerImg = $('.cropper-canvas img').attr('style');
                 }
             });
+            window.cropper = this.cropper;
         },
         changeTextSize: function changeTextSize(value) {
             this.textFontSize = value;
@@ -29909,6 +29924,8 @@ function getRoundedCanvas(sourceCanvas) {
             var roundedImage;
             croppedCanvas = this.cropper.getCroppedCanvas();
             roundedCanvas = getRoundedCanvas(croppedCanvas);
+            this.cropper.destroy();
+            this.cropper = null;
             $('.banner-img>img').attr('src', roundedCanvas.toDataURL());
             $('.cropper-container').css('display', 'none');
             $('.banner-img>img').removeClass('cropper-hidden');
@@ -29998,41 +30015,41 @@ function getRoundedCanvas(sourceCanvas) {
             reader.readAsDataURL(file);
         },
         save: function save() {
+            var _this2 = this;
+
             this.alertSave = true;
             window.isChange = 0;
             console.log(window.isChange);
             this.$emit('destroy');
             this.saveBanner();
             var cntx = this;
-            $.ajax({
-                url: window.config.link_save,
-                type: 'POST',
-                data: _extends({
-                    ajax: 1,
-                    file: $('html').html()
-                }, window.config.data_save),
-                success: function success() {
-                    var _this2 = this;
-
-                    this.alertSave = 0;
-                    this.alertSuccess = 1;
-                    setTimeout(function () {
-                        _this2.alertSuccess = 0;
-                    }, 2000);
-                    cntx.$emit('initElements');
-                }
-            });
-            // setTimeout(()=>{
-            //     this.alertSave = false;
-            //     console.log(this.alertSave);
-            //     this.alertSuccess = true;
-            //     this.initBanner();
-            //     setTimeout(()=>{
-            //         this.alertSuccess = false;
-            //         console.log(this.alertSuccess);
-            //     },20000)
-            //     cntx.$emit('initElements');
-            // },1000)
+            // $.ajax({
+            //     url: window.config.link_save,
+            //     type: 'POST',
+            //     data: { ...{
+            //         ajax: 1,
+            //         file: $('html').html()
+            //     }, ...window.config.data_save},
+            //     success(){
+            //         this.alertSave = 0;
+            //         this.alertSuccess = 1;
+            //         setTimeout(()=>{
+            //             this.alertSuccess = 0;
+            //         },2000)
+            //         cntx.$emit('initElements');
+            //     }
+            // })
+            setTimeout(function () {
+                _this2.alertSave = false;
+                console.log(_this2.alertSave);
+                _this2.alertSuccess = true;
+                _this2.initBanner();
+                setTimeout(function () {
+                    _this2.alertSuccess = false;
+                    console.log(_this2.alertSuccess);
+                }, 20000);
+                cntx.$emit('initElements');
+            }, 1000);
         }
     }
 });
@@ -41078,6 +41095,7 @@ settingsPanel.$children[0].$on('initElements', function () {
         callBacksInitElements[index]();
     }
 });
+window.settingsPanel = settingsPanel;
 function initImgPanel(elem, wrapper, isInit) {
     var tippyObject = void 0;
     var toolpitContent = '<div id="settingImg"></div>';
@@ -41092,7 +41110,7 @@ function initImgPanel(elem, wrapper, isInit) {
     tippy(wrapper ? wrapper : elem, {
         content: toolpitContent,
         allowHTML: true,
-        trigger: 'mouseenter',
+        trigger: 'click',
         interactive: true,
         placement: 'bottom',
         onCreate: function onCreate(instance) {
@@ -41107,7 +41125,12 @@ function initImgPanel(elem, wrapper, isInit) {
                 window.isChange = 1;
                 console.log(window.isChange);
                 console.log(settingsPanel.$children[0].$data);
-                if (wrapper == '.banner-img') settingsPanel.$children[0].$data.cropper.replace(img);else $(elem).attr('src', img);
+                if (wrapper == '.banner-img') {
+                    settingsPanel.$children[0].changeOriginBannerImg(img);
+                    settingsPanel.$children[0].$data.cropper.replace(img);
+                } else {
+                    $(elem).attr('src', img);
+                }
             });
         }
     });
@@ -42579,7 +42602,7 @@ var index_esm = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_new_vue__ = __webpack_require__(184);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6b1876fa_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_18556050_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__ = __webpack_require__(589);
 function injectStyle (ssrContext) {
   __webpack_require__(448)
 }
@@ -42599,7 +42622,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_setting_panel_new_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6b1876fa_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_18556050_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_setting_panel_new_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -42620,7 +42643,7 @@ var content = __webpack_require__(449);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(73)("2cf61f6a", content, true, {});
+var update = __webpack_require__(73)("7c63f6db", content, true, {});
 
 /***/ }),
 /* 449 */

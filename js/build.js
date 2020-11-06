@@ -41112,7 +41112,7 @@ function initImgPanel(elem, wrapper, isInit) {
     tippy(wrapper ? wrapper : elem, {
         content: toolpitContent,
         allowHTML: true,
-        trigger: 'click',
+        trigger: 'mouseenter',
         interactive: true,
         placement: 'bottom',
         onCreate: function onCreate(instance) {

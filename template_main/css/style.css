@@ -123,7 +123,7 @@ a:hover{
 .link{
     color: #26cae5;
     font-weight: 500;
-    border-bottom: 2px solid #26cae5;
+    border-bottom: 2px solid;
 }
 
 .link:hover{

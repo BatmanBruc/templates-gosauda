@@ -1,7 +1,9 @@
 body{
     background-color: #f2f2f2;
 }
-
+p{
+    margin: 0px;
+}
 .form-search input{
     border-radius: 4px 0 0 4px;
     border: none;
@@ -23,7 +25,7 @@ body{
 .navbar.scrolled{
     background-color: #fff;
     padding-top: 8px;
-box-shadow: 0 0 8px 0 #ccc;
+    box-shadow: 0 0 8px 0 #ccc;
 }
 
 
@@ -80,7 +82,7 @@ box-shadow: 0 0 8px 0 #ccc;
 
 .main{
     position: relative;
-    height: 100vh;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,14 +92,12 @@ box-shadow: 0 0 8px 0 #ccc;
 .main .img-main{
     width: 100%;
     height: auto;
-    position: absolute;
     top: 0;
     left: 0;
 }
 
 .main:before{
     content: '';
-    position: absolute;
     top: 0%;
     bottom:     0%;
     right: 0%;
@@ -108,7 +108,7 @@ box-shadow: 0 0 8px 0 #ccc;
 }
 
 .main-content{
-    position: relative;
+    position: absolute;
     z-index: 4;
     width: 40%;
     text-align: center;
@@ -121,10 +121,6 @@ box-shadow: 0 0 8px 0 #ccc;
 .btn-template{
     background-color: #26cae5;
     color: #fff;
-    box-shadow:
-            0 0 10px 0px #26cae5,
-            0 0 20px 0px rgba(38, 202, 229, 0.51),
-            0 0 30px 0px rgba(38, 202, 229, 0.52);
     border-radius: 10px;
     padding: 5px 30px;
     font-weight: 600;
@@ -150,7 +146,6 @@ box-shadow: 0 0 8px 0 #ccc;
 
 .goods{
     padding: 50px 0;
-    background-color: #f2f2f2;
 }
 
 .goods a:hover{
@@ -277,7 +272,6 @@ box-shadow: 0 0 8px 0 #ccc;
 
 .contacts{
     padding: 50px 0;
-    background-color: #f2f2f2;
 }
 
 

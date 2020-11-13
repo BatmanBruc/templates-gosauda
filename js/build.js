@@ -41094,8 +41094,9 @@ var saveImg = function () {
             while (1) {
                 switch (_context3.prev = _context3.next) {
                     case 0:
-                        __WEBPACK_IMPORTED_MODULE_9_jquery___default.a.ajax({
-                            url: !type ? '/company/upload_logo' : '/company/upload_baner',
+                        _context3.next = 2;
+                        return __WEBPACK_IMPORTED_MODULE_9_jquery___default.a.ajax({
+                            url: !type ? 'http://beta.gosauda.kz/company/upload_logo' : 'http://beta.gosauda.kz/company/upload_baner',
                             type: 'POST',
                             dataType: 'json',
                             data: {
@@ -41106,7 +41107,7 @@ var saveImg = function () {
                             success: callback
                         });
 
-                    case 1:
+                    case 2:
                     case 'end':
                         return _context3.stop();
                 }

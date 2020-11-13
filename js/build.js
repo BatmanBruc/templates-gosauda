@@ -41096,7 +41096,7 @@ var saveImg = function () {
                     case 0:
                         _context3.next = 2;
                         return __WEBPACK_IMPORTED_MODULE_9_jquery___default.a.ajax({
-                            url: !type ? 'http://beta.gosauda.kz/company/upload_logo' : 'http://beta.gosauda.kz/company/upload_baner',
+                            url: !type ? '/company/upload_logo' : '/company/upload_baner',
                             type: 'POST',
                             dataType: 'json',
                             data: {

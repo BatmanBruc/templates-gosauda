@@ -41259,7 +41259,7 @@ function initImgPanel(elem, wrapper, isInit, isCropper) {
                         _context2.next = 9;
                         return saveImg(roundedCanvas.toDataURL(), function (data) {
                             __WEBPACK_IMPORTED_MODULE_9_jquery___default()(elem).attr('src', data.json);
-                        });
+                        }, 1);
 
                     case 9:
                         __WEBPACK_IMPORTED_MODULE_9_jquery___default()(elem).attr('origin-src', originSrc);

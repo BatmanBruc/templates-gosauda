@@ -41095,7 +41095,7 @@ var saveImg = function () {
                 switch (_context.prev = _context.next) {
                     case 0:
                         __WEBPACK_IMPORTED_MODULE_9_jquery___default.a.ajax({
-                            url: type ? '/company/upload_logo' : '/company/upload_baner',
+                            url: !type ? '/company/upload_logo' : '/company/upload_baner',
                             type: 'POST',
                             dataType: 'json',
                             data: {

@@ -41089,10 +41089,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var saveImg = function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(img, callback, type) {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(img, callback, type, is_crop) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
             while (1) {
-                switch (_context.prev = _context.next) {
+                switch (_context3.prev = _context3.next) {
                     case 0:
                         __WEBPACK_IMPORTED_MODULE_9_jquery___default.a.ajax({
                             url: !type ? '/company/upload_logo' : '/company/upload_baner',
@@ -41100,21 +41100,22 @@ var saveImg = function () {
                             dataType: 'json',
                             data: {
                                 ajax: 1,
-                                file_data: img
+                                file_data: img,
+                                is_crop: is_crop
                             },
                             success: callback
                         });
 
                     case 1:
                     case 'end':
-                        return _context.stop();
+                        return _context3.stop();
                 }
             }
-        }, _callee, this);
+        }, _callee3, this);
     }));
 
-    return function saveImg(_x, _x2, _x3) {
-        return _ref.apply(this, arguments);
+    return function saveImg(_x, _x2, _x3, _x4) {
+        return _ref3.apply(this, arguments);
     };
 }();
 
@@ -41140,34 +41141,84 @@ var settingsPanel = new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
     }
 });
 var callBacksDestroyElements = [];
-settingsPanel.$children[0].$on('save', function () {
-    for (var index = 0; index < callBacksDestroyElements.length; index++) {
-        callBacksDestroyElements[index]();
-    }
-    callBacksDestroyElements = [];
-    __WEBPACK_IMPORTED_MODULE_9_jquery___default.a.ajax({
-        url: window.config.link_save,
-        type: 'POST',
-        data: _extends({
-            ajax: 1,
-            file: __WEBPACK_IMPORTED_MODULE_9_jquery___default()('html').html()
-        }, window.config.data_save),
-        success: function success() {
-            settingsPanel.$children[0].alertSave = 0;
-            settingsPanel.$children[0].alertSuccess = 1;
-            setTimeout(function () {
-                settingsPanel.$children[0].alertSuccess = 0;
-            }, 2000);
-            settingsPanel.$children[0].$emit('initElements');
+settingsPanel.$children[0].$on('save', _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    var index;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+            switch (_context.prev = _context.next) {
+                case 0:
+                    index = 0;
+
+                case 1:
+                    if (!(index < callBacksDestroyElements.length)) {
+                        _context.next = 7;
+                        break;
+                    }
+
+                    _context.next = 4;
+                    return callBacksDestroyElements[index]();
+
+                case 4:
+                    index++;
+                    _context.next = 1;
+                    break;
+
+                case 7:
+                    callBacksDestroyElements = [];
+                    __WEBPACK_IMPORTED_MODULE_9_jquery___default.a.ajax({
+                        url: window.config.link_save,
+                        type: 'POST',
+                        data: _extends({
+                            ajax: 1,
+                            file: __WEBPACK_IMPORTED_MODULE_9_jquery___default()('html').html()
+                        }, window.config.data_save),
+                        success: function success() {
+                            settingsPanel.$children[0].alertSave = 0;
+                            settingsPanel.$children[0].alertSuccess = 1;
+                            setTimeout(function () {
+                                settingsPanel.$children[0].alertSuccess = 0;
+                            }, 2000);
+                            settingsPanel.$children[0].$emit('initElements');
+                        }
+                    });
+
+                case 9:
+                case 'end':
+                    return _context.stop();
+            }
         }
-    });
-});
+    }, _callee, this);
+})));
 var callBacksInitElements = [];
-settingsPanel.$children[0].$on('initElements', function () {
-    for (var index = 0; index < callBacksInitElements.length; index++) {
-        callBacksInitElements[index]();
-    }
-});
+settingsPanel.$children[0].$on('initElements', _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+    var index;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+            switch (_context2.prev = _context2.next) {
+                case 0:
+                    index = 0;
+
+                case 1:
+                    if (!(index < callBacksInitElements.length)) {
+                        _context2.next = 7;
+                        break;
+                    }
+
+                    _context2.next = 4;
+                    return callBacksInitElements[index]();
+
+                case 4:
+                    index++;
+                    _context2.next = 1;
+                    break;
+
+                case 7:
+                case 'end':
+                    return _context2.stop();
+            }
+        }
+    }, _callee2, this);
+})));
 window.settingsPanel = settingsPanel;
 
 function initImgPanel(elem, wrapper, isInit, isCropper) {
@@ -41236,14 +41287,14 @@ function initImgPanel(elem, wrapper, isInit, isCropper) {
         }
     });
 
-    callBacksDestroyElements.push(_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+    callBacksDestroyElements.push(_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
         var croppedCanvas, roundedCanvas, originSrc;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
             while (1) {
-                switch (_context2.prev = _context2.next) {
+                switch (_context4.prev = _context4.next) {
                     case 0:
                         if (!cropper) {
-                            _context2.next = 11;
+                            _context4.next = 10;
                             break;
                         }
 
@@ -41255,27 +41306,27 @@ function initImgPanel(elem, wrapper, isInit, isCropper) {
                         originSrc = __WEBPACK_IMPORTED_MODULE_9_jquery___default()(elem).attr('src');
 
                         cropper.destroy();
-                        __WEBPACK_IMPORTED_MODULE_9_jquery___default()(elem).attr('src', roundedCanvas.toDataURL());
-                        _context2.next = 9;
+                        //$(elem).attr('src', roundedCanvas.toDataURL());
+                        _context4.next = 8;
                         return saveImg(roundedCanvas.toDataURL(), function (data) {
                             __WEBPACK_IMPORTED_MODULE_9_jquery___default()(elem).attr('src', data.json);
-                        }, 1);
+                        }, 1, 1);
 
-                    case 9:
+                    case 8:
                         __WEBPACK_IMPORTED_MODULE_9_jquery___default()(elem).attr('origin-src', originSrc);
                         __WEBPACK_IMPORTED_MODULE_9_jquery___default()(elem).attr('data', JSON.stringify(dataImg));
 
-                    case 11:
+                    case 10:
                         //debugger;
                         if (link) __WEBPACK_IMPORTED_MODULE_9_jquery___default()(link).attr('href', href);
                         tippyObject.destroy();
 
-                    case 13:
+                    case 12:
                     case 'end':
-                        return _context2.stop();
+                        return _context4.stop();
                 }
             }
-        }, _callee2, _this);
+        }, _callee4, _this);
     })));
     if (!isInit) {
         callBacksInitElements.push(function () {

@@ -41089,13 +41089,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var saveImg = function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(img, callback) {
+    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(img, callback, type) {
         return regeneratorRuntime.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
                         __WEBPACK_IMPORTED_MODULE_9_jquery___default.a.ajax({
-                            url: 'http://beta.gosauda.kz/company/upload_baner',
+                            url: type ? '/company/upload_logo' : '/company/upload_baner',
                             type: 'POST',
                             dataType: 'json',
                             data: {
@@ -41113,7 +41113,7 @@ var saveImg = function () {
         }, _callee, this);
     }));
 
-    return function saveImg(_x, _x2) {
+    return function saveImg(_x, _x2, _x3) {
         return _ref.apply(this, arguments);
     };
 }();
@@ -41223,14 +41223,14 @@ function initImgPanel(elem, wrapper, isInit, isCropper) {
                 settingsPanel.$children[0].$data.alertSave = true;
                 if (cropper) {
                     saveImg(img, function (data) {
-                        cropper.replace('../img/cover/wall-1.jpg');
+                        cropper.replace(data.json);
                         settingsPanel.$children[0].$data.alertSave = false;
-                    });
+                    }, 1);
                 } else {
                     saveImg(img, function (data) {
                         __WEBPACK_IMPORTED_MODULE_9_jquery___default()(elem).attr('src', data.json);
                         settingsPanel.$children[0].$data.alertSave = false;
-                    });
+                    }, 0);
                 }
             });
         }

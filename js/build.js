@@ -30769,6 +30769,45 @@ module.exports = Cancel;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'preloader',
@@ -43974,7 +44013,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_preloader_vue__ = __webpack_require__(200);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0e9b66da_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_preloader_vue__ = __webpack_require__(481);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e0b79666_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_preloader_vue__ = __webpack_require__(481);
 var normalizeComponent = __webpack_require__(37)
 /* script */
 
@@ -43991,7 +44030,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_preloader_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0e9b66da_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_preloader_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e0b79666_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_preloader_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -44006,7 +44045,7 @@ var Component = normalizeComponent(
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{attrs:{"xmlns:svg":"http://www.w3.org/2000/svg","xmlns":"http://www.w3.org/2000/svg","xmlns:xlink":"http://www.w3.org/1999/xlink","version":"1.0","width":"64px","height":"64px","viewBox":"0 0 128 128","xml:space":"preserve"}},[_c('rect',{attrs:{"x":"0","y":"0","width":"100%","height":"100%","fill":"#ccc0"}}),_c('g',[_c('circle',{attrs:{"cx":"16","cy":"64","r":"16","fill":"#000000","fill-opacity":"1"}}),_c('circle',{attrs:{"cx":"16","cy":"64","r":"16","fill":"#555555","fill-opacity":"0.67","transform":"rotate(45,64,64)"}}),_c('circle',{attrs:{"cx":"16","cy":"64","r":"16","fill":"#949494","fill-opacity":"0.42","transform":"rotate(90,64,64)"}}),_c('circle',{attrs:{"cx":"16","cy":"64","r":"16","fill":"#cccccc","fill-opacity":"0.2","transform":"rotate(135,64,64)"}}),_c('circle',{attrs:{"cx":"16","cy":"64","r":"16","fill":"#e1e1e1","fill-opacity":"0.12","transform":"rotate(180,64,64)"}}),_c('circle',{attrs:{"cx":"16","cy":"64","r":"16","fill":"#e1e1e1","fill-opacity":"0.12","transform":"rotate(225,64,64)"}}),_c('circle',{attrs:{"cx":"16","cy":"64","r":"16","fill":"#e1e1e1","fill-opacity":"0.12","transform":"rotate(270,64,64)"}}),_c('circle',{attrs:{"cx":"16","cy":"64","r":"16","fill":"#e1e1e1","fill-opacity":"0.12","transform":"rotate(315,64,64)"}}),_c('animateTransform',{attrs:{"attributeName":"transform","type":"rotate","values":"0 64 64;315 64 64;270 64 64;225 64 64;180 64 64;135 64 64;90 64 64;45 64 64","calcMode":"discrete","dur":"720ms","repeatCount":"indefinite"}})],1)])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{attrs:{"xmlns":"http://www.w3.org/2000/svg","xmlns:xlink":"http://www.w3.org/1999/xlink","width":"121px","height":"121px","viewBox":"0 0 100 100","preserveAspectRatio":"xMidYMid"}},[_c('g',{attrs:{"transform":"rotate(0 50 50)"}},[_c('rect',{attrs:{"x":"39.5","y":"5","rx":"10.5","ry":"10","width":"21","height":"20","fill":"#26cae5"}},[_c('animate',{attrs:{"attributeName":"opacity","values":"1;0","keyTimes":"0;1","dur":"1s","begin":"-0.8888888888888888s","repeatCount":"indefinite"}})])]),_c('g',{attrs:{"transform":"rotate(40 50 50)"}},[_c('rect',{attrs:{"x":"39.5","y":"5","rx":"10.5","ry":"10","width":"21","height":"20","fill":"#26cae5"}},[_c('animate',{attrs:{"attributeName":"opacity","values":"1;0","keyTimes":"0;1","dur":"1s","begin":"-0.7777777777777778s","repeatCount":"indefinite"}})])]),_c('g',{attrs:{"transform":"rotate(80 50 50)"}},[_c('rect',{attrs:{"x":"39.5","y":"5","rx":"10.5","ry":"10","width":"21","height":"20","fill":"#26cae5"}},[_c('animate',{attrs:{"attributeName":"opacity","values":"1;0","keyTimes":"0;1","dur":"1s","begin":"-0.6666666666666666s","repeatCount":"indefinite"}})])]),_c('g',{attrs:{"transform":"rotate(120 50 50)"}},[_c('rect',{attrs:{"x":"39.5","y":"5","rx":"10.5","ry":"10","width":"21","height":"20","fill":"#26cae5"}},[_c('animate',{attrs:{"attributeName":"opacity","values":"1;0","keyTimes":"0;1","dur":"1s","begin":"-0.5555555555555556s","repeatCount":"indefinite"}})])]),_c('g',{attrs:{"transform":"rotate(160 50 50)"}},[_c('rect',{attrs:{"x":"39.5","y":"5","rx":"10.5","ry":"10","width":"21","height":"20","fill":"#26cae5"}},[_c('animate',{attrs:{"attributeName":"opacity","values":"1;0","keyTimes":"0;1","dur":"1s","begin":"-0.4444444444444444s","repeatCount":"indefinite"}})])]),_c('g',{attrs:{"transform":"rotate(200 50 50)"}},[_c('rect',{attrs:{"x":"39.5","y":"5","rx":"10.5","ry":"10","width":"21","height":"20","fill":"#26cae5"}},[_c('animate',{attrs:{"attributeName":"opacity","values":"1;0","keyTimes":"0;1","dur":"1s","begin":"-0.3333333333333333s","repeatCount":"indefinite"}})])]),_c('g',{attrs:{"transform":"rotate(240 50 50)"}},[_c('rect',{attrs:{"x":"39.5","y":"5","rx":"10.5","ry":"10","width":"21","height":"20","fill":"#26cae5"}},[_c('animate',{attrs:{"attributeName":"opacity","values":"1;0","keyTimes":"0;1","dur":"1s","begin":"-0.2222222222222222s","repeatCount":"indefinite"}})])]),_c('g',{attrs:{"transform":"rotate(280 50 50)"}},[_c('rect',{attrs:{"x":"39.5","y":"5","rx":"10.5","ry":"10","width":"21","height":"20","fill":"#26cae5"}},[_c('animate',{attrs:{"attributeName":"opacity","values":"1;0","keyTimes":"0;1","dur":"1s","begin":"-0.1111111111111111s","repeatCount":"indefinite"}})])]),_c('g',{attrs:{"transform":"rotate(320 50 50)"}},[_c('rect',{attrs:{"x":"39.5","y":"5","rx":"10.5","ry":"10","width":"21","height":"20","fill":"#26cae5"}},[_c('animate',{attrs:{"attributeName":"opacity","values":"1;0","keyTimes":"0;1","dur":"1s","begin":"0s","repeatCount":"indefinite"}})])])])}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);

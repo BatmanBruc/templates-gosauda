@@ -41101,7 +41101,7 @@ var saveImg = function () {
                             data: {
                                 ajax: 1,
                                 file_data: img,
-                                is_crop: is_crop
+                                is_crop: is_crop ? is_crop : 0
                             },
                             success: callback
                         });
